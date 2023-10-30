@@ -8,8 +8,8 @@
 // e.g route '/item/edit?id=1' will execute $itemController->edit(1)
 return [
     '' => ['ArticleController', 'showAllArticlesWithAuthors',],
-    'profil/{authorId}' => ['ProfilController', 'displayUserArticles', ['authorId']],
-
+    'profil' => ['ProfilController', 'displayUserArticles', ['authorId']],
+    //mettre dans le navigateur: http://localhost:8000/profil?authorId=1
 
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
