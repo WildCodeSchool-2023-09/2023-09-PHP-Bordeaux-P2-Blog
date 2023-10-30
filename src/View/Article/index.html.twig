@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+	<h1>Liste des Articles</h1>
+	<ul>
+		{% for Article in Articles %}
+			<li>
+				<strong>Titre de l'article:</strong>
+				{{ Article.TitreArticle }}<br>
+				<strong>Contenu de l'article:</strong>
+				{{ Article.ContenuArticle }}<br>
+				<strong>Date de publication:</strong>
+				{{ Article.DatePublication }}<br>
+				<strong>Image:</strong>
+				{{ Article.Image }}<br>
+				<strong>Nom de l'auteur:</strong>
+				{{ Article.NomUtilisateur }}<br>
+			</li>
+		{% else %}
+			<li>Aucun article à afficher</li>
+		{% endfor %}
+	</ul>
+
+	{% include "Article/user_connexion.html.twig" %}
+{% endblock %}

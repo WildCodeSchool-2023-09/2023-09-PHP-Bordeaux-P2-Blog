@@ -5,9 +5,6 @@ namespace App\Model;
 use App\Model\Connection;
 use PDO;
 
-/**
- * Abstract class handling default manager.
- */
 abstract class AbstractManager
 {
     protected PDO $pdo;
@@ -55,5 +52,19 @@ abstract class AbstractManager
         $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
+    }
+
+    public function fullDisplay(): ?array
+    {
+        $query = "SELECT A.TitreArticle, A.ContenuArticle, A.IDAuteur, A.DatePublication, A.Image, U.NomUtilisateur, U.AdresseEmail
+        FROM Articles A
+        INNER JOIN Utilisateurs U ON A.IDAuteur = U.ID
+        WHERE A.ID = :id";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch(PDO::FETCH_ASSOC);
     }
 }
