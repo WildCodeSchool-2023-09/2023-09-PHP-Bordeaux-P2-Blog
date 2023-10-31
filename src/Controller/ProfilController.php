@@ -11,6 +11,6 @@ class ProfilController extends AbstractController
         $profilManager = new ProfilManager();
         $articles = $profilManager->getArticlesByUserId($authorId);
 
-        echo $this->twig->render('Article/profil.html.twig', ['articles' => $articles]);
+        return $this->twig->render('Article/profil.html.twig', ['articles' => $articles]);
     }
 }

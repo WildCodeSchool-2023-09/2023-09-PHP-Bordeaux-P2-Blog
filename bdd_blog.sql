@@ -9,10 +9,13 @@ CREATE TABLE blog_user (
     email VARCHAR(40) NOT NULL,
     date DATETIME DEFAULT NOW(),
     image VARCHAR(255),
-    title VARCHAR(100),
+    title VARCHAR(100) NOT NULL,
     description TEXT,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    UNIQUE KEY (name),
+    UNIQUE KEY (email)
 );
+
 CREATE TABLE article (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(40) NOT NULL,

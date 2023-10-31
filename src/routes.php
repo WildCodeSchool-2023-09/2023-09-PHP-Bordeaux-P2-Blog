@@ -11,6 +11,10 @@ return [
     'profil' => ['ProfilController', 'displayUserArticles', ['authorId']],
     //mettre dans le navigateur: http://localhost:8000/profil?authorId=1
 
+    
+    'register' => ['UserController', 'register',],
+
+    //exemple de simple MVC
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
