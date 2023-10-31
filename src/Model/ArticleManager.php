@@ -6,13 +6,13 @@ use PDO;
 
 class ArticleManager extends AbstractManager
 {
-    public const TABLE = 'Articles';
+    public const TABLE = 'article';
 
     public function getAllArticlesWithAuthors(): array
     {
-        $query = "SELECT A.*, U.NomUtilisateur
-        FROM Articles A
-        INNER JOIN Utilisateurs U ON A.IDAuteur = U.ID";
+        $query = "SELECT A.*, BU.name AS author_name
+                  FROM article A
+                  INNER JOIN blog_user BU ON A.blog_user_id = BU.id";
 
         $result = $this->pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
 

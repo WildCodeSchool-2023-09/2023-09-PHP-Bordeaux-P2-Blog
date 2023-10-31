@@ -11,9 +11,9 @@ class ArticleController extends AbstractController
      */
     public function showAllArticlesWithAuthors(): string
     {
-        $ArticleManager = new ArticleManager();
-        $Articles = $ArticleManager->getAllArticlesWithAuthors();
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->getAllArticlesWithAuthors();
 
-        return $this->twig->render('Article/index.html.twig', ['Articles' => $Articles]);
+        return $this->twig->render('Article/index.html.twig', ['articles' => $articles]);
     }
 }

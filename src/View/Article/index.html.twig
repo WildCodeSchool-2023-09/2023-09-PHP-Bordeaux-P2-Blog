@@ -1,28 +1,31 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+	{{ parent() }}
+	| Home
+{% endblock %}
 
 {% block content %}
+	{% include "Article/user_connexion.html.twig" %}
 
-<a href="/profil", {authorId: 1}>lien</a>
 	<h1>Liste des Articles</h1>
 	<ul>
-		{% for Article in Articles %}
+		{% for article in articles %}
 			<li>
 				<strong>Titre de l'article:</strong>
-				{{ Article.TitreArticle }}<br>
+				{{ article.title }}<br>
 				<strong>Contenu de l'article:</strong>
-				{{ Article.ContenuArticle }}<br>
+				{{ article.content }}<br>
 				<strong>Date de publication:</strong>
-				{{ Article.DatePublication }}<br>
+				{{ article.date }}<br>
 				<strong>Image:</strong>
-				{{ Article.Image }}<br>
+				<img src="{{ article.image }}" alt="Image de l'article"><br>
 				<strong>Nom de l'auteur:</strong>
-				{{ Article.NomUtilisateur }}<br>
+				{{ article.author_name }}<br>
 			</li>
 		{% else %}
 			<li>Aucun article à afficher</li>
 		{% endfor %}
 	</ul>
 
-	{% include "Article/user_connexion.html.twig" %}
 {% endblock %}

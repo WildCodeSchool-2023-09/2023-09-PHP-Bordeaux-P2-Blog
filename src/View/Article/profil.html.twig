@@ -1,17 +1,17 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+	<h1>Articles écrits par l'utilisateur</h1>
 
-<h1>Articles écrits par l'utilisateur</h1>
-
-<ul>
-	{% for article in articles %}
-		<li>
-			<h2>
-				{{ article.TitreArticle }}</a>
-		</li>
-	</h2>
-	<p>Publié le
-		{{ article.DatePublication|date('d/m/Y') }}</p>
-	<p>{{ article.ContenuArticle|raw }}</p>
-</li>{% endfor %}</ul>{% endblock %}
+	<ul>
+		{% for article in articles %}
+			<li>
+				<h2>{{ article.title }}</h2>
+				<p>Publié le
+					{{ article.date|date('d/m/Y') }}</p>
+				<p>{{ article.content|raw }}</p>
+				<img src="{{ article.image }}" alt="Image de l'article">
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
