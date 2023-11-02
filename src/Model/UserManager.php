@@ -1,5 +1,4 @@
 <?php
-// exemple à configurer pour coller à notre BDD:
 
 namespace App\Model;
 

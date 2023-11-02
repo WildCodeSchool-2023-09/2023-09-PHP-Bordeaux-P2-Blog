@@ -6,18 +6,16 @@
 //          2. method name
 //          3. (optional) array of query string keys to send as parameter to the method
 // e.g route '/item/edit?id=1' will execute $itemController->edit(1)
+
+//mettre dans le navigateur: http://localhost:8000/profil?authorId=1
+
 return [
-    '' => ['ArticleController', 'showAllArticlesWithAuthors',],
+    '' => ['ArticleController', 'showAllArticlesWithAuthors'],
     'profil' => ['ProfilController', 'displayUserArticles', ['authorId']],
-    //mettre dans le navigateur: http://localhost:8000/profil?authorId=1
-
-    
-    'register' => ['UserController', 'register',],
-
-    //exemple de simple MVC
-    'items' => ['ItemController', 'index',],
-    'items/edit' => ['ItemController', 'edit', ['id']],
-    'items/show' => ['ItemController', 'show', ['id']],
-    'items/add' => ['ItemController', 'add',],
-    'items/delete' => ['ItemController', 'delete',],
+    'show' => ['ArticleController', 'showArticle', ['id']],
+    'register' => ['UserController', 'register'],
+    'login' => ['UserController', 'login'],
+    'add' => ['ArticleController', 'addArticle'],
+    'edit' => ['ArticleController', 'editArticle', ['id']],
+    'delete' => ['ArticleController', 'deleteArticle', ['id']],
 ];

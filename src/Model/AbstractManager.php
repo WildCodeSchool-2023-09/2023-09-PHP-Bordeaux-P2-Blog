@@ -53,18 +53,4 @@ abstract class AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
-
-    // public function fullDisplay(): ?array
-    // {
-    //     $query = "SELECT A.TitreArticle, A.ContenuArticle, A.IDAuteur, A.DatePublication, A.Image, U.NomUtilisateur, U.AdresseEmail
-    //     FROM Articles A
-    //     INNER JOIN Utilisateurs U ON A.IDAuteur = U.ID
-    //     WHERE A.ID = :id";
-
-    //     $statement = $this->pdo->prepare($query);
-    //     $statement->bindValue(':id', $id, \PDO::PARAM_INT);
-    //     $statement->execute();
-
-    //     return $statement->fetch(PDO::FETCH_ASSOC);
-    // }
 }

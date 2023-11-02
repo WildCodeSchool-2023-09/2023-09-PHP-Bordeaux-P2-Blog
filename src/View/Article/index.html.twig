@@ -2,12 +2,11 @@
 
 {% block title %}
 	{{ parent() }}
-	| Home
+	| Accueil
 {% endblock %}
 
 {% block content %}
-	{% include "Article/user_connexion.html.twig" %}
-	
+
 	<h1>Liste des Articles</h1>
 	<ul>
 		{% for article in articles %}
