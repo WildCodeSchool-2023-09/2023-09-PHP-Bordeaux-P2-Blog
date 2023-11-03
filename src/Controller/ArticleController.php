@@ -8,8 +8,8 @@ class ArticleController extends AbstractController
 {
     public function showAllArticlesWithAuthors(): string
     {
-        session_start();
-        $this->checkSessionUser();
+        // session_start();
+        // $this->checkSessionUser();
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticlesWithAuthors();
         return $this->twig->render('Article/index.html.twig', ['articles' => $articles]);
@@ -32,7 +32,8 @@ class ArticleController extends AbstractController
             $title = $_POST['title'];
             $content = $_POST['content'];
             $image = $_POST['image'];
-            $userId = $_SESSION['user_id']; //was $user_id
+            $userId = $_SESSION['user_id'];
+
             $articleManager = new ArticleManager();
             $articleManager->insert([
                 'title' => $title,
@@ -40,6 +41,7 @@ class ArticleController extends AbstractController
                 'image' => $image,
                 'blog_user_id' => $userId
             ]);
+
             // Redirige vers la page de l'article nouvellement créé
             header('Location: /show?id=' . $articleManager->getLastInsertedId());
             exit();

@@ -16,7 +16,18 @@
 		</head>
 
 		<body>
-			{% block content %}{% endblock %}
-			{% block javascript %}{% endblock %}
+			{% block navbar %}
+				{% include "Article/navbar.html.twig" %}
+			{% endblock %}
+			<main>
+				{% block content %}{% endblock %}
+
+			</main>
+			{% block footer %}{% endblock %}
+
+
+			{% block javascript %}
+				<script src="/assets/JavaScript/script.js"></script>
+			{% endblock %}
 		</body>
 	</html>
