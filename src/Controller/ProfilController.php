@@ -17,7 +17,7 @@ class ProfilController extends AbstractController
             exit();
         }
 
-        // Récupére ID de l'utilisateur connecté 
+        // Récupére ID de l'utilisateur connecté
         $authorId = (int)$_SESSION['user_id'];
 
         $profilManager = new ProfilManager();
