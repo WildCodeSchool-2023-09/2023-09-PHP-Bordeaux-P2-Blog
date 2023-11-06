@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+}
+
+footer {
+    background-color: #233521;
+    color: #CC9C65;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.contact-info a, .privacy-policy a {
+    color: #CC9C65;
+    text-decoration: none;
+}
+
+.logo img {
+    max-width: 200px;
+    align-items: center;
+}
+
