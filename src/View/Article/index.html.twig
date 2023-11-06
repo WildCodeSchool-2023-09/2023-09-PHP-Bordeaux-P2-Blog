@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Accueil
+{% endblock %}
+
+{% block content %}
+
+	<h1>Liste des Articles</h1>
+	<ul>
+		{% for article in articles %}
+			<li>
+				<strong>Titre de l'article:</strong>
+				{{ article.title }}<br>
+				<strong>Contenu de l'article:</strong>
+				{{ article.content }}<br>
+				<strong>Date de publication:</strong>
+				{{ article.date }}<br>
+				<strong>Image:</strong>
+				<img src="{{ article.image }}" alt="Image de l'article"><br>
+				<strong>Nom de l'auteur:</strong>
+				{{ article.author_name }}<br>
+			</li>
+		{% else %}
+			<li>Aucun article à afficher</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}
