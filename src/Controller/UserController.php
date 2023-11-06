@@ -39,7 +39,7 @@ class UserController extends AbstractController
 
     public function logout()
     {
-        session_start(); // Initialisezla session
+        session_start(); // Initialise la session
 
         // Détruit l'index 'user_id' de la superglobale $_SESSION
         if (isset($_SESSION['user_id'])) {
