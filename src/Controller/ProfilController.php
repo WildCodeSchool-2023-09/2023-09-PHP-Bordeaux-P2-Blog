@@ -8,7 +8,7 @@ class ProfilController extends AbstractController
 {
     public function displayUserArticles()
     {
-        
+
         // utilisateur connecté ?
         if (!isset($_SESSION['user_id'])) {
             // Redirige login si pas connecté
