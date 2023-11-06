@@ -8,7 +8,6 @@ class UserController extends AbstractController
 {
     public function login()
     {
-        session_start(); // Initialise la session
 
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -39,7 +38,6 @@ class UserController extends AbstractController
 
     public function logout()
     {
-        session_start(); // Initialisezla session
 
         // Détruit l'index 'user_id' de la superglobale $_SESSION
         if (isset($_SESSION['user_id'])) {

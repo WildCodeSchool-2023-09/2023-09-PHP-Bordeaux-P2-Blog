@@ -18,4 +18,5 @@ return [
     'add' => ['ArticleController', 'addArticle'],
     'edit' => ['ArticleController', 'editArticle', ['id']],
     'delete' => ['ArticleController', 'deleteArticle', ['id']],
+    'logout' => ['UserController', 'logout'],
 ];
