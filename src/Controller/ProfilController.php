@@ -8,16 +8,15 @@ class ProfilController extends AbstractController
 {
     public function displayUserArticles()
     {
-        session_start();
-
-        // Vérifie si l'utilisateur est connecté
+        
+        // utilisateur connecté ?
         if (!isset($_SESSION['user_id'])) {
             // Redirige login si pas connecté
             header('Location: /login');
             exit();
         }
 
-        // Récupére ID de l'utilisateur connecté
+        // Récupére ID de l'utilisateur co
         $authorId = (int)$_SESSION['user_id'];
 
         $profilManager = new ProfilManager();

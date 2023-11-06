@@ -8,7 +8,6 @@ class UserController extends AbstractController
 {
     public function login()
     {
-        session_start(); // Initialise la session
 
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

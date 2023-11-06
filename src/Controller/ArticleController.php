@@ -8,8 +8,7 @@ class ArticleController extends AbstractController
 {
     public function showAllArticlesWithAuthors(): string
     {
-        // session_start();
-        // $this->checkSessionUser();
+
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticlesWithAuthors();
         return $this->twig->render('Article/index.html.twig', ['articles' => $articles]);
@@ -17,7 +16,6 @@ class ArticleController extends AbstractController
 
     public function showArticle(int $id): string
     {
-        session_start();
         $this->checkSessionUser();
         $articleManager = new ArticleManager();
         $article = $articleManager->selectOneById($id);
@@ -26,7 +24,6 @@ class ArticleController extends AbstractController
 
     public function addArticle(): string
     {
-        session_start();
         $this->checkSessionUser();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $title = $_POST['title'];
@@ -51,7 +48,6 @@ class ArticleController extends AbstractController
 
     public function editArticle(int $id): string
     {
-        session_start();
         $this->checkSessionUser();
         $user = $this->user;
         $articleManager = new ArticleManager();
@@ -80,7 +76,6 @@ class ArticleController extends AbstractController
 
     public function deleteArticle(int $id): string
     {
-        session_start();
         $this->checkSessionUser();
         $user = $this->user;
         $articleManager = new ArticleManager();
