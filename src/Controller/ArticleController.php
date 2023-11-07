@@ -8,7 +8,6 @@ class ArticleController extends AbstractController
 {
     public function showAllArticlesWithAuthors(): string
     {
-
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticlesWithAuthors();
         return $this->twig->render('Article/index.html.twig', ['articles' => $articles]);

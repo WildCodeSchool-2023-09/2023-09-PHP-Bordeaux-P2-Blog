@@ -12,22 +12,26 @@
 			{% endblock %}
 		</title>
 
-		<link rel="stylesheet" href="/assets/css/style.css"> {% block stylesheet %}{% endblock %}
-		</head>
+		{% block stylesheet %}
+			<link rel="stylesheet" href="/assets/css/style.css">
+		{% endblock %}
 
-		<body>
-			{% block navbar %}
-				{% include "Article/navbar.html.twig" %}
-			{% endblock %}
-			<main>
-				{% block content %}{% endblock %}
+	</head>
 
-			</main>
-			{% block footer %}{% endblock %}
+	<body>
+		{% block navbar %}
+			{% include "Article/navbar.html.twig" %}
+		{% endblock %}
 
+		<main>
+			{% block content %}{% endblock %}
 
-			{% block javascript %}
-				<script src="/assets/JavaScript/script.js"></script>
-			{% endblock %}
-		</body>
-	</html>
+		</main>
+		{% block footer %}{% endblock %}
+
+		{% block script %}
+			<script src="ckeditor/ckeditor.js"></script>
+		{% endblock %}
+
+	</body>
+</html>

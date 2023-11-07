@@ -1,36 +1,55 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout.html.twig' %} {% block title %}
+{{ parent() }}
+| Profil {% endblock %} {% block content %}
+<!-- Votre contenu pour la vue "profil" -->
 
-{% block title %}
-	{{ parent() }}
-	| Ajouter un article
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>Ajouter un article</h1>
+        <form action="/add" method="post">
+            <div class="mb-3">
+                <label for="title" class="form-label"
+                    >Titre de l'article:</label
+                >
+                <input
+                    class="form-control"
+                    type="text"
+                    id="title"
+                    name="title"
+                    required
+                />
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label"
+                    >Contenu de l'article:</label
+                >
+                <textarea
+                    class="form-control"
+                    id="content"
+                    name="content"
+                    required
+                ></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Lien de l'image:</label>
+                <input
+                    class="form-control"
+                    type="text"
+                    id="image"
+                    name="image"
+                />
+            </div>
+
+            <!-- Champ caché pour l'ID de l'utilisateur -->
+            <input type="hidden" name="user_id" value="{{ user.id }}" />
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">
+                    Ajouter l'article
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
 
-{% block content %}
-
-	<div class="row">
-		<div class="col-md-6 offset-md-3">
-			<h1>Ajouter un article</h1>
-			<form action="/add" method="post">
-				<div class="mb-3">
-					<label for="title" class="form-label">Titre de l'article:</label>
-					<input class="form-control" type="text" id="title" name="title" required>
-				</div>
-				<div class="mb-3">
-					<label for="content" class="form-label">Contenu de l'article:</label>
-					<textarea class="form-control" id="content" name="content" required></textarea>
-				</div>
-				<div class="mb-3">
-					<label for="image" class="form-label">Lien de l'image:</label>
-					<input class="form-control" type="text" id="image" name="image">
-				</div>
-
-				<!-- Champ caché pour l'ID de l'utilisateur -->
-				<input type="hidden" name="user_id" value="{{ user.id }}">
-
-				<div class="mb-3">
-					<button type="submit" class="btn btn-success">Ajouter l'article</button>
-				</div>
-			</form>
-		</div>
-	</div>
-{% endblock %}
