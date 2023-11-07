@@ -1,8 +1,6 @@
 {% extends 'layout.html.twig' %} {% block title %}
 {{ parent() }}
-| Profil {% endblock %} {% block content %}
-<!-- Votre contenu pour la vue "profil" -->
-
+| Profil {% endblock %} {% block navbar %} {% endblock %} {% block content %}
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <h1>Ajouter un article</h1>
@@ -51,5 +49,5 @@
         </form>
     </div>
 </div>
-{% endblock %}
 
+{% endblock %}

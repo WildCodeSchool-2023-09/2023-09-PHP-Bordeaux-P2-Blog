@@ -67,7 +67,7 @@ class ArticleController extends AbstractController
                 'image' => $image,
             ]);
             // Redirige vers la page de l'article après l'édition
-            header('Location: /article/' . $id);
+            header('Location: /show/' . $id);
             exit();
         }
         return $this->twig->render('Article/editArticle.html.twig', ['article' => $article]);

@@ -1,37 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" href="/assets/images/favicon.png">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/assets/images/favicon.png" />
 
-		<title>
-			{% block title %}
-				Bump
-			{% endblock %}
-		</title>
+    <title>
+      {% block title %}
+        Bump
+      {% endblock %}
+    </title>
 
-		{% block stylesheet %}
-			<link rel="stylesheet" href="/assets/css/style.css">
-		{% endblock %}
+    {% block stylesheet %}
+      <link rel="stylesheet" href="/assets/css/style.css" />
+    {% endblock %}
+  </head>
 
-	</head>
+  <body>
+    {% block navbar %}
+      {% include 'Article/navbar.html.twig' %}
+    {% endblock %}
 
-	<body>
-		{% block navbar %}
-			{% include "Article/navbar.html.twig" %}
-		{% endblock %}
+    <main>
+      {% block content %}
 
-		<main>
-			{% block content %}{% endblock %}
+      {% endblock %}
+    </main>
+    {% block footer %}
 
-		</main>
-		{% block footer %}{% endblock %}
+    {% endblock %}
 
-		{% block script %}
-			<script src="ckeditor/ckeditor.js"></script>
-		{% endblock %}
+    {% block script %}
 
-	</body>
+    {% endblock %}
+  </body>
 </html>
