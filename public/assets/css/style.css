@@ -1,3 +1,26 @@
+@import 'footer.css';
+
 body {
+    margin: 0;
+    position: relative;
     color: #f76c6c;
+}
+:root {
+    --primary-color: #233521;
+    --second-color: #cc9c65;
+    --third-color: black;
+    --fourth-color: white;
+    --h1-font-size: 32px;
+    --h1-font-family: exo2;
+    --h2-font-size: 24px;
+    --h2-font-family: rubik;
+    --h3-font-size: 20px;
+    --h3-font-family: rubik;
+    --text-font-size: 14px;
+    --text-font-family: hind madurai;
+}
+
+body {
+    padding: 0;
+    margin: 0;
 }

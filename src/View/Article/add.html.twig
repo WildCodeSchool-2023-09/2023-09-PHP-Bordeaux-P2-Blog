@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Ajouter un article{% endblock %}
+
+{% block content %}
+    <h1>Ajouter un article</h1>
+    <form method="post">
+        <label for="title">Titre :</label>
+        <input type="text" name="title" id="title" required><br>
+
+        <label for="content">Contenu :</label>
+        <textarea name="content" id="content" required></textarea><br>
+
+        <label for="image">Image (facultatif) :</label>
+        <input type="text" name="image" id="image"><br>
+
+        <button type="submit">Ajouter</button>
+    </form>
+{% endblock %}
