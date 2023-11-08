@@ -9,13 +9,13 @@
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
-     <link rel="stylesheet" href="/assets/css/footer.css">
+     
     {% block stylesheet %}{% endblock %}
 </head>
 
 <body>
     {% block content %}{% endblock %}
-    {% block footer %}{% endblock %}
+    {% include "Home/footer.html.twig" %}
     {% block javascript %}{% endblock %}
 
 </body>

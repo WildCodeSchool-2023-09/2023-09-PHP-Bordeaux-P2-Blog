@@ -25,6 +25,9 @@ SET time_zone = "+00:00";
 --
 -- Structure de la table `item`
 --
+DROP DATABASE IF EXISTS simplemvc;
+CREATE DATABASE simplemvc;
+USE simplemvc;
 
 CREATE TABLE `item` (
   `id` int(11) UNSIGNED NOT NULL,
