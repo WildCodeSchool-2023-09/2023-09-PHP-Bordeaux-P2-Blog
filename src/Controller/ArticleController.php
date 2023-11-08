@@ -6,91 +6,121 @@ use App\Model\ArticleManager;
 
 class ArticleController extends AbstractController
 {
-    public function showAllArticlesWithAuthors(): string
+    public function showAllArticles()
     {
-
         $articleManager = new ArticleManager();
-        $articles = $articleManager->getAllArticlesWithAuthors();
-        return $this->twig->render('Article/index.html.twig', ['articles' => $articles]);
+        $articles = $articleManager->getAllArticles();
+
+        echo $this->twig->render('Home/index.html.twig', ['articles' => $articles]);
     }
 
-    public function showArticle(int $id): string
+    public function showAllArticlesByUserID($userId)
     {
-        $this->checkSessionUser();
         $articleManager = new ArticleManager();
-        $article = $articleManager->selectOneById($id);
-        return $this->twig->render('Article/showArticle.html.twig', ['article' => $article]);
+        $articles = $articleManager->getArticlesByUserId($userId);
+
+        echo $this->twig->render('profil.html.twig', ['articles' => $articles]);
     }
 
-    public function addArticle(): string
+    public function showArticleById($articleId)
     {
-        $this->checkSessionUser();
+        $articleManager = new ArticleManager();
+        $article = $articleManager->getArticleById($articleId);
+
+        echo $this->twig->render('show.html.twig', ['article' => $article]);
+    }
+
+    public function addArticle()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Valide les données du formulaire
             $title = $_POST['title'];
             $content = $_POST['content'];
             $image = $_POST['image'];
-            $userId = $_SESSION['user_id'];
 
-            $articleManager = new ArticleManager();
-            $articleManager->insert([
-                'title' => $title,
-                'content' => $content,
-                'image' => $image,
-                'blog_user_id' => $userId
-            ]);
+            // Vérifie si l'utilisateur est connecté
+            if (isset($_SESSION['user_id'])) {
+                $userId = $_SESSION['user_id'];
 
-            // Redirige vers la page de l'article nouvellement créé
-            header('Location: /show?id=' . $articleManager->getLastInsertedId());
-            exit();
+                $data = [
+                    'title' => $title,
+                    'content' => $content,
+                    'image' => $image,
+                    'blog_user_id' => $userId,
+                ];
+
+                $articleManager = new ArticleManager();
+                $articleManager->addArticle($data);
+                // Redirige l'utilisateur vers la page de son profil
+                header('Location: /profil');
+            } else {
+                // L'utilisateur n'est pas connecté=>vers la page de connexion.
+                header('Location: /login');
+            }
         }
-        return $this->twig->render('Article/addArticle.html.twig');
+
+        echo $this->twig->render('Article/add.html.twig');
     }
 
-    public function editArticle(int $id): string
+
+    public function editArticleById($articleId)
     {
-        $this->checkSessionUser();
-        $user = $this->user;
         $articleManager = new ArticleManager();
-        $article = $articleManager->selectOneById($id);
-        if (!$user || !$article || $article['blog_user_id'] !== $user['id']) {
-            ///////////// Redirige message d'erreur A FAIRE
-            return $this->twig->render('error/permission_denied.html.twig');
+        $article = $articleManager->getArticleById($articleId);
+
+        if (!$article) {
+            // cas où l'article n'existe pas => vers une page d'erreur à faire
         }
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $title = $_POST['title'];
-            $content = $_POST['content'];
-            $image = $_POST['image'];
-            // Met à jour l'article dans BDD
-            $articleManager->update([
-                'id' => $article['id'],
-                'title' => $title,
-                'content' => $content,
-                'image' => $image,
-            ]);
-            // Redirige vers la page de l'article après l'édition
-            header('Location: /article/' . $id);
-            exit();
+
+        // Vérifie si l'utilisateur est connecté et est l'auteur de l'article
+        if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $article['blog_user_id']) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // Valide les données du formulaire
+                $title = $_POST['title'];
+                $content = $_POST['content'];
+                $image = $_POST['image'];
+
+                $data = [
+                    'title' => $title,
+                    'content' => $content,
+                    'image' => $image,
+                ];
+
+                $articleManager->editArticle($articleId, $data);
+
+                // Redirige l'utilisateur vers sa page de profil
+                header('Location: /profil');
+                exit();
+            }
+
+            echo $this->twig->render('edit.html.twig', ['article' => $article]);
+        } else {
+            // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
         }
-        return $this->twig->render('Article/editArticle.html.twig', ['article' => $article]);
     }
 
-    public function deleteArticle(int $id): string
+
+    public function deleteArticleById($articleId)
     {
-        $this->checkSessionUser();
-        $user = $this->user;
         $articleManager = new ArticleManager();
-        $article = $articleManager->selectOneById($id);
-        if (!$user || !$article || $article['blog_user_id'] !== $user['id']) {
-            ///////////// Redirige message d'erreur A FAIRE
-            return $this->twig->render('error/permission_denied.html.twig');
+        $article = $articleManager->getArticleById($articleId);
+
+        if (!$article) {
+            // cas où l'article n'existe pas => vers une page d'erreur à faire
         }
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Supprime l'article de la base de données
-            $articleManager->delete($id);
-            // Redirige vers accueil
-            header('Location: /');
-            exit();
+
+        // Vérifie si l'utilisateur est connecté et est l'auteur de l'article
+        if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $article['blog_user_id']) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $articleManager->deleteArticle($articleId);
+                // Redirige l'utilisateur vers sa page de profil
+                header('Location: /profil');
+                exit();
+            }
+
+            echo $this->twig->render('delete.html.twig', ['article' => $article]);
+        } else {
+            // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
         }
-        return $this->twig->render('Article/deleteArticle.html.twig', ['article' => $article]);
     }
 }

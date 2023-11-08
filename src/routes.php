@@ -10,13 +10,14 @@
 //mettre dans le navigateur: http://localhost:8000/profil?authorId=1
 
 return [
-    '' => ['ArticleController', 'showAllArticlesWithAuthors'],
-    'profil' => ['ProfilController', 'displayUserArticles', ['authorId']],
-    'show' => ['ArticleController', 'showArticle', ['id']],
-    'register' => ['UserController', 'register'],
-    'login' => ['UserController', 'login'],
-    'add' => ['ArticleController', 'addArticle'],
-    'edit' => ['ArticleController', 'editArticle', ['id']],
-    'delete' => ['ArticleController', 'deleteArticle', ['id']],
-    'logout' => ['UserController', 'logout'],
+    '' => ['ArticleController', 'showAllArticles'],
+    'profil' => ['ProfilController', 'profil'],
+    'article' => ['ArticleController', 'index'],
+    'article/edit' => ['ArticleController', 'editArticleById', ['id']],
+    'article/show' => ['ArticleController', 'showArticleById', ['id']],
+    'article/add' => ['ArticleController', 'addArticle'],
+    'article/delete' => ['ArticleController', 'deleteArticleById', ['id']],
+    'login' => ['ProfilController', 'login'],
+    'logout' => ['ProfilController', 'logout'],
+    'register' => ['ProfilController', 'register'],
 ];

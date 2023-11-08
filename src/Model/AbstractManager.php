@@ -5,6 +5,9 @@ namespace App\Model;
 use App\Model\Connection;
 use PDO;
 
+/**
+ * Abstract class handling default manager.
+ */
 abstract class AbstractManager
 {
     protected PDO $pdo;
@@ -31,21 +34,17 @@ abstract class AbstractManager
     }
 
     /**
-     * Get  1 article by ID from database.
+     * Get one row from database by ID.
      */
-
     public function selectOneById(int $id): array|false
     {
-        $statement = $this->pdo->prepare("SELECT a.*, u.name AS author_name
-        FROM article a
-        JOIN blog_user u ON a.blog_user_id = u.id
-        WHERE a.id = :id");
+        // prepared request
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetch();
     }
-
 
     /**
      * Delete row form an ID
