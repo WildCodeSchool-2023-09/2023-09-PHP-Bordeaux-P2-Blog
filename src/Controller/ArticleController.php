@@ -93,7 +93,7 @@ class ArticleController extends AbstractController
                 exit();
             }
 
-            echo $this->twig->render('edit.html.twig', ['article' => $article]);
+            echo $this->twig->render('Article/edit.html.twig', ['article' => $article]);
         } else {
             // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
         }
@@ -118,7 +118,7 @@ class ArticleController extends AbstractController
                 exit();
             }
 
-            echo $this->twig->render('delete.html.twig', ['article' => $article]);
+            echo $this->twig->render('Article/delete.html.twig', ['article' => $article]);
         } else {
             // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
         }
