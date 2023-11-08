@@ -1,3 +1,10 @@
+@import 'footer.css';
+
+body {
+    margin: 0;
+    position: relative;
+    color: #f76c6c;
+}
 :root {
     --primary-color: #233521;
     --second-color: #cc9c65;
