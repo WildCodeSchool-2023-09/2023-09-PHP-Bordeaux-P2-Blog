@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Supprimer un article
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<h1>Supprimer un article</h1>
+			<p>Êtes-vous sûr de vouloir supprimer cet article ?</p>
+			<form action="/article/delete/{{ article.id }}" method="post">
+				<button type="submit" class="btn btn-danger">Confirmer la suppression</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

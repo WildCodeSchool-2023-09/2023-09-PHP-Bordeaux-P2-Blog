@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Profil de l'utilisateur
+{% endblock %}
+
+{% block content %}
+	{% include "Article/addArticle.html.twig" %}
+	<h1>Articles de l'utilisateur</h1>
+	<ul>
+		{% for article in articles %}
+			<li>
+				<strong>Titre de l'article:</strong>
+				{{ article.title }}<br>
+				<strong>Contenu de l'article:</strong>
+				{{ article.content }}<br>
+				<strong>Date de publication:</strong>
+				{{ article.date }}<br>
+				<strong>Image:</strong>
+				<img src="{{ article.image }}" alt="Image de l'article"><br>
+			</li>
+		{% else %}
+			<li>L'utilisateur n'a pas encore publié d'articles.</li>
+		{% endfor %}
+	</ul>
+
+
+	<a href="/logout">Déconnexion</a>
+
+{% endblock %}

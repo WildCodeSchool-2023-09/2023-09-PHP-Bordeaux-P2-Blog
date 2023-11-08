@@ -1,0 +1,36 @@
+<header id="header">
+	<div class="centered-wrapper">
+
+		<div id="logo">
+			<span class="logo">BUMP</span>
+		</div>
+
+		<div class="menu-icon"></div>
+
+		<nav id="navigation">
+
+			<ul id="mainnav" class="sf-menu">
+				<li>
+					<a href="/">
+						<span>Accueil</span>
+					</a>
+				</li>
+				<li>
+					<a href="/profil?authorId={{ app.session.get('user_id') }}">
+						<span>Mon profil</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="/login">
+						<span>Connexion</span>
+					</a>
+				</li>
+				<li>
+					<a href="/register">
+						<span>Inscription</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>

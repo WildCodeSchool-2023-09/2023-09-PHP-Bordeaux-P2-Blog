@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Éditer un article
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<h1>Éditer un article</h1>
+			<form action="/article/edit/{{ article.id }}" method="post">
+				<div class="mb-3">
+					<label for="title" class="form-label">Titre de l'article:</label>
+					<input class="form-control" type="text" id="title" name="title" value="{{ article.title }}" required>
+				</div>
+				<div class="mb-3">
+					<label for="content" class="form-label">Contenu de l'article:</label>
+					<textarea class="form-control" id="content" name="content" required>{{ article.content }}</textarea>
+				</div>
+				<div class="mb-3">
+					<label for="image" class="form-label">Lien de l'image:</label>
+					<input class="form-control" type="text" id="image" name="image" value="{{ article.image }}">
+				</div>
+				<div class="mb-3">
+					<button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}
