@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %} {% block title %}Profil de l'utilisateur{%
+endblock %} {% block content %}
+<h1>Profil de l'utilisateur</h1>
+<h2>Informations personnelles</h2>
+<p><strong>Nom :</strong> {{ user.name }}</p>
+<p><strong>Image :</strong> {{ user.image }}</p>
+<p><strong>Titre :</strong> {{ user.title }}</p>
+<p><strong>Description :</strong> {{ user.description }}</p>
+
+<h2>Mes articles</h2>
+<ul>
+    {% for article in articles %}
+    <li>
+        <h3>{{ article.title }}</h3>
+        <p>{{ article.content }}</p>
+        <a href="/article/edit/{{ article.id }}">Éditer</a>
+        <a href="/article/delete/{{ article.id }}">Supprimer</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="/article/add">Ajouter un article</a>
+{% endblock %}

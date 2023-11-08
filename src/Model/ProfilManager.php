@@ -4,19 +4,40 @@ namespace App\Model;
 
 class ProfilManager extends AbstractManager
 {
-    public const TABLE = 'article';
+    public const TABLE = 'blog_user';
 
-    public function getArticlesByUserId(int $userId): array
+    public function getUserById(int $userId)
     {
-        $query = 'SELECT A.title, A.content, A.date, A.image, BU.name AS author_name
-                  FROM article A
-                  JOIN blog_user BU ON A.blog_user_id = BU.id
-                  WHERE A.blog_user_id = :userId';
-
+        $query = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id';
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':userId', $userId, \PDO::PARAM_INT);
+        $statement->bindValue(':id', $userId, \PDO::PARAM_INT);
         $statement->execute();
 
-        return $statement->fetchAll();
+        return $statement->fetch();
+    }
+
+    public function getUserByEmail(string $email)
+    {
+        $query = 'SELECT * FROM ' . static::TABLE . ' WHERE email = :email';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':email', $email);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
+
+    public function addUser(array $data)
+    {
+        $query = 'INSERT INTO ' . static::TABLE .
+            ' (name, password, email, image, title, description) 
+        VALUES (:name, :password, :email, :image, :title, :description)';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':name', $data['name']);
+        $statement->bindValue(':password', password_hash($data['password'], PASSWORD_DEFAULT));
+        $statement->bindValue(':email', $data['email']);
+        $statement->bindValue(':image', $data['image']);
+        $statement->bindValue(':title', $data['title']);
+        $statement->bindValue(':description', $data['description']);
+        $statement->execute();
     }
 }
