@@ -1,38 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/assets/images/favicon.png" />
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/assets/images/favicon.png" />
 
-    <title>
-      {% block title %}
-        Bump
-      {% endblock %}
-    </title>
+        <title>{% block title %}{% endblock %}</title>
 
-    {% block stylesheet %}
-      <link rel="stylesheet" href="/assets/css/style.css" />
-    {% endblock %}
-  </head>
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        {% block stylesheet %}{% endblock %}
+    </head>
 
-  <body>
-    {% block navbar %}
-      {% include 'Article/navbar.html.twig' %}
-    {% endblock %}
-
-    <main>
-      {% block content %}
-
-      {% endblock %}
-    </main>
-    {% block footer %}
-
-    {% endblock %}
-
-    {% block script %}
-
-    {% endblock %}
-  </body>
+    <body>
+        {% include 'Home/navbar.html.twig' %} {% block content %}{% endblock %}
+        {% block javascript %}{% endblock %}
+    </body>
 </html>
