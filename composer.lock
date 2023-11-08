@@ -4,8 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0fe54cf4015ee2015f5c267685a0065b",
+    "content-hash": "1a389f579520a9c78c8531a27799bd41",
     "packages": [
+        {
+            "name": "ckeditor/ckeditor",
+            "version": "dev-standard/4.10.x",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ckeditor/ckeditor4-releases.git",
+                "reference": "493417fda2feda48eda0bc46ec4ace63dd9beca8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ckeditor/ckeditor4-releases/zipball/493417fda2feda48eda0bc46ec4ace63dd9beca8",
+                "reference": "493417fda2feda48eda0bc46ec4ace63dd9beca8",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+",
+                "LGPL-2.1+",
+                "MPL-1.1+"
+            ],
+            "authors": [
+                {
+                    "name": "CKSource",
+                    "homepage": "http://cksource.com"
+                }
+            ],
+            "description": "JavaScript WYSIWYG web text editor.",
+            "homepage": "http://ckeditor.com",
+            "keywords": [
+                "CKEditor",
+                "editor",
+                "fckeditor",
+                "html",
+                "javascript",
+                "richtext",
+                "text",
+                "wysiwyg"
+            ],
+            "support": {
+                "forum": "http://ckeditor.com/forums",
+                "issues": "http://dev.ckeditor.com",
+                "source": "http://github.com/ckeditor/ckeditor-dev",
+                "wiki": "http://docs.ckeditor.com"
+            },
+            "time": "2018-09-11T18:15:24+00:00"
+        },
         {
             "name": "symfony/polyfill-ctype",
             "version": "v1.28.0",
@@ -3331,7 +3378,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ckeditor/ckeditor": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
