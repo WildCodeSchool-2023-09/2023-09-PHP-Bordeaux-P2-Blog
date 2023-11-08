@@ -7,7 +7,6 @@ use App\Model\ArticleManager;
 
 class ProfilController extends AbstractController
 {
-
     public function profil()
     {
         if (isset($_SESSION['user_id'])) {
@@ -76,12 +75,9 @@ class ProfilController extends AbstractController
 
             $profilManager = new ProfilManager();
             $profilManager->addUser($data);
-
-            // Redirige l'utilisateur vers sa page de profil 
             header('Location: /profil');
             exit();
         }
-
         echo $this->twig->render('Blog_user/register.html.twig');
     }
 }

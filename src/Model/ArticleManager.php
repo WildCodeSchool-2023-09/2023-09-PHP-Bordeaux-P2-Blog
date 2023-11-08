@@ -10,7 +10,10 @@ class ArticleManager extends AbstractManager
 
     public function addArticle(array $data)
     {
-        $query = 'INSERT INTO ' . static::TABLE . ' (title, content, image, blog_user_id) VALUES (:title, :content, :image, :blog_user_id)';
+        $query = 'INSERT INTO ' .
+        static::TABLE .
+        ' (title, content, image, blog_user_id) 
+        VALUES (:title, :content, :image, :blog_user_id)';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':title', $data['title']);
         $statement->bindValue(':content', $data['content']);

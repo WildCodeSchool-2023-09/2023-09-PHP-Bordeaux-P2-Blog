@@ -28,7 +28,9 @@ class ProfilManager extends AbstractManager
 
     public function addUser(array $data)
     {
-        $query = 'INSERT INTO ' . static::TABLE . ' (name, password, email, image, title, description) VALUES (:name, :password, :email, :image, :title, :description)';
+        $query = 'INSERT INTO ' . static::TABLE .
+            ' (name, password, email, image, title, description) 
+        VALUES (:name, :password, :email, :image, :title, :description)';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':name', $data['name']);
         $statement->bindValue(':password', password_hash($data['password'], PASSWORD_DEFAULT));
