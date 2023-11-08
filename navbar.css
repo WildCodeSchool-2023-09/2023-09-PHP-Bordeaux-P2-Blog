@@ -15,14 +15,12 @@ header {
   justify-content: flex-end;
   border: 1.5px #CC9C65 solid;
   height: 60px;
-  padding: 0px;
   position: relative;
   z-index: 1;
 }
 
 .logo img {
   height: 64px;
-
 }
 
 .button-container {
@@ -59,7 +57,7 @@ button {
 }
 
 .notifications-counter {
-  margin-left: -20px; 
+  margin-left: -20px;
 }
 
 .notifications-counter span {
@@ -82,7 +80,7 @@ button {
 
 .navbar-mobile .background {
   width: 100%;
-  height: 100%; 
+  height: 100%;
   left: 0;
   top: 0;
   position: absolute;
@@ -141,7 +139,7 @@ button {
 
 @media only screen and (max-width: 768px) {
   .button-container {
-    display: none; 
+    display: none;
   }
 
   .navbar-mobile .menu-icon {
@@ -170,19 +168,17 @@ button {
   right: 10px;
   width: 250px;
   background-color: rgba(0, 0, 0, 0.5);
-  color:#333;
+  color: #333;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-style: oblique;
   font-size: larger;
   text-align: center;
-
-
 }
 
 .popup-content {
   background-color: #fff;
   border: 2px solid #CC9C65;
-  padding: 15px;;
+  padding: 15px;
 }
 
 .close {
@@ -193,4 +189,3 @@ button {
   font-size: 20px;
   color: #333;
 }
-
