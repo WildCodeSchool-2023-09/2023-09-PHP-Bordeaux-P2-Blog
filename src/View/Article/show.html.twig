@@ -1,11 +1,15 @@
-{# Vue pour afficher un article avec ses commentaires #}
-{% extends 'layout.html.twig' %}
+{% extends 'layout.html.twig' %} {% block content %}
+<h1>Article : {{ article.title }}</h1>
+<p>{{ article.content | raw }}</p>
 
-{% block title %}Article{% endblock %}
+<p>
+    Auteur : {% if article.author_name is defined %}{{ article.author_name }}{%
+    else %}Auteur inconnu{% endif %}
+</p>
 
-{% block content %}
-    <h1>{{ article.title }}</h1>
-    <p>{{ article.content }}</p>
+<a href="/article/edit?id={{ article.id }}">Éditer</a>
+<a href="/article/delete?id={{ article.id }}">Supprimer</a>
+<a href="/profil">Back</a>
 
     <h2>Commentaires</h2>
     {% if comments is not empty %}
@@ -42,4 +46,3 @@
     {% else %}
         <p>Vous devez être connecté pour poster un commentaire. <a href="/login">Se connecter</a></p>
     {% endif %}
-{% endblock %}

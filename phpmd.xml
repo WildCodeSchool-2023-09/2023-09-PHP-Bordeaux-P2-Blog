@@ -34,4 +34,6 @@
     <rule ref="rulesets/unusedcode.xml" />
 
     <exclude-pattern>src/Migrations</exclude-pattern>
+    <exclude-pattern type="relative">^public/assets/ckeditor/*</exclude-pattern>
+
 </ruleset>

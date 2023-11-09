@@ -12,9 +12,9 @@ endblock %} {% block content %}
     {% for article in articles %}
     <li>
         <h3>{{ article.title }}</h3>
-        <p>{{ article.content }}</p>
-        <a href="/article/edit/{{ article.id }}">Éditer</a>
-        <a href="/article/delete/{{ article.id }}">Supprimer</a>
+        <p>{{ article.content | raw }}</p>
+        <a href="/article/edit?id={{ article.id }}">Éditer</a>
+        <a href="/article/delete?id={{ article.id }}">Supprimer</a>
     </li>
     {% endfor %}
 </ul>

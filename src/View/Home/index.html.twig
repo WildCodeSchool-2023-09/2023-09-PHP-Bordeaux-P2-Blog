@@ -7,7 +7,8 @@
     {% for article in articles %}
     <li>
         <h2>{{ article.title }}</h2>
-        <p>{{ article.content | slice(0, 200) ~ '...' }}</p>
+        
+        <p>{{ article.content | raw | slice(0, 200) ~ '...' }}</p>
         <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
         <p>Par {{ article.author_name }}</p>
 
