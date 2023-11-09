@@ -20,4 +20,5 @@ return [
     'login' => ['ProfilController', 'login'],
     'logout' => ['ProfilController', 'logout'],
     'register' => ['ProfilController', 'register'],
+    'confidentialite' => ['PageController', 'confidentialite'],
 ];
