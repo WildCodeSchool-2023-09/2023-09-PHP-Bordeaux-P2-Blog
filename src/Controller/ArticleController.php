@@ -27,7 +27,7 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $article = $articleManager->getArticleById($articleId);
 
-        echo $this->twig->render('show.html.twig', ['article' => $article]);
+        echo $this->twig->render('Article/show.html.twig', ['article' => $article]);
     }
 
     public function addArticle()

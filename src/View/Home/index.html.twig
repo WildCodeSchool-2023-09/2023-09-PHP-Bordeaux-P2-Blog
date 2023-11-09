@@ -5,7 +5,8 @@
     {% for article in articles %}
     <li>
         <h2>{{ article.title }}</h2>
-        <p>{{ article.content }}</p>
+        <p>{{ article.content | raw }}</p>
+        <a href="/show?id={{ article.id }}">Voir l'article en détail</a>
         <p>{{ article.date }}</p>
         <p>{{ article.author_name }}</p>
     </li>
