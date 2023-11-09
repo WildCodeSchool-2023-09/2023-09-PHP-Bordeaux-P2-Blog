@@ -10,5 +10,3 @@ grumphp:
                 - "src"
             ruleset:
                 - "phpmd.xml"
-            exclude:
-                - "public/assets/ckeditor/samples/old/assets/posteddata.php"
