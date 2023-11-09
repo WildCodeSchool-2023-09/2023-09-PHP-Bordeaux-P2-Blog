@@ -6,31 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/assets/images/favicon.png" />
 
-		<title>
-			{% block title %}
-				Bump
-			{% endblock %}
-		</title>
-        <link rel="stylesheet" href="/assets/css/style.css">
-		{% block stylesheet %}{% endblock %}
-		</head>
+        <title>{% block title %} Bump {% endblock %}</title>
 
-		<body>
-			{% block navbar %}
-				{% include "Article/navbar.html.twig" %}
-			{% endblock %}
-			<main>
-				{% block content %}{% endblock %}
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        {% block stylesheet %}{% endblock %}
+    </head>
 
-			</main>
-			{% block footer %}
-			  {% include "Home/footer.html.twig" %}
-			{% endblock %}
-
-
-			{% block javascript %}
-				<script src="/assets/JavaScript/script.js"></script>
-			{% endblock %}
-		
-</body>
-	</html>
+    <body>
+        {% block navbar %} {% include "Home/navbar.html.twig" %} {% endblock %}
+        <main>{% block content %}{% endblock %}</main>
+        {% block footer %}{% endblock %} {% block javascript %}
+        <script src="/assets/JavaScript/script.js"></script>
+        {% endblock %}
+    </body>
+</html>
