@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\Model\CommentManager;
 
 class ArticleController extends AbstractController
 {
@@ -10,7 +11,6 @@ class ArticleController extends AbstractController
     {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticles();
-
         echo $this->twig->render('Home/index.html.twig', ['articles' => $articles]);
     }
 
@@ -27,7 +27,9 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $article = $articleManager->getArticleById($articleId);
 
-        echo $this->twig->render('show.html.twig', ['article' => $article]);
+        $commentManager = new CommentManager();
+        $comments = $commentManager->getCommentsByArticleId($articleId);
+        echo $this->twig->render('Article/show.html.twig', ['article' => $article, 'comments' => $comments]);
     }
 
     public function addArticle()

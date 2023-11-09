@@ -1,12 +1,45 @@
+{# Vue pour afficher un article avec ses commentaires #}
 {% extends 'layout.html.twig' %}
 
+{% block title %}Article{% endblock %}
+
 {% block content %}
-    <h1>Item {{ item.title }}</h1>
-    <p>{{ item.id }}. {{ item.title }}</p>
-    <a href="/items/edit?id={{ item.id }}">Edit</a>
-    <form action="/items/delete" method="POST">
-        <input type="hidden" name="id" value="{{ item.id }}">
-        <button>Delete</button>
-    </form>
-    <a href="/items">Back</a>
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.content }}</p>
+
+    <h2>Commentaires</h2>
+    {% if comments is not empty %}
+        <ul>
+            {% for comment in comments %}
+                <li>
+                    <strong>Utilisateur:</strong> {{ comment.user_name }}<br>
+                    <p>{{ comment.content }}</p>
+                    {% if comment.blog_user_id == app.session.get('user_id') %}
+                        <form method="post" action="/comment/delete">
+                            <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                            <!-- Token CSRF pour la sécurité (si implémenté) -->
+                            <!-- <input type="hidden" name="csrf_token" value="{{ csrf_token }}"> -->
+                            <button type="submit">Supprimer le commentaire</button>
+                        </form>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun commentaire pour cet article.</p>
+    {% endif %}
+
+    {# Formulaire pour ajouter un commentaire #}
+    {% if "user_id" is defined %}
+        <h3>Laissez un commentaire</h3>
+        <form method="post" action="/comment/add">
+            <input type="hidden" name="article_id" value="{{ article.id }}">
+            <textarea name="content" required placeholder="Votre commentaire..."></textarea>
+            <!-- Token CSRF pour la sécurité (si implémenté) -->
+            <!-- <input type="hidden" name="csrf_token" value="{{ csrf_token }}"> -->
+            <button type="submit">Ajouter un commentaire</button>
+        </form>
+    {% else %}
+        <p>Vous devez être connecté pour poster un commentaire. <a href="/login">Se connecter</a></p>
+    {% endif %}
 {% endblock %}

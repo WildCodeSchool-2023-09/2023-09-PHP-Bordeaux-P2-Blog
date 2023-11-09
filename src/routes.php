@@ -14,10 +14,12 @@ return [
     'profil' => ['ProfilController', 'profil'],
     'article' => ['ArticleController', 'index'],
     'article/edit' => ['ArticleController', 'editArticleById', ['id']],
-    'article/show' => ['ArticleController', 'showArticleById', ['id']],
+    'show' => ['ArticleController', 'showArticleById', ['id']],
     'article/add' => ['ArticleController', 'addArticle'],
     'article/delete' => ['ArticleController', 'deleteArticleById', ['id']],
     'login' => ['ProfilController', 'login'],
     'logout' => ['ProfilController', 'logout'],
     'register' => ['ProfilController', 'register'],
+    'comment/add' => ['CommentController', 'addComment'],
+    'comment/delete' => ['CommentController', 'deleteComment'],
 ];
