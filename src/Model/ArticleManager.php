@@ -11,8 +11,8 @@ class ArticleManager extends AbstractManager
     public function addArticle(array $data)
     {
         $query = 'INSERT INTO ' .
-        static::TABLE .
-        ' (title, content, image, blog_user_id) 
+            static::TABLE .
+            ' (title, content, image, blog_user_id) 
         VALUES (:title, :content, :image, :blog_user_id)';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':title', $data['title']);
@@ -61,11 +61,16 @@ class ArticleManager extends AbstractManager
 
     public function getArticleById(int $articleId)
     {
-        $query = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id';
+        $query = "SELECT A.*, BU.name AS author_name
+    FROM " . static::TABLE . " AS A 
+    LEFT JOIN blog_user BU ON A.blog_user_id = BU.id 
+    WHERE A.id = :id";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':id', $articleId, \PDO::PARAM_INT);
         $statement->execute();
 
-        return $statement->fetch();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
     }
 }

@@ -1,12 +1,13 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout.html.twig' %} {% block content %}
+<h1>Article : {{ article.title }}</h1>
+<p>{{ article.content | raw }}</p>
 
-{% block content %}
-    <h1>Item {{ item.title }}</h1>
-    <p>{{ item.id }}. {{ item.title }}</p>
-    <a href="/items/edit?id={{ item.id }}">Edit</a>
-    <form action="/items/delete" method="POST">
-        <input type="hidden" name="id" value="{{ item.id }}">
-        <button>Delete</button>
-    </form>
-    <a href="/items">Back</a>
+<p>
+    Auteur : {% if article.author_name is defined %}{{ article.author_name }}{%
+    else %}Auteur inconnu{% endif %}
+</p>
+
+<a href="/article/edit?id={{ article.id }}">Éditer</a>
+<a href="/article/delete?id={{ article.id }}">Supprimer</a>
+<a href="/profil">Back</a>
 {% endblock %}
