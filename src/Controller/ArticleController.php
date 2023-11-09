@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\View\Articleview;
 
 class ArticleController extends AbstractController
 {
@@ -69,6 +70,10 @@ class ArticleController extends AbstractController
         $article = $articleManager->getArticleById($articleId);
 
         if (!$article) {
+            return $this->twig->render('Error/index.html.twig', [
+                "message" => "L'article n'existe pas !"
+            ]);
+
             // cas où l'article n'existe pas => vers une page d'erreur à faire
         }
 
@@ -85,7 +90,6 @@ class ArticleController extends AbstractController
                     'content' => $content,
                     'image' => $image,
                 ];
-
                 $articleManager->editArticle($articleId, $data);
 
                 // Redirige l'utilisateur vers sa page de profil
@@ -93,8 +97,9 @@ class ArticleController extends AbstractController
                 exit();
             }
 
-            echo $this->twig->render('edit.html.twig', ['article' => $article]);
+            return $this->twig->render('Article/edit.html.twig', ['article' => $article]);
         } else {
+            header('Location: /login');
             // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
         }
     }
@@ -122,5 +127,10 @@ class ArticleController extends AbstractController
         } else {
             // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
         }
+    
     }
+    
+  
+
+     
 }
