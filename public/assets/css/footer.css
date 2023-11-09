@@ -20,3 +20,6 @@ footer {
     align-items: center;
 }
 
+.copyright p {
+    margin: 0;
+}
