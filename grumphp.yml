@@ -7,6 +7,6 @@ grumphp:
             level: 5
         phpmd:
             whitelist_patterns:
-                - 'src'
+                - "src"
             ruleset:
-                - 'phpmd.xml'
+                - "phpmd.xml"
