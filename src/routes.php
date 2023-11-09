@@ -20,4 +20,6 @@ return [
     'login' => ['ProfilController', 'login'],
     'logout' => ['ProfilController', 'logout'],
     'register' => ['ProfilController', 'register'],
+    'comment/add' => ['CommentController', 'addComment'],
+    'comment/delete' => ['CommentController', 'deleteComment'],
 ];

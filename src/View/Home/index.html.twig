@@ -1,15 +1,31 @@
 {% extends 'layout.html.twig' %} {% block title %}Blog - Accueil{% endblock %}
+
+
 {% block content %}
 <h1>Articles récents</h1>
 <ul>
     {% for article in articles %}
     <li>
         <h2>{{ article.title }}</h2>
-        <p>{{ article.content | raw }}</p>
-        <a href="/show?id={{ article.id }}">Voir l'article en détail</a>
-        <p>{{ article.date }}</p>
-        <p>{{ article.author_name }}</p>
+        
+        <p>{{ article.content | raw | slice(0, 200) ~ '...' }}</p>
+        <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
+        <p>Par {{ article.author_name }}</p>
+
+        <a href="/article/show?id={{ article.id }}">Commentaires ({{ article.comment_count }})</a>
+
+        {% if "user_id" is defined %}
+            <form method="post" action="/comment/add">
+                <input type="hidden" name="article_id" value="{{ article.id }}">
+                <textarea name="content" required placeholder="Ajoutez votre commentaire..."></textarea>
+                <button type="submit">Publier le commentaire</button>
+            </form>
+        {% else %}
+            <p>Vous devez être <a href="/login">connecté</a> pour commenter.</p>
+        {% endif %}
     </li>
+    {% else %}
+    <li>Aucun article à afficher.</li>
     {% endfor %}
 </ul>
 {% endblock %}
