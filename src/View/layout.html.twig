@@ -7,7 +7,6 @@
         <link rel="icon" href="/assets/images/favicon.png" />
 
         <title>{% block title %} Bump {% endblock %}</title>
-
         <link rel="stylesheet" href="/assets/css/style.css" />
         {% block stylesheet %}{% endblock %}
     </head>
@@ -15,7 +14,8 @@
     <body>
         {% block navbar %} {% include "Home/navbar.html.twig" %} {% endblock %}
         <main>{% block content %}{% endblock %}</main>
-        {% block footer %}{% endblock %} {% block javascript %}
+        {% block footer %} {% include "Home/footer.html.twig" %} {% endblock %}
+        {% block javascript %}
         <script src="/assets/JavaScript/script.js"></script>
         {% endblock %}
     </body>
