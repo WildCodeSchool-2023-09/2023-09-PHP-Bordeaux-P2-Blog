@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\Model\CommentManager;
 
 class ArticleController extends AbstractController
 {
@@ -10,8 +11,7 @@ class ArticleController extends AbstractController
     {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticles();
-
-        echo $this->twig->render('Home/index.html.twig', ['articles' => $articles]);
+        return $this->twig->render('Home/index.html.twig', ['articles' => $articles]);
     }
 
     public function showAllArticlesByUserID($userId)
@@ -19,15 +19,17 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $articles = $articleManager->getArticlesByUserId($userId);
 
-        echo $this->twig->render('profil.html.twig', ['articles' => $articles]);
+        return $this->twig->render('profil.html.twig', ['articles' => $articles]);
     }
 
-    public function showArticleById($articleId)
+    public function showArticleById(int $articleId)
     {
         $articleManager = new ArticleManager();
         $article = $articleManager->getArticleById($articleId);
 
-        echo $this->twig->render('Article/show.html.twig', ['article' => $article]);
+        $commentManager = new CommentManager();
+        $comments = $commentManager->getCommentsByArticleId($articleId);
+        return $this->twig->render('Article/show.html.twig', ['article' => $article, 'comments' => $comments]);
     }
 
     public function addArticle()
@@ -59,7 +61,7 @@ class ArticleController extends AbstractController
             }
         }
 
-        echo $this->twig->render('Article/add.html.twig');
+        return $this->twig->render('Article/add.html.twig');
     }
 
 
@@ -94,6 +96,7 @@ class ArticleController extends AbstractController
             }
 
             echo $this->twig->render('Article/edit.html.twig', ['article' => $article]);
+
         } else {
             // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
         }

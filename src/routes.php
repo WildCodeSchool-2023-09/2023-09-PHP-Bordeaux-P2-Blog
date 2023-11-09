@@ -21,4 +21,6 @@ return [
     'logout' => ['ProfilController', 'logout'],
     'register' => ['ProfilController', 'register'],
     'confidentialite' => ['PageController', 'confidentialite'],
+    'comment/add' => ['CommentController', 'addComment'],
+    'comment/delete' => ['CommentController', 'deleteComment'],
 ];

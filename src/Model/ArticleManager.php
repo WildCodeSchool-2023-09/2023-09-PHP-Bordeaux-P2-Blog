@@ -53,11 +53,16 @@ class ArticleManager extends AbstractManager
 
     public function getAllArticles()
     {
-        $query = "SELECT A.*, BU.name AS author_name
-        FROM article A
-        INNER JOIN blog_user BU ON A.blog_user_id = BU.id";
+        $query = "SELECT A.*, BU.name AS author_name, COUNT(C.id) AS comment_count
+                FROM article A
+                INNER JOIN blog_user BU ON A.blog_user_id = BU.id
+                LEFT JOIN commentary C ON A.id = C.article_id
+                GROUP BY A.id, BU.name";
+
         return $this->pdo->query($query)->fetchAll();
     }
+
+
 
     public function getArticleById(int $articleId)
     {
@@ -72,5 +77,26 @@ class ArticleManager extends AbstractManager
         $result = $statement->fetch(PDO::FETCH_ASSOC);
 
         return $result;
+    }
+
+    public function getAllArticlesWithComments()
+    {
+        // D'abord, récupérez tous les articles
+        $articles = $this->getAllArticles();
+
+        // Ensuite, pour chaque article, récupérez les commentaires
+        foreach ($articles as $key => $article) {
+            $articleId = $article['id'];
+            $commentQuery = "SELECT * FROM commentary WHERE article_id = :articleId";
+            $statement = $this->pdo->prepare($commentQuery);
+            $statement->bindValue(':articleId', $articleId, \PDO::PARAM_INT);
+            $statement->execute();
+            $comments = $statement->fetchAll();
+
+            // Ajoutez les commentaires au tableau de l'article
+            $articles[$key]['comments'] = $comments;
+        }
+
+        return $articles;
     }
 }

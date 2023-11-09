@@ -11,12 +11,22 @@
         {% block stylesheet %}{% endblock %}
     </head>
 
-    <body>
-        {% block navbar %} {% include "Home/navbar.html.twig" %} {% endblock %}
-        <main>{% block content %}{% endblock %}</main>
-        {% block footer %} {% include "Home/footer.html.twig" %} {% endblock %}
-        {% block javascript %}
-        <script src="/assets/JavaScript/script.js"></script>
-        {% endblock %}
-    </body>
-</html>
+		<body>
+			{% block navbar %}
+				{% include "Home/navbar.html.twig" %}
+			{% endblock %}
+			<main>
+				{% block content %}{% endblock %}
+
+			</main>
+			{% block footer %}
+			  {% include "Home/footer.html.twig" %}
+			{% endblock %}
+
+
+			{% block javascript %}
+				<script src="/assets/JavaScript/script.js"></script>
+			{% endblock %}
+		
+</body>
+	</html>
