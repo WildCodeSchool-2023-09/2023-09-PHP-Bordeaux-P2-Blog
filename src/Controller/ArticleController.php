@@ -127,10 +127,5 @@ class ArticleController extends AbstractController
         } else {
             // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
         }
-    
     }
-    
-  
-
-     
 }
