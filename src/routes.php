@@ -14,7 +14,7 @@ return [
     'profil' => ['ProfilController', 'profil'],
     'article' => ['ArticleController', 'index'],
     'article/edit' => ['ArticleController', 'editArticleById', ['id']],
-    'show' => ['ArticleController', 'showArticleById', ['id']],
+    'article/show' => ['ArticleController', 'showArticleById', ['id']],
     'article/add' => ['ArticleController', 'addArticle'],
     'article/delete' => ['ArticleController', 'deleteArticleById', ['id']],
     'login' => ['ProfilController', 'login'],
