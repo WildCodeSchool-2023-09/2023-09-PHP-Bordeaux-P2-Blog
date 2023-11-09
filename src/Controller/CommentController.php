@@ -27,7 +27,7 @@ class CommentController extends AbstractController
 
                 if ($commentId) {
                     // Redirection vers la page de l'article après l'ajout du commentaire
-                    header('Location: /article/show?id=' . $articleId);
+                    header('Location: /show?id=' . $articleId);
                     exit();
                 } else {
                     // Gérer l'erreur d'ajout du commentaire
