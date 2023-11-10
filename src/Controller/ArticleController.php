@@ -96,7 +96,6 @@ class ArticleController extends AbstractController
             }
 
             echo $this->twig->render('Article/edit.html.twig', ['article' => $article]);
-
         } else {
             // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
         }
