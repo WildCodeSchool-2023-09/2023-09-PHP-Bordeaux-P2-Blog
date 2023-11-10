@@ -14,7 +14,7 @@
             >Commentaires ({{ article.comment_count }})</a
         >
 
-        <!-- {% if "user_id" is defined %}
+        {# {% if "user_id" is defined %}
         <form method="post" action="/comment/add">
             <input type="hidden" name="article_id" value="{{ article.id }}" />
             <textarea
@@ -33,7 +33,7 @@
         </form>
         {% else %}
         <p>Vous devez être <a href="/login">connecté</a> pour commenter.</p>
-        {% endif %} -->
+        {% endif %} #}
     </li>
     {% else %}
     <li>Aucun article à afficher.</li>
