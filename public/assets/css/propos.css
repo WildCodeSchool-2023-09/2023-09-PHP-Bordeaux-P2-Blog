@@ -17,6 +17,16 @@ h1 {
     max-width: 600px;
 }
 
-.info img {
+.contentinfo img {
     max-width: 200px;
+}
+
+.contentinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.map {
+    
 }
