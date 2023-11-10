@@ -13,6 +13,10 @@ h1 {
     padding: 30px;
 }
 
-img {
+.contentpropos img {
     max-width: 600px;
+}
+
+.info img {
+    max-width: 200px;
 }
