@@ -64,7 +64,7 @@ class ArticleManager extends AbstractManager
 
 
 
-    public function getArticleById(int $articleId)
+    public function getArticleById($articleId)
     {
         $query = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id';
         $statement = $this->pdo->prepare($query);

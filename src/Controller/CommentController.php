@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Model\CommentManager;
 
-
 class CommentController extends AbstractController
 {
     public function addComment()
@@ -49,22 +48,23 @@ class CommentController extends AbstractController
             $commentManager = new CommentManager();
             $comment = $commentManager->selectOneById($commentId);
 
-
             if ($_SESSION['user_id'] === $comment['blog_user_id']) {
                 $success = $commentManager->deleteComment($commentId, $_SESSION['user_id']);
                 if ($success) {
-                    // Rediriger vers la page de l'article après la suppression
-                    $articleId = $_POST['article_id']; // Assurez-vous que cet ID est envoyé par le formulaire
-                    header('Location: /article/show?id=' . $articleId);
-                    exit();
-                } 
-            } 
+                    // Vérifier si 'article_id' est présent dans $_POST
+                    if (isset($_POST['article_id'])) {
+                        $articleId = $_POST['article_id'];
+                        header('Location: /article/show?id=' . $articleId);
+                        exit();
+                    
+                    }
+                }
+            }
         } else {
             // L'utilisateur n'est pas connecté ou la méthode n'est pas POST
             header('Location: /login');
             exit();
         }
     }
-
 
 }

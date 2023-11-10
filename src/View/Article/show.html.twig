@@ -11,17 +11,18 @@
     {% if comments is not empty %}
         <ul>
             {% for comment in comments %}
-                <li>
-                    <strong>Utilisateur:</strong> {{ comment.user_name }}<br>
-                    <p>{{ comment.content }}</p>
-                    {% if "user_id" is defined %}
-                        <form method="post" action="/comment/delete">
-                            <input type="hidden" name="comment_id" value="{{ comment.id }}">
-                            <button type="submit">Supprimer le commentaire</button>
-                        </form>
-                    {% endif %}
-                </li>
-            {% endfor %}
+    <li>
+        <strong>Utilisateur:</strong> {{ comment.user_name }}<br>
+        <p>{{ comment.content }}</p>
+        {% if "user_id" is defined %}
+            <form method="post" action="/comment/delete">
+                <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                <input type="hidden" name="article_id" value="{{ article_id }}"> 
+                <button type="submit">Supprimer le commentaire</button>
+            </form>
+        {% endif %}
+    </li>
+{% endfor %}
         </ul>
     {% else %}
         <p>Aucun commentaire pour cet article.</p>
