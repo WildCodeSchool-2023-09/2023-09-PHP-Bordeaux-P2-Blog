@@ -101,7 +101,6 @@ class ArticleController extends AbstractController
         }
     }
 
-
     public function deleteArticleById($articleId)
     {
         $articleManager = new ArticleManager();
