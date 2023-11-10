@@ -1,11 +1,5 @@
 @import 'footer.css';
 
-body {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    color: #f76c6c;
-}
 :root {
     --primary-color: #233521;
     --second-color: #cc9c65;
@@ -19,4 +13,11 @@ body {
     --h3-font-family: rubik;
     --text-font-size: 14px;
     --text-font-family: hind madurai;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    color: #f76c6c;
 }
