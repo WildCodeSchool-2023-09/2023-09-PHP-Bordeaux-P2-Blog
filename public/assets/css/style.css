@@ -2,6 +2,7 @@
 
 body {
     margin: 0;
+    padding: 0;
     position: relative;
     color: #f76c6c;
 }
@@ -18,9 +19,4 @@ body {
     --h3-font-family: rubik;
     --text-font-size: 14px;
     --text-font-family: hind madurai;
-}
-
-body {
-    padding: 0;
-    margin: 0;
 }
