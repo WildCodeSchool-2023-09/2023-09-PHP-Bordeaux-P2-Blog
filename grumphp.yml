@@ -1,7 +1,9 @@
 grumphp:
-   tasks:
+    tasks:
         phpcs:
             standard: ./phpcs.xml
+            ignore_patterns:
+                - ./public/assets/ckeditor/**
         phpstan:
             configuration: ./phpstan.neon
             level: 5
