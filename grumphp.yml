@@ -3,7 +3,7 @@ grumphp:
         phpcs:
             standard: ./phpcs.xml
             ignore_patterns:
-                - ./public/assets/ckeditor/**
+                - ./public/assets/ckeditor
         phpstan:
             configuration: ./phpstan.neon
             level: 5
