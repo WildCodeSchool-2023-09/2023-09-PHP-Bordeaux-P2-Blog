@@ -56,7 +56,6 @@ class CommentController extends AbstractController
                         $articleId = $_POST['article_id'];
                         header('Location: /article/show?id=' . $articleId);
                         exit();
-                    
                     }
                 }
             }
@@ -66,5 +65,4 @@ class CommentController extends AbstractController
             exit();
         }
     }
-
 }
