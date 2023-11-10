@@ -1,19 +1,21 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout.html.twig' %} {% block title %}Ajouter un article{% endblock
+%} {% block content %}
+<h1>Ajouter un article</h1>
+<form method="post">
+    <label for="title">Titre :</label>
+    <input type="text" name="title" id="title" required /><br />
 
-{% block title %}Ajouter un article{% endblock %}
+    <label for="content">Contenu :</label>
+    <textarea name="content" id="content" required></textarea><br />
 
-{% block content %}
-    <h1>Ajouter un article</h1>
-    <form method="post">
-        <label for="title">Titre :</label>
-        <input type="text" name="title" id="title" required><br>
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("content");
+    </script>
 
-        <label for="content">Contenu :</label>
-        <textarea name="content" id="content" required></textarea><br>
+    <label for="image">Image (facultatif) :</label>
+    <input type="text" name="image" id="image" /><br />
 
-        <label for="image">Image (facultatif) :</label>
-        <input type="text" name="image" id="image"><br>
-
-        <button type="submit">Ajouter</button>
-    </form>
-{% endblock %}
+    <button type="submit">Ajouter</button>
+</form>
+{% endblock %} {% block JavaScript %} {% endblock %}

@@ -34,7 +34,7 @@ CREATE TABLE commentary (
     article_id INT,
     PRIMARY KEY (id),
     FOREIGN KEY (blog_user_id) REFERENCES blog_user(id),
-    FOREIGN KEY (article_id) REFERENCES article(id)
+    FOREIGN KEY (article_id) REFERENCES article(id) ON DELETE CASCADE
 );
 CREATE TABLE category (
     id INT NOT NULL AUTO_INCREMENT,

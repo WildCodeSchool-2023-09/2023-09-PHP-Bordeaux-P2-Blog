@@ -10,7 +10,8 @@
     "minimum-stability": "stable",
     "require": {
         "twig/twig": "^3.5.1",
-        "ext-pdo": "*"},
+        "ext-pdo": "*",
+        "ckeditor/ckeditor": "dev-standard/4.10.x"},
     "require-dev": {
         "filp/whoops": "^2.15",
         "phpmd/phpmd": "^2.13",
@@ -27,5 +28,12 @@
         "allow-plugins": {
             "phpro/grumphp": true
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "rm -rf public/assets/ckeditor",
+            "mkdir public/assets/ckeditor",
+            "cp -rf vendor/ckeditor/ckeditor/ public/assets/ckeditor/."
+        ]
     }
 }

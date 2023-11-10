@@ -1,12 +1,14 @@
 grumphp:
-   tasks:
+    tasks:
         phpcs:
             standard: ./phpcs.xml
+            ignore_patterns:
+                - ./public/assets/ckeditor
         phpstan:
             configuration: ./phpstan.neon
             level: 5
         phpmd:
             whitelist_patterns:
-                - 'src'
+                - "src"
             ruleset:
-                - 'phpmd.xml'
+                - "phpmd.xml"

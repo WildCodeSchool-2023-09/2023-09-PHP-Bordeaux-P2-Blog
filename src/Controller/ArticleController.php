@@ -71,7 +71,8 @@ class ArticleController extends AbstractController
         $article = $articleManager->getArticleById($articleId);
 
         if (!$article) {
-            // cas où l'article n'existe pas => vers une page d'erreur à faire
+            echo $this->twig->render('Error/index.html.twig', ['message' =>
+            'L\'article n\'existe pas.']);
         }
 
         // Vérifie si l'utilisateur est connecté et est l'auteur de l'article
@@ -95,12 +96,13 @@ class ArticleController extends AbstractController
                 exit();
             }
 
-            return $this->twig->render('edit.html.twig', ['article' => $article]);
+            echo $this->twig->render('Article/edit.html.twig', ['article' => $article]);
         } else {
-            // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
+            echo $this->twig->render('Error/index.html.twig', ['message' =>
+            'Vous n\'êtes pas autorisé à éditer cet article. 
+            Vous devez être connecté et être l\'auteur de l\'article.']);
         }
     }
-
 
     public function deleteArticleById($articleId)
     {
@@ -108,7 +110,8 @@ class ArticleController extends AbstractController
         $article = $articleManager->getArticleById($articleId);
 
         if (!$article) {
-            // cas où l'article n'existe pas => vers une page d'erreur à faire
+            echo $this->twig->render('Error/index.html.twig', ['message' =>
+            'L\'article n\'existe pas.']);
         }
 
         // Vérifie si l'utilisateur est connecté et est l'auteur de l'article
@@ -120,9 +123,11 @@ class ArticleController extends AbstractController
                 exit();
             }
 
-            return $this->twig->render('delete.html.twig', ['article' => $article]);
+            echo $this->twig->render('Article/delete.html.twig', ['article' => $article]);
         } else {
-            // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
+            echo $this->twig->render('Error/index.html.twig', ['message' =>
+            'Vous n\'êtes pas autorisé à supprimer cet article.
+            Vous devez être connecté et être l\'auteur de l\'article.']);
         }
     }
 }

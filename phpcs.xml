@@ -19,4 +19,7 @@ Dear Wilder using Windows, it seems you miss something in readme during project 
     <file>config/</file>
     <file>public/</file>
     <file>src/</file>
+
+    <exclude-pattern type="relative">^public/assets/ckeditor/*</exclude-pattern>
+
 </ruleset>

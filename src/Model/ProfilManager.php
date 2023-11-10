@@ -40,4 +40,13 @@ class ProfilManager extends AbstractManager
         $statement->bindValue(':description', $data['description']);
         $statement->execute();
     }
+
+    public function resetPassword(int $userId, string $hashedPassword)
+    {
+        $query = 'UPDATE ' . static::TABLE . ' SET password = :password WHERE id = :id';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':password', $hashedPassword);
+        $statement->bindValue(':id', $userId, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }
