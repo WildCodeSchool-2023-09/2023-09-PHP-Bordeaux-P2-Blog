@@ -12,21 +12,25 @@ h1 {
     width: 100%;
     padding: 30px;
 }
-
 .contentpropos img {
     max-width: 600px;
 }
 
-.contentinfo img {
-    max-width: 200px;
-}
-
-.contentinfo {
+.contentflex {
     display: flex;
     flex-direction: row;
-    align-items: center;
 }
 
-.map {
-    
+address {
+    margin-top: 20px;
+}
+
+.propos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.propos img {
+    max-width: 200px;
 }
