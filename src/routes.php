@@ -10,17 +10,6 @@
 //mettre dans le navigateur: http://localhost:8000/profil?authorId=1
 
 return [
-<<<<<<< HEAD
-
-    '/' => ['HomeController', 'index',],
-    '' => ['HomeController', 'index',],
-    'items' => ['ItemController', 'index',],
-    'items/edit' => ['ItemController', 'edit', ['id']],
-    'items/show' => ['ItemController', 'show', ['id']],
-    'items/add' => ['ItemController', 'add',],
-    'items/delete' => ['ItemController', 'delete',],
-    ];
-=======
     '' => ['ArticleController', 'showAllArticles'],
     'profil' => ['ProfilController', 'profil'],
     'article' => ['ArticleController', 'index'],
@@ -32,4 +21,3 @@ return [
     'logout' => ['ProfilController', 'logout'],
     'register' => ['ProfilController', 'register'],
 ];
->>>>>>> 92358d2fc079df7d62fd3fc532d183e5edfdad5c

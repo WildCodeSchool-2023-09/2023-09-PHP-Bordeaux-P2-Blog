@@ -17,19 +17,19 @@
 
 		<body>
 			{% block navbar %}
-				{% include "Article/navbar.html.twig" %}
+				{% include "Home/navbar.html.twig" %}
 			{% endblock %}
 			<main>
 				{% block content %}{% endblock %}
 
 			</main>
-			{% block footer %}
+			{# {% block footer %}
 			  {% include "Home/footer.html.twig" %}
-			{% endblock %}
+			{% endblock %} #}
 
 
 			{% block javascript %}
-				<script src="/assets/JavaScript/script.js"></script>
+				<script src="/assets/JavaScript/navbar.js"></script>
 			{% endblock %}
 		
 </body>

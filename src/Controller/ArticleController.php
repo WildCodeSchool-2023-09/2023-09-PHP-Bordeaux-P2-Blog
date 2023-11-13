@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\Model\ProfilManager;
 
 class ArticleController extends AbstractController
 {
@@ -58,8 +59,11 @@ class ArticleController extends AbstractController
                 header('Location: /login');
             }
         }
-
-        echo $this->twig->render('Article/add.html.twig');
+        
+        $userId = $_SESSION['user_id'];
+        $profilManager = new ProfilManager();
+        $user = $profilManager->getUserById($userId);
+        echo $this->twig->render('Article/add.html.twig', ['user' => $user]);
     }
 
 

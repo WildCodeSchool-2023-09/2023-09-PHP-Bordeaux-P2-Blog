@@ -14,12 +14,13 @@ class ProfilController extends AbstractController
 
             $profilManager = new ProfilManager();
             $user = $profilManager->getUserById($userId);
+            $nombreNotifications = $profilManager->getNotificationsNbr();
 
             // Récupére les articles de l'utilisateur
             $articleManager = new ArticleManager();
             $articles = $articleManager->getArticlesByUserId($userId);
 
-            echo $this->twig->render('Blog_user/profil.html.twig', ['user' => $user, 'articles' => $articles]);
+            echo $this->twig->render('Blog_user/profil.html.twig', ['user' => $user, 'articles' => $articles, 'nombreNotifications' => $nombreNotifications ]);
         } else {
             // L'utilisateur n'est pas connecté => page de connexion
             header('Location: /login');

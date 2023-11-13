@@ -40,4 +40,9 @@ class ProfilManager extends AbstractManager
         $statement->bindValue(':description', $data['description']);
         $statement->execute();
     }
+
+    public function getNotificationsNbr()
+    {
+    // Voir stockage bdd pour notifs
+    }
 }

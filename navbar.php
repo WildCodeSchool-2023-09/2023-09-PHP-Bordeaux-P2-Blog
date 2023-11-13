@@ -1,26 +1,20 @@
-<?php
+<!-- <?php
+require_once 'vendor/autoload.php'; 
 
-/* require_once 'vendor/autoload.php'; 
-
-$loader = new Twig_Loader_Filesystem('chemin/vers/vos/templates');
+$loader = new Twig_Loader_Filesystem('src/View/Home/navbar.html.twig');
 
 $twig = new Twig_Environment($loader);
 
 $nombreNotifications = obtenirNombreNotifications();
 
-echo $twig->render('votre_fichier_twig.twig', ['nombreNotifications' => $nombreNotifications]);
-*/ ?>
+echo $twig->render('navbar.html.twig', ['nombreNotifications' => $nombreNotifications]);
 
-<!DOCTYPE html>
-<html lang="en">
+session_start();
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="navbar.css">
-  <script src="navbar.js" defer></script>
-  <title>Navbar</title>
-</head>
+$estConnecte = isset($_SESSION['estConnecte']) ? $_SESSION['estConnecte'] : false;
+
+echo $twig->render('navbar.html.twig', ['estConnecte' => $estConnecte]);
+?> -->
 
 <body>
   <header>
@@ -56,7 +50,5 @@ echo $twig->render('votre_fichier_twig.twig', ['nombreNotifications' => $nombreN
         </div>
       </div>
   </header>
-
 </body>
-
-</html>
+</html> -->
