@@ -69,7 +69,6 @@ class ArticleController extends AbstractController
         return $this->twig->render('Article/add.html.twig');
     }
 
-
     public function editArticleById($articleId)
     {
         $articleManager = new ArticleManager();
@@ -136,3 +135,4 @@ class ArticleController extends AbstractController
         }
     }
 }
+// Add a newline at the end of the file
