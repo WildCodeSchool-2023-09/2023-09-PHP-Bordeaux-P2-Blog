@@ -54,18 +54,19 @@ class ArticleController extends AbstractController
                 $articleManager->addArticle($data);
                 // Redirige l'utilisateur vers la page de son profil
                 header('Location: /profil');
+                exit();
             } else {
                 // L'utilisateur n'est pas connecté=>vers la page de connexion.
                 header('Location: /login');
+                exit();
             }
         }
-        
+
         $userId = $_SESSION['user_id'];
         $profilManager = new ProfilManager();
         $user = $profilManager->getUserById($userId);
         echo $this->twig->render('Article/add.html.twig', ['user' => $user]);
     }
-
 
     public function editArticleById($articleId)
     {
@@ -102,7 +103,6 @@ class ArticleController extends AbstractController
             // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
         }
     }
-
 
     public function deleteArticleById($articleId)
     {

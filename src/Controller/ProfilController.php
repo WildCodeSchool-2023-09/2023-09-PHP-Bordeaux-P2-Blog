@@ -16,11 +16,14 @@ class ProfilController extends AbstractController
             $user = $profilManager->getUserById($userId);
             $nombreNotifications = $profilManager->getNotificationsNbr();
 
-            // Récupére les articles de l'utilisateur
+            // Récupère les articles de l'utilisateur
             $articleManager = new ArticleManager();
             $articles = $articleManager->getArticlesByUserId($userId);
 
-            echo $this->twig->render('Blog_user/profil.html.twig', ['user' => $user, 'articles' => $articles, 'nombreNotifications' => $nombreNotifications ]);
+            echo $this->twig->render(
+                'Blog_user/profil.html.twig',
+                ['user' => $user, 'articles' => $articles, 'nombreNotifications' => $nombreNotifications]
+            );
         } else {
             // L'utilisateur n'est pas connecté => page de connexion
             header('Location: /login');
@@ -37,7 +40,7 @@ class ProfilController extends AbstractController
             $user = $profilManager->getUserByEmail($email);
 
             if ($user && password_verify($password, $user['password'])) {
-                // L'utilisateur est authentifié, enregistre les info dans la session.
+                // L'utilisateur est authentifié, enregistre les infos dans la session.
                 $_SESSION['user_id'] = $user['id'];
                 // Redirige l'utilisateur vers sa page de profil
                 header('Location: /profil');

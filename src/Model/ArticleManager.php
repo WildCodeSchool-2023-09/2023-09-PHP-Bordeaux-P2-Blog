@@ -68,5 +68,4 @@ class ArticleManager extends AbstractManager
 
         return $statement->fetch();
     }
-
 }
