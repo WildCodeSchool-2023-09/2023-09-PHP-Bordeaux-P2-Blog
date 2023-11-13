@@ -64,7 +64,7 @@ class ArticleManager extends AbstractManager
 
 
 
-    public function getArticleById($articleId)
+    public function getArticleById(int $articleId)
     {
         $query = "SELECT A.*, BU.name AS author_name
     FROM " . static::TABLE . " AS A 

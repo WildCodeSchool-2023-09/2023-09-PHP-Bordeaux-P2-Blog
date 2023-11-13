@@ -34,7 +34,7 @@ class CommentManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function getCommentsByArticleId($articleId)
+    public function getCommentsByArticleId(int $articleId)
     {
         $query = 'SELECT c.*, u.name AS user_name FROM ' . self::TABLE . ' c 
                   JOIN blog_user u ON c.blog_user_id = u.id 

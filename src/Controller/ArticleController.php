@@ -22,7 +22,7 @@ class ArticleController extends AbstractController
         return $this->twig->render('profil.html.twig', ['articles' => $articles]);
     }
 
-    public function showArticleById($articleId)
+    public function showArticleById(int $articleId)
     {
         $articleManager = new ArticleManager();
         $article = $articleManager->getArticleById($articleId);
