@@ -12,7 +12,6 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticles();
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
-        var_dump($userId);
         return $this->twig->render('Home/index.html.twig', ['articles' => $articles, 'userId' => $userId]);
     }
 
@@ -29,7 +28,6 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $article = $articleManager->getArticleById($articleId);
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
-        var_dump($userId);
 
         $commentManager = new CommentManager();
         $comments = $commentManager->getCommentsByArticleId($articleId);
