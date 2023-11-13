@@ -24,4 +24,5 @@ return [
     'propos' => ['PageController', 'propos'],
     'comment/add' => ['CommentController', 'addComment'],
     'comment/delete' => ['CommentController', 'deleteComment'],
+    'forgot_password' => ['ProfilController', 'forgotPassword'],
 ];
