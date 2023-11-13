@@ -1,4 +1,6 @@
 {% extends 'layout.html.twig' %} {% block content %}
+{{ userId }}
+
 <h1>Article : {{ article.title }}</h1>
 <p>{{ article.content | raw }}</p>
 
@@ -21,11 +23,8 @@
         {% if comment.blog_user_id is defined and comment.blog_user_id ==
         app.session.get('user_id') %}
         <form method="post" action="/comment/delete">
-            <input
-                type="hidden"
-                name="comment_id"
-                value="{{ comment.id }}"
-            /><button type="submit">Supprimer le commentaire</button>
+            <input type="hidden" name="comment_id" value="{{ comment.id }}" />
+            <button type="submit">Supprimer le commentaire</button>
         </form>
         {% endif %}
     </li>
@@ -33,8 +32,8 @@
 </ul>
 {% else %}
 <p>Aucun commentaire pour cet article.</p>
-{% endif %} {# Formulaire pour ajouter un commentaire #} {% if "user_id" is
-defined %}
+{% endif %} {# Formulaire pour ajouter un commentaire #} {% if
+article.blog_user_id is defined %} {% if userId %}
 <h3>Laissez un commentaire</h3>
 <form method="post" action="/comment/add">
     <input type="hidden" name="article_id" value="{{ article.id }}" />
@@ -53,8 +52,5 @@ defined %}
     <button type="submit">Ajouter un commentaire</button>
 </form>
 {% else %}
-<p>
-    Vous devez être connecté pour poster un commentaire.
-    <a href="/login">Se connecter</a>
-</p>
-{% endif %} {% endblock %}
+<p>Vous devez être <a href="/login">connecté</a> pour commenter.</p>
+{% endif %} {% endif %} {% endblock %}

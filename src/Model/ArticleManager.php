@@ -62,8 +62,6 @@ class ArticleManager extends AbstractManager
         return $this->pdo->query($query)->fetchAll();
     }
 
-
-
     public function getArticleById(int $articleId)
     {
         $query = "SELECT A.*, BU.name AS author_name
