@@ -33,7 +33,10 @@ class ArticleController extends AbstractController
 
         $commentManager = new CommentManager();
         $comments = $commentManager->getCommentsByArticleId($articleId);
-        return $this->twig->render('Article/show.html.twig', ['article' => $article, 'comments' => $comments, 'userId' => $userId]);
+        return $this->twig->render(
+            'Article/show.html.twig',
+            ['article' => $article, 'comments' => $comments, 'userId' => $userId]
+        );
     }
 
     public function addArticle()
