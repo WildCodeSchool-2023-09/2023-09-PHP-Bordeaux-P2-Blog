@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
-use App\Model\ProfilManager;
+use App\Model\CommentManager;
 
 class ArticleController extends AbstractController
 {
@@ -11,8 +11,8 @@ class ArticleController extends AbstractController
     {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticles();
-
-        echo $this->twig->render('Home/index.html.twig', ['articles' => $articles]);
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+        return $this->twig->render('Home/index.html.twig', ['articles' => $articles, 'userId' => $userId]);
     }
 
     public function showAllArticlesByUserID($userId)
@@ -20,15 +20,21 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $articles = $articleManager->getArticlesByUserId($userId);
 
-        echo $this->twig->render('profil.html.twig', ['articles' => $articles]);
+        return $this->twig->render('profil.html.twig', ['articles' => $articles]);
     }
 
-    public function showArticleById($articleId)
+    public function showArticleById(int $articleId)
     {
         $articleManager = new ArticleManager();
         $article = $articleManager->getArticleById($articleId);
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-        echo $this->twig->render('show.html.twig', ['article' => $article]);
+        $commentManager = new CommentManager();
+        $comments = $commentManager->getCommentsByArticleId($articleId);
+        return $this->twig->render(
+            'Article/show.html.twig',
+            ['article' => $article, 'comments' => $comments, 'userId' => $userId]
+        );
     }
 
     public function addArticle()
@@ -54,19 +60,15 @@ class ArticleController extends AbstractController
                 $articleManager->addArticle($data);
                 // Redirige l'utilisateur vers la page de son profil
                 header('Location: /profil');
-                exit();
             } else {
                 // L'utilisateur n'est pas connecté=>vers la page de connexion.
                 header('Location: /login');
-                exit();
             }
         }
 
-        $userId = $_SESSION['user_id'];
-        $profilManager = new ProfilManager();
-        $user = $profilManager->getUserById($userId);
-        echo $this->twig->render('Article/add.html.twig', ['user' => $user]);
+        return $this->twig->render('Article/add.html.twig');
     }
+
 
     public function editArticleById($articleId)
     {
@@ -74,7 +76,8 @@ class ArticleController extends AbstractController
         $article = $articleManager->getArticleById($articleId);
 
         if (!$article) {
-            // cas où l'article n'existe pas => vers une page d'erreur à faire
+            echo $this->twig->render('Error/index.html.twig', ['message' =>
+            'L\'article n\'existe pas.']);
         }
 
         // Vérifie si l'utilisateur est connecté et est l'auteur de l'article
@@ -98,9 +101,11 @@ class ArticleController extends AbstractController
                 exit();
             }
 
-            echo $this->twig->render('edit.html.twig', ['article' => $article]);
+            echo $this->twig->render('Article/edit.html.twig', ['article' => $article]);
         } else {
-            // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
+            echo $this->twig->render('Error/index.html.twig', ['message' =>
+            'Vous n\'êtes pas autorisé à éditer cet article. 
+            Vous devez être connecté et être l\'auteur de l\'article.']);
         }
     }
 
@@ -110,7 +115,8 @@ class ArticleController extends AbstractController
         $article = $articleManager->getArticleById($articleId);
 
         if (!$article) {
-            // cas où l'article n'existe pas => vers une page d'erreur à faire
+            echo $this->twig->render('Error/index.html.twig', ['message' =>
+            'L\'article n\'existe pas.']);
         }
 
         // Vérifie si l'utilisateur est connecté et est l'auteur de l'article
@@ -122,9 +128,11 @@ class ArticleController extends AbstractController
                 exit();
             }
 
-            echo $this->twig->render('delete.html.twig', ['article' => $article]);
+            echo $this->twig->render('Article/delete.html.twig', ['article' => $article]);
         } else {
-            // L'utilisateur n'est pas autorisé à éditer cet article => page d'erreur à faire
+            echo $this->twig->render('Error/index.html.twig', ['message' =>
+            'Vous n\'êtes pas autorisé à supprimer cet article.
+            Vous devez être connecté et être l\'auteur de l\'article.']);
         }
     }
 }

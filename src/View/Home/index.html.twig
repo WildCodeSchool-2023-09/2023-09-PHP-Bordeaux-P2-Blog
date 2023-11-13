@@ -1,14 +1,43 @@
 {% extends 'layout.html.twig' %} {% block title %}Blog - Accueil{% endblock %}
 {% block content %}
+
 <h1>Articles récents</h1>
 <ul>
-    {# {% for article in articles %}
+    {% for article in articles %}
     <li>
         <h2>{{ article.title }}</h2>
-        <p>{{ article.content }}</p>
-        <p>{{ article.date }}</p>
-        <p>{{ article.author_name }}</p>
+
+        <p>{{ article.content | raw }}</p>
+        <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
+        <p>Par {{ article.author_name }}</p>
+
+        <a href="/show?id={{ article.id }}"
+            >Commentaires ({{ article.comment_count }})</a
+        >
+
+        {% if article.blog_user_id is defined %} {% if userId %}
+        <form method="post" action="/comment/add">
+            <input type="hidden" name="article_id" value="{{ article.id }}" />
+            <textarea
+                name="content_{{ article.id }}"
+                required
+                placeholder="Ajoutez votre commentaire..."
+            ></textarea>
+            <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+            <script>
+                CKEDITOR.replace("content_{{ article.id }}", {
+                    height: 100,
+                    width: 750,
+                });
+            </script>
+            <button type="submit">Publier le commentaire</button>
+        </form>
+        {% else %}
+        <p>Vous devez être <a href="/login">connecté</a> pour commenter.</p>
+        {% endif %} {% endif %}
     </li>
-    {% endfor %} #}
+    {% else %}
+    <li>Aucun article à afficher.</li>
+    {% endfor %}
 </ul>
 {% endblock %}

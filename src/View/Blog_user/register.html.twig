@@ -22,6 +22,14 @@
     <label for="description">Description :</label>
     <textarea name="description" id="description" required></textarea><br />
 
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("description", {
+            height: 100,
+            width: 750,
+        });
+    </script>
+
     <button type="submit">S'inscrire</button>
 </form>
 </div>

@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig'  %}
+{% block content %}
+<div>
+    {% if message is defined %}
+        {{message}}
+    {% else %}
+        ceci est un message d'erreur!
+    {% endif %}
+</div>
+
+
+{% endblock %}

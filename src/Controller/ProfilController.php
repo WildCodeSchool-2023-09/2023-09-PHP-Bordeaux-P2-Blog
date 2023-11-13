@@ -84,4 +84,30 @@ class ProfilController extends AbstractController
         }
         echo $this->twig->render('Blog_user/register.html.twig');
     }
+
+    public function forgotPassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $email = $_POST['email'];
+            $newPassword = $_POST['new_password'];
+
+            $profilManager = new ProfilManager();
+            $user = $profilManager->getUserByEmail($email);
+
+            if ($user) {
+                $profilManager->resetPassword($user['id'], password_hash($newPassword, PASSWORD_DEFAULT));
+
+                $_SESSION['new_password'] = $newPassword;
+
+                echo $this->twig->render('Blog_user/password_reset_success.html.twig', ['newPassword' => $newPassword]);
+                exit();
+            } else {
+                // L'utilisateur n'est pas connecté => page de connexion
+                header('Location: /login');
+                exit();
+            }
+        }
+
+        echo $this->twig->render('Blog_user/forgot_password.html.twig');
+    }
 }

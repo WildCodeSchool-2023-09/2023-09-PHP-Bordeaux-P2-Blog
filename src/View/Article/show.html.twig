@@ -1,12 +1,60 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout.html.twig' %} {% block content %}
+<h1>Article : {{ article.title }}</h1>
+<p>{{ article.content | raw }}</p>
 
-{% block content %}
-    <h1>Item {{ item.title }}</h1>
-    <p>{{ item.id }}. {{ item.title }}</p>
-    <a href="/items/edit?id={{ item.id }}">Edit</a>
-    <form action="/items/delete" method="POST">
-        <input type="hidden" name="id" value="{{ item.id }}">
-        <button>Delete</button>
-    </form>
-    <a href="/items">Back</a>
-{% endblock %}
+<p>
+    Auteur : {% if article.author_name is defined %}{{ article.author_name }}{%
+    else %}Auteur inconnu{% endif %}
+</p>
+
+<a href="/article/edit?id={{ article.id }}">Éditer</a>
+<a href="/article/delete?id={{ article.id }}">Supprimer</a>
+<a href="/profil">Back</a>
+
+<h2>Commentaires</h2>
+{% if comments is not empty %}
+<ul>
+    {% for comment in comments %}
+    <li>
+        <strong>Utilisateur:</strong> {{ comment.user_name }}<br />
+        <p>{{ comment.content | raw }}</p>
+        {% if comment.blog_user_id is defined and comment.blog_user_id ==
+        app.session.get('user_id') %}
+        <form method="post" action="/comment/delete">
+            <input
+                type="hidden"
+                name="comment_id"
+                value="{{ comment.id }}"
+            /><button type="submit">Supprimer le commentaire</button>
+        </form>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Aucun commentaire pour cet article.</p>
+{% endif %} {# Formulaire pour ajouter un commentaire #} {% if "user_id" is
+defined %}
+<h3>Laissez un commentaire</h3>
+<form method="post" action="/comment/add">
+    <input type="hidden" name="article_id" value="{{ article.id }}" />
+    <textarea
+        name="content"
+        required
+        placeholder="Votre commentaire..."
+    ></textarea>
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("content", {
+            height: 100,
+            width: 750,
+        });
+    </script>
+    <button type="submit">Ajouter un commentaire</button>
+</form>
+{% else %}
+<p>
+    Vous devez être connecté pour poster un commentaire.
+    <a href="/login">Se connecter</a>
+</p>
+{% endif %} {% endblock %}
