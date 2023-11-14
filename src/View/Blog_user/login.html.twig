@@ -4,7 +4,8 @@
         <link rel="stylesheet" href="/assets/css/login.css">{% endblock %} {%
 block content %}
 <body>
- <h1>Se connecter</h1>
+<div class="titre">
+ <h1>Connexion</h1>
   <form method="post">
     <label for="email">Adresse e-mail :</label>
     <input type="email" name="email" id="email" required /><br />
@@ -12,8 +13,9 @@ block content %}
     <label for="password">Mot de passe :</label>
     <input type="password" name="password" id="password" required /><br />
  <div class="btn">   
-    <button type="submit">Se connecter</button>
+    <button class="submit" type="submit">Se connecter</button>
  </div>   
+</div> 
   </form>
 </body>
 {% endblock %}

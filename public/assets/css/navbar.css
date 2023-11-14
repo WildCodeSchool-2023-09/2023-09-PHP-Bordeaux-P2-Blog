@@ -73,7 +73,7 @@
   position: relative;
   border: 0;
   background: transparent;
-  color: white;
+  color: #fff;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   position: relative;
   padding: 6px 12px;
@@ -83,6 +83,7 @@
   box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, .5), 0px 0px 0px 0px #233521(39, 200, 255, .5);
   transition: all .2s;
   overflow: hidden;
+  font-size: 16px;
 }
 
 .accueil-button::after{
@@ -119,6 +120,7 @@ transform: rotate(150deg);
   box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, .5), 0px 0px 0px 0px #233521(39, 200, 255, .5);
   transition: all .2s;
   overflow: hidden;
+  font-size: 16px;
 }
 
 .profil-button::after{
@@ -183,6 +185,7 @@ transform: rotate(150deg);
 
 a {
   color: #233521;
+  text-decoration: none;
 }
 
 @media only screen and (max-width: 768px) {

@@ -1,6 +1,7 @@
 @import 'footer.css';
 @import 'navbar.css';
 @import 'register.css';
+@import 'login.css';
 
 body {
     margin: 0;
