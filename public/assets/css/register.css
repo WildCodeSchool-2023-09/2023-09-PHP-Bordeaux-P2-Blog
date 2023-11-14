@@ -1,0 +1,63 @@
+.titre {
+    justify-content: center;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}  
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh; 
+}
+
+form {
+    align-items: center;
+    text-align: center;
+    width: 300px; 
+    max-width: none; 
+    padding: 8px;
+    border: 2px solid #CC9C65;
+    border-radius: 1px;
+    box-shadow: 0 0 6px #CC9C65(0, 0, 0, 0.1);
+    margin: 0 auto;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+
+  
+  .submit {
+    position: relative;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: relative;
+    padding: 6px 12px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 1.5em;
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, .5), 0px 0px 0px 0px #233521(39, 200, 255, .5);
+    transition: all .2s;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+.submit::after{
+    content: "";
+    width: 350px;
+    height:150px;
+    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    z-index: -1;
+  }
+  
+.submit:hover::after{
+  transform: rotate(150deg);
+  }
+  
+.submit:hover{
+    transform: translate(0, -6px);
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39,200,255,.25);
+  }  

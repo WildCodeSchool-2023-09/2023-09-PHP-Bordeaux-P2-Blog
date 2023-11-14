@@ -1,5 +1,6 @@
 {% extends 'layout.html.twig' %} {% block title %}Blog - Accueil{% endblock %}
 {% block content %}
+
 <h1>Articles récents</h1>
 <ul>
     {% for article in articles %}
@@ -14,7 +15,7 @@
             >Commentaires ({{ article.comment_count }})</a
         >
 
-        {# {% if "user_id" is defined %}
+        {% if article.blog_user_id is defined %} {% if userId %}
         <form method="post" action="/comment/add">
             <input type="hidden" name="article_id" value="{{ article.id }}" />
             <textarea
@@ -33,7 +34,7 @@
         </form>
         {% else %}
         <p>Vous devez être <a href="/login">connecté</a> pour commenter.</p>
-        {% endif %} #}
+        {% endif %} {% endif %}
     </li>
     {% else %}
     <li>Aucun article à afficher.</li>

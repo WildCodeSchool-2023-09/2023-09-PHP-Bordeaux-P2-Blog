@@ -11,7 +11,8 @@ class ArticleController extends AbstractController
     {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticles();
-        return $this->twig->render('Home/index.html.twig', ['articles' => $articles]);
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+        return $this->twig->render('Home/index.html.twig', ['articles' => $articles, 'userId' => $userId]);
     }
 
     public function showAllArticlesByUserID($userId)
@@ -26,10 +27,14 @@ class ArticleController extends AbstractController
     {
         $articleManager = new ArticleManager();
         $article = $articleManager->getArticleById($articleId);
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
         $commentManager = new CommentManager();
         $comments = $commentManager->getCommentsByArticleId($articleId);
-        return $this->twig->render('Article/show.html.twig', ['article' => $article, 'comments' => $comments]);
+        return $this->twig->render(
+            'Article/show.html.twig',
+            ['article' => $article, 'comments' => $comments, 'userId' => $userId]
+        );
     }
 
     public function addArticle()
@@ -63,7 +68,6 @@ class ArticleController extends AbstractController
 
         return $this->twig->render('Article/add.html.twig');
     }
-
 
     public function editArticleById($articleId)
     {
@@ -131,3 +135,4 @@ class ArticleController extends AbstractController
         }
     }
 }
+// Add a newline at the end of the file
