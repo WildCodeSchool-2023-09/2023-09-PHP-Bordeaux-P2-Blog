@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Model\CommentManager;
-use Exception;
 
 class CommentController extends AbstractController
 {
@@ -29,9 +28,6 @@ class CommentController extends AbstractController
                     // Redirection vers la page de l'article après l'ajout du commentaire
                     header('Location: /show?id=' . $articleId);
                     exit();
-                } else {
-                    // Gérer l'erreur d'ajout du commentaire
-                    // Vous pourriez vouloir consigner cette erreur et/ou afficher un message à l'utilisateur
                 }
             } else {
                 // L'utilisateur n'est pas connecté, redirige vers la page de connexion
@@ -47,41 +43,26 @@ class CommentController extends AbstractController
 
     public function deleteComment()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id'])) {
             $commentId = $_POST['comment_id'];
+            $commentManager = new CommentManager();
+            $comment = $commentManager->selectOneById($commentId);
 
-            if (isset($_SESSION['user_id'])) {
-                $userId = $_SESSION['user_id'];
-
-                $commentManager = new CommentManager();
-
-                try {
-                    if ($commentManager->isUserCommentOwner($commentId, $userId)) {
-                        $success = $commentManager->deleteComment($commentId, $userId);
-                        if ($success) {
-                            // Redirection vers la page précédente ou la page de l'article
-                            header('Location: ' . $_SERVER['HTTP_REFERER']);
-                            exit();
-                        } else {
-                            // Gérer l'échec de la suppression du commentaire
-                        }
-                    } else {
-                        // L'utilisateur n'est pas autorisé à supprimer ce commentaire
-                        throw new Exception("Vous n'avez pas la permission de supprimer ce commentaire.");
+            if ($_SESSION['user_id'] === $comment['blog_user_id']) {
+                $success = $commentManager->deleteComment($commentId, $_SESSION['user_id']);
+                if ($success) {
+                    // Vérifier si 'article_id' est présent dans $_POST
+                    if (isset($_POST['article_id'])) {
+                        $articleId = $_POST['article_id'];
+                        header('Location: /article/show?id=' . $articleId);
+                        exit();
                     }
-                } catch (Exception $e) {
-                    // Gérer l'exception, par exemple en affichant un message d'erreur à l'utilisateur
-                    // et consigner l'erreur si nécessaire
                 }
-            } else {
-                // L'utilisateur n'est pas connecté
-                header('Location: /login');
-                exit();
             }
+        } else {
+            // L'utilisateur n'est pas connecté ou la méthode n'est pas POST
+            header('Location: /login');
+            exit();
         }
-
-        // Si la méthode n'est pas POST, rediriger vers l'accueil ou afficher une erreur
-        header('Location: /');
-        exit();
     }
 }

@@ -1,6 +1,6 @@
 footer {
-    background-color: #233521;
-    color: #CC9C65;
+    background-color: var(--primary-color);
+    color: var(--second-color);
     text-align: center;
     width: 100%;
 }
