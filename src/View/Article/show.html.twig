@@ -32,7 +32,8 @@
 {% else %}
 <p>Aucun commentaire pour cet article.</p>
 {% endif %} {# Formulaire pour ajouter un commentaire #} {% if
-article.blog_user_id is defined %} {% if userId %}
+article.blog_user_id is defined %} 
+{% if userId %}
 <h3>Laissez un commentaire</h3>
 <form method="post" action="/comment/add">
     <input type="hidden" name="article_id" value="{{ article.id }}" />
