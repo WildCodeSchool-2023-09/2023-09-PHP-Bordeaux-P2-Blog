@@ -3,11 +3,6 @@
 @import 'register.css';
 @import 'login.css';
 
-body {
-    margin: 0;
-    position: relative;
-    color: #233521;
-}
 :root {
     --primary-color: #233521;
     --second-color: #cc9c65;
@@ -24,6 +19,8 @@ body {
 }
 
 body {
-    padding: 0;
     margin: 0;
+    padding: 0;
+    position: relative;
+    color: #f76c6c;
 }

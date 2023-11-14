@@ -45,16 +45,4 @@ class CommentManager extends AbstractManager
 
         return $statement->fetchAll();
     }
-
-    // Cette méthode est optionnelle, pour vérifier si un commentaire appartient à un utilisateur
-    public function isUserCommentOwner(int $commentId, int $userId): bool
-    {
-        $query = 'SELECT COUNT(*) FROM ' . self::TABLE . ' WHERE id = :id AND blog_user_id = :blog_user_id';
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':id', $commentId, PDO::PARAM_INT);
-        $statement->bindValue(':blog_user_id', $userId, PDO::PARAM_INT);
-        $statement->execute();
-
-        return $statement->fetchColumn() > 0;
-    }
 }
