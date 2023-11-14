@@ -8,6 +8,7 @@ footer {
 .footer-content {
     display: flex;
     justify-content: space-around;
+    
 }
 
 .contact-info a, .privacy-policy a {

@@ -49,4 +49,8 @@ class ProfilManager extends AbstractManager
         $statement->bindValue(':id', $userId, \PDO::PARAM_INT);
         $statement->execute();
     }
+    public function getNotificationsNbr()
+    {
+        // Voir stockage bdd pour notifs
+    }
 }
