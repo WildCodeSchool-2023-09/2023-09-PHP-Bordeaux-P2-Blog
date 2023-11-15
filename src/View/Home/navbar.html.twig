@@ -1,68 +1,82 @@
-
-<body>
-  <header>
+<header>
     <nav>
         <div class="navbar">
             <div class="white">
-             <div class="mobile-menu">
-                <div class="menu-icon">
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                <div class="mobile-menu">
+                    <div class="menu-icon">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
-             </div>   
                 <div class="logo-container">
-                    <img src="/assets/images/BUMP.png" alt="Logo">
+                    <img src="/assets/images/BUMP.png" alt="Logo" />
                 </div>
-        <div class="desktop-menu">    
-                 <div class="button">
-            <ul class="homepage">
-              <li class="no-disc"><button class="contact-button"><a href="/propos">CONTACT</a></button></li>
-              <li class="no-disc"><button class="accueil-button"><a href="/">ACCUEIL</a></button></li>
-               {% if user %}
-                 <li class="no-disc"><button class="profil-button"><a href="/profil">MON BLOG</a></button></li>
-            {% else %}
-               <li class="no-disc"><button class="profil-button"><a href="/register">CREE TON BLOG</a></button></li>
-            {% endif %}
-            </ul>
-        </div>    
+                <div class="desktop-menu">
+                    <div class="button">
+                        <ul class="homepage">
+                            <li class="no-disc">
+                                <button class="contact-button">
+                                    <a href="/propos">CONTACT</a>
+                                </button>
+                            </li>
+                            <li class="no-disc">
+                                <button class="accueil-button">
+                                    <a href="/">ACCUEIL</a>
+                                </button>
+                            </li>
+                            {% if userId %}
+                            <li class="no-disc">
+                                <button class="profil-button">
+                                    <a href="/profil">MON BLOG</a>
+                                </button>
+                            </li>
+                            {% else %}
+                            <li class="no-disc">
+                                <button class="profil-button">
+                                    <a href="/register">CREE TON BLOG</a>
+                                </button>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </div>
             </div>
-   <div class="log">
-        <ul>
-            {% if userId %}
-                <li class="no-disc">
-                    <button class="deconnexion"><a href="/logout">SE DECONNECTER</a></button>
-                </li>
-            {% else %}
-                <li class="no-disc">
-                    <button class="connexion"><a href="/login">SE CONNECTER</a></button>
-                </li>
-                <li class="no-disc">
-                    <button class="inscrire"><a href="/register">INSCRIPTION</a></button>
-                </li>
-            {% endif %}
-        
-        </ul>
-    </div>          
+            <div class="log">
+                <ul>
+                    {% if userId %}
+                    <li class="no-disc">
+                        <button class="deconnexion">
+                            <a href="/logout">SE DECONNECTER</a>
+                        </button>
+                    </li>
+                    {% else %}
+                    <li class="no-disc">
+                        <button class="connexion">
+                            <a href="/login">SE CONNECTER</a>
+                        </button>
+                    </li>
+                    <li class="no-disc">
+                        <button class="inscrire">
+                            <a href="/register">INSCRIPTION</a>
+                        </button>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-     <div class="notification">
-        <span class="notificationTxt">{{ nombreNotifications }}</span>
-     </div> 
+        <div class="notification">
+            <span class="notificationTxt">{{ nombreNotifications }}</span>
+        </div>
     </nav>
-  </header>
-  <div class="popup" id="popup">
+</header>
+<div class="popup" id="popup">
     <div class="popup-content">
-      <span class="close" onclick="closePopup()">&times;</span>
-        {% if user %}
-            <a href="/article/add">BUMP un article !!</a>
+        <span class="close" onclick="closePopup()">&times;</span>
+        {% if userId %}
+        <a href="/article/add">BUMP un article !!</a>
         {% else %}
-            <a href="/register">Rejoins la communauté BUMP !</a>
+        <a href="/register">Rejoins la communauté BUMP !</a>
         {% endif %}
     </div>
-  </div>
-</body>
-
-
-  
- 
+</div>

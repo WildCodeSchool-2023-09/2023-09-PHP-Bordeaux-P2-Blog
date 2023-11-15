@@ -66,7 +66,8 @@ class ArticleController extends AbstractController
             }
         }
 
-        return $this->twig->render('Article/add.html.twig');
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+        return $this->twig->render('Article/add.html.twig', ['userId' => $userId]);
     }
 
     public function editArticleById($articleId)
@@ -100,7 +101,9 @@ class ArticleController extends AbstractController
                 exit();
             }
 
-            echo $this->twig->render('Article/edit.html.twig', ['article' => $article]);
+            $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
+            echo $this->twig->render('Article/edit.html.twig', ['article' => $article, 'userId' => $userId]);
         } else {
             echo $this->twig->render('Error/index.html.twig', ['message' =>
             'Vous n\'êtes pas autorisé à éditer cet article. 
@@ -126,8 +129,9 @@ class ArticleController extends AbstractController
                 header('Location: /profil');
                 exit();
             }
+            $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-            echo $this->twig->render('Article/delete.html.twig', ['article' => $article]);
+            echo $this->twig->render('Article/delete.html.twig', ['article' => $article, 'userId' => $userId]);
         } else {
             echo $this->twig->render('Error/index.html.twig', ['message' =>
             'Vous n\'êtes pas autorisé à supprimer cet article.
