@@ -25,7 +25,7 @@
                                     <a href="/">ACCUEIL</a>
                                 </button>
                             </li>
-                            {% if user %}
+                            {% if userId %}
                             <li class="no-disc">
                                 <button class="profil-button">
                                     <a href="/profil">MON BLOG</a>
@@ -44,7 +44,7 @@
             </div>
             <div class="log">
                 <ul>
-                    {% if user %}
+                    {% if userId %}
                     <li class="no-disc">
                         <button class="deconnexion">
                             <a href="/logout">SE DECONNECTER</a>
@@ -73,7 +73,7 @@
 <div class="popup" id="popup">
     <div class="popup-content">
         <span class="close" onclick="closePopup()">&times;</span>
-        {% if user %}
+        {% if userId %}
         <a href="/article/add">BUMP un article !!</a>
         {% else %}
         <a href="/register">Rejoins la communauté BUMP !</a>
