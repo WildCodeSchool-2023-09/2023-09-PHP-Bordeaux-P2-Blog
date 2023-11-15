@@ -1,4 +1,4 @@
-.contentpropos{
+.contentpropos {
     width: 70%;
     text-align: center;
     margin-left: auto;
@@ -9,7 +9,6 @@ h1 {
     background-color: var(--primary-color);
     color: var(--second-color);
     text-align: center;
-    width: 100%;
     padding: 30px;
 }
 .contentpropos img {
