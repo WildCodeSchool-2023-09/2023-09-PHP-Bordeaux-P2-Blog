@@ -1,5 +1,10 @@
-{% extends 'layout.html.twig' %} {% block title %}Profil de l'utilisateur{%
-endblock %} {% block content %}
+{% extends 'layout.html.twig' %} 
+
+{% block title %}Profil de l'utilisateur{% endblock %} 
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/profil.css">{% endblock %}
+
+{% block content %}
 <h1>Profil de l'utilisateur</h1>
 <h2>Informations personnelles</h2>
 <p><strong>Nom :</strong> {{ userId.name }}</p>
