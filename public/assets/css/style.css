@@ -2,8 +2,8 @@
 @import 'navbar.css';
 @import 'register.css';
 @import 'login.css';
-@import 'edit.css';
-@import 'profil.css';
+
+
 
 :root {
     --primary-color: #233521;
