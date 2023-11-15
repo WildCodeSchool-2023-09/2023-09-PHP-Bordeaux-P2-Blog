@@ -1,31 +1,38 @@
-{% extends 'layout.html.twig' %} {% block title %}S'inscrire{% endblock %} 
-{% block stylesheet %}
- <link rel="stylesheet" href="/assets/css/register.css">
-    <div class="titre">
-      <h1>S'inscrire</h1>
-<div class="center">
-   <form method="post">
-    <label for="name">Nom :</label>
-    <input type="text" name="name" id="name" required /><br />
+{% extends 'layout.html.twig' %} {% block title %}S'inscrire{% endblock %} {%
+block stylesheet %}
+<link rel="stylesheet" href="/assets/css/register.css" />
+{% endblock %} {% block content %}
+<div class="titre">
+    <h1>S'inscrire</h1>
+    <div class="center">
+        <form method="post">
+            <label for="name">Nom :</label>
+            <input type="text" name="name" id="name" required /><br />
 
-    <label for="password">Mot de passe :</label>
-    <input type="password" name="password" id="password" required /><br />
+            <label for="password">Mot de passe :</label>
+            <input
+                type="password"
+                name="password"
+                id="password"
+                required
+            /><br />
 
-    <label for="email">Adresse e-mail :</label>
-    <input type="email" name="email" id="email" required /><br />
+            <label for="email">Adresse e-mail :</label>
+            <input type="email" name="email" id="email" required /><br />
 
-    <label for="image">Image (facultatif) :</label>
-    <input type="text" name="image" id="image" /><br />
+            <label for="image">Image (facultatif) :</label>
+            <input type="text" name="image" id="image" /><br />
 
-    <label for="title">Titre :</label>
-    <input type="text" name="title" id="title" required /><br />
+            <label for="title">Titre :</label>
+            <input type="text" name="title" id="title" required /><br />
 
-    <label for="description">Description :</label>
-    <textarea name="description" id="description" required></textarea><br />
+            <label for="description">Description :</label>
+            <textarea name="description" id="description" required></textarea
+            ><br />
 
-    <button class="submit" type="submit">S'inscrire</button>
-   </form>
-    </div>    
+            <button class="submit" type="submit">S'inscrire</button>
+        </form>
+    </div>
     <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace("description", {
@@ -33,6 +40,5 @@
             width: 750,
         });
     </script>
-
 </div>
 {% endblock %}
