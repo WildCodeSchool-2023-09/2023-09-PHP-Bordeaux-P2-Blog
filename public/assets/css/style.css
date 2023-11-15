@@ -1,9 +1,6 @@
 @import 'footer.css';
 @import 'navbar.css';
-@import 'register.css';
-@import 'login.css';
-@import 'edit.css';
-@import 'profil.css';
+
 
 :root {
     --primary-color: #233521;
@@ -24,6 +21,5 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
-    color: #f76c6c;
 }
 
