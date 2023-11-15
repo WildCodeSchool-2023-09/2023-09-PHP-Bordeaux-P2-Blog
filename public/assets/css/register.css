@@ -2,6 +2,7 @@
     justify-content: center;
     text-align: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #233521;
 }  
 
 main {
@@ -15,6 +16,7 @@ form {
     align-items: center;
     text-align: center;
     width: 300px; 
+    height: 400px;
     max-width: none; 
     padding: 8px;
     border: 2px solid #CC9C65;
@@ -22,7 +24,7 @@ form {
     box-shadow: 0 0 6px #CC9C65(0, 0, 0, 0.1);
     margin: 0 auto;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  }
+}
 
   
   .submit {
