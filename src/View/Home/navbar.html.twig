@@ -10,17 +10,22 @@
                     </div>
                 </div>
                 <div class="logo-container">
-                    <img src="public/assets/images/BUMP.png" alt="Logo" />
+                    <img src="/assets/images/BUMP.png" alt="Logo" />
                 </div>
                 <div class="desktop-menu">
                     <div class="button">
                         <ul class="homepage">
                             <li class="no-disc">
+                                <button class="contact-button">
+                                    <a href="/propos">CONTACT</a>
+                                </button>
+                            </li>
+                            <li class="no-disc">
                                 <button class="accueil-button">
                                     <a href="/">ACCUEIL</a>
                                 </button>
                             </li>
-                            {% if userId %}
+                            {% if user %}
                             <li class="no-disc">
                                 <button class="profil-button">
                                     <a href="/profil">MON BLOG</a>
@@ -39,7 +44,7 @@
             </div>
             <div class="log">
                 <ul>
-                    {% if userId %}
+                    {% if user %}
                     <li class="no-disc">
                         <button class="deconnexion">
                             <a href="/logout">SE DECONNECTER</a>
@@ -68,7 +73,7 @@
 <div class="popup" id="popup">
     <div class="popup-content">
         <span class="close" onclick="closePopup()">&times;</span>
-        {% if userId %}
+        {% if user %}
         <a href="/article/add">BUMP un article !!</a>
         {% else %}
         <a href="/register">Rejoins la communauté BUMP !</a>
