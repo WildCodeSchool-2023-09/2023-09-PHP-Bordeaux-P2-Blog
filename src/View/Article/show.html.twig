@@ -10,7 +10,7 @@
 
 <a href="/article/edit?id={{ article.id }}">Éditer</a>
 <a href="/article/delete?id={{ article.id }}">Supprimer</a>
-<a href="/profil">Back</a>
+<a href="/">Back</a>
 
 <h2>Commentaires</h2>
 {% if comments is not empty %}
@@ -32,23 +32,15 @@
 {% else %}
 <p>Aucun commentaire pour cet article.</p>
 {% endif %} {# Formulaire pour ajouter un commentaire #} {% if
-article.blog_user_id is defined %} 
-{% if userId %}
+article.blog_user_id is defined %} {% if userId %}
 <h3>Laissez un commentaire</h3>
 <form method="post" action="/comment/add">
     <input type="hidden" name="article_id" value="{{ article.id }}" />
     <textarea
-        name="content"
+        name="content_{{ article.id }}"
+        id="content_{{ article.id }}"
         required
-        placeholder="Votre commentaire..."
     ></textarea>
-    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace("content", {
-            height: 100,
-            width: 750,
-        });
-    </script>
     <button type="submit">Ajouter un commentaire</button>
 </form>
 {% else %}

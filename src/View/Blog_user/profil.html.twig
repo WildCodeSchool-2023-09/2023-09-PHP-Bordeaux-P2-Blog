@@ -2,10 +2,10 @@
 endblock %} {% block content %}
 <h1>Profil de l'utilisateur</h1>
 <h2>Informations personnelles</h2>
-<p><strong>Nom :</strong> {{ user.name }}</p>
-<p><strong>Image :</strong> {{ user.image }}</p>
-<p><strong>Titre :</strong> {{ user.title }}</p>
-<p><strong>Description :</strong> {{ user.description }}</p>
+<p><strong>Nom :</strong> {{ userId.name }}</p>
+<p><strong>Image :</strong> {{ userId.image | raw }}</p>
+<p><strong>Titre :</strong> {{ userId.title }}</p>
+<p><strong>Description :</strong> {{ userId.description | raw }}</p>
 <a href="/forgot_password">Réinitialiser le mot de passe</a>
 
 <h2>Mes articles</h2>
@@ -16,6 +16,9 @@ endblock %} {% block content %}
         <p>{{ article.content | raw }}</p>
         <a href="/article/edit?id={{ article.id }}">Éditer</a>
         <a href="/article/delete?id={{ article.id }}">Supprimer</a>
+        <a href="/show?id={{ article.id }}"
+            >Commentaires ({{ article.comment_count }})</a
+        >
     </li>
     {% endfor %}
 </ul>

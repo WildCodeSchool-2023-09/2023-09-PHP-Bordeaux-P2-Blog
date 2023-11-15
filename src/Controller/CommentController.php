@@ -10,7 +10,7 @@ class CommentController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $articleId = $_POST['article_id'];
-            $content = $_POST['content'];
+            $content = $_POST['content_' . $articleId];
 
             if (isset($_SESSION['user_id'])) {
                 $userId = $_SESSION['user_id'];

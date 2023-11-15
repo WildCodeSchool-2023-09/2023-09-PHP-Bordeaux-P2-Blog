@@ -19,16 +19,9 @@
             <input type="hidden" name="article_id" value="{{ article.id }}" />
             <textarea
                 name="content_{{ article.id }}"
+                id="content_{{ article.id }}"
                 required
-                placeholder="Ajoutez votre commentaire..."
             ></textarea>
-            <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
-            <script>
-                CKEDITOR.replace("content_{{ article.id }}", {
-                    height: 100,
-                    width: 750,
-                });
-            </script>
             <button type="submit">Publier le commentaire</button>
         </form>
         {% else %}
