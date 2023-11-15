@@ -4,16 +4,17 @@ namespace App\Controller;
 
 use App\Model\ProfilManager;
 use App\Model\ArticleManager;
+use App\Model\CommentManager;
 
 class ProfilController extends AbstractController
 {
     public function profil()
     {
         if (isset($_SESSION['user_id'])) {
-            $userId = $_SESSION['user_id'];
+            $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
             $profilManager = new ProfilManager();
-            $user = $profilManager->getUserById($userId);
+            $getUserId = $profilManager->getUserById($userId);
             $nombreNotifications = $profilManager->getNotificationsNbr();
 
             // Récupère les articles de l'utilisateur
@@ -22,7 +23,7 @@ class ProfilController extends AbstractController
 
             echo $this->twig->render(
                 'Blog_user/profil.html.twig',
-                ['user' => $user, 'articles' => $articles, 'nombreNotifications' => $nombreNotifications]
+                ['userId' => $getUserId, 'articles' => $articles, 'nombreNotifications' => $nombreNotifications]
             );
         } else {
             // L'utilisateur n'est pas connecté => page de connexion
