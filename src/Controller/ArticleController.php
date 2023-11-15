@@ -66,7 +66,8 @@ class ArticleController extends AbstractController
             }
         }
 
-        return $this->twig->render('Article/add.html.twig');
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+        return $this->twig->render('Article/add.html.twig', ['userId' => $userId]);
     }
 
     public function editArticleById($articleId)
