@@ -8,11 +8,15 @@ class PageController extends AbstractController
 {
     public function confidentialite(): string
     {
-        return $this->twig->render('Home/confidentialite.html.twig');
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
+        return $this->twig->render('Home/confidentialite.html.twig', ['userId' => $userId]);
     }
 
     public function propos(): string
     {
-        return $this->twig->render('Home/propos.html.twig');
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
+        return $this->twig->render('Home/propos.html.twig', ['userId' => $userId]);
     }
 }
