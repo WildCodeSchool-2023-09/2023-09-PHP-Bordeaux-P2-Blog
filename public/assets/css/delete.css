@@ -10,18 +10,25 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
 }
-
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .container {
     width: 80%;
     margin: 0 auto;
     
 }
-
 form {
-    max-width: 600px;
+    /* max-width: 600px;
     margin: 20px auto;
     border: 2px solid #CC9C65;
-    border-radius: 1px;
+    border-radius: 1px; */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
 
 }
 
@@ -58,7 +65,7 @@ textarea {
  } 
  .submit {
     display: flex;
-    position: relative;
+    position: center ;
     border: 0;
     background: transparent;
     color: white;
@@ -83,7 +90,7 @@ textarea {
     background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
     position: absolute;
     top: -50px;
-    left: -100px;
+    /* left: -100px; */
     z-index: -1;
   }
   
@@ -94,23 +101,18 @@ textarea {
 .submit:hover{
     transform: translate(0, -6px);
     box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39,200,255,.25);
-  } 
+  }  
 /* Style spécifique pour CKEditor */
 .cke {
     margin-top: 10px;
 }
-
-@media screen and (max-width:640px){
-form {
-   
-    margin-left: auto;
-    margin-right: auto;
-   
-}
+.div-text-center{
+  text-align: center;
+  margin-top: 8px;
 }
 /*Mobile*/ @media only screen and (max-width: 767px) { /*Styles spécifiques pour les écrans jusqu'à 767px de large*/ }
 
 /*Tablettes*/ @media only screen and (min-width: 768px) and (max-width: 1199px) { /*Styles spécifiques pour les écrans entre 768px et et 1199px de large*/ }
 
 /*Desktop*/ @media only screen and (min-width: 1200px) { /*Styles spécifiques pour les écrans de 1200px et plus*/ }
-    
+

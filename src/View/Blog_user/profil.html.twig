@@ -6,7 +6,11 @@
 
 {% block content %}
 
-<h1>Profil de l'utilisateur</h1>
+ 
+<h1>BLOG de {{ userId.name }}</h1>
+
+
+
 <div class = 'border'> 
 
 <h2>Informations personnelles</h2>
@@ -16,7 +20,7 @@
 <p><strong>Titre :</strong> {{ userId.title }}</p>
 <p><strong>Description :</strong> {{ userId.description | raw }}</p>
 </div>
-<a href="/forgot_password">Réinitialiser le mot de passe</a>
+<a href="/forgot_password" class= 'submit'>Réinitialiser le mot de passe</a>
 
 <h2>Mes articles</h2>
 <ul>
@@ -24,11 +28,13 @@
     <li>
         <h3>{{ article.title }}</h3>
         <p>{{ article.content | raw }}</p>
-        <a href="/article/edit?id={{ article.id }}">Éditer</a>
-        <a href="/article/delete?id={{ article.id }}">Supprimer</a>
-        <a href="/show?id={{ article.id }}"
+        <div class= 'submit-container'>
+        <a href="/article/edit?id={{ article.id }}" class= 'submit'>Éditer</a>
+        <a href="/article/delete?id={{ article.id }}" class= 'submit'>Supprimer</a>
+        </div>
+        <div><a href="/show?id={{ article.id }}" 
             >Commentaires ({{ article.comment_count }})</a
-        >
+        ></div>
     </li>
     {% endfor %}
 </ul>

@@ -1,15 +1,25 @@
+.contentpropos {
+    width: 70%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    background-color: var(--primary-color);
+    color: var(--fourth-color);
+    text-align: center;
+    padding: 30px;
+    
+}
+
+
 body {
     
     font-family: Arial, sans-serif;
     line-height: 1.6;
     justify-content: center ;
     text-align: center;
-}
-
-
-
-h1, h2, h3 {
-    color: #333;
 }
 
 h2 {
@@ -30,16 +40,49 @@ ul {
 li {
     margin-bottom: 20px;
 }
-
-a {
-    text-decoration: none;
-    color: #4caf50;
-    margin-right: 10px;
+.submit-container {
+    text-align: center;
 }
+a.submit {
+    display: flex;
+    position: center ;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: relative;
+    padding: 6px 12px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 1.5em;
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, .5), 0px 0px 0px 0px #233521(39, 200, 255, .5);
+    transition: all .2s;
+    overflow: hidden;
+    margin: left ;
+    justify-content:flex-start;
+    text-align: center;
+  }
 
-a:hover {
-    text-decoration: underline;
-}
+a.submit::after{
+    content: "";
+    width: 350px;
+    height:150px;
+    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+    position: absolute;
+    top: -50px;
+    /* left: -100px; */
+    z-index: -1;
+  }
+  
+a.submit:hover::after{
+  transform: rotate(150deg);
+  }
+  
+a.submit:hover{
+    transform: translate(0, -6px);
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39,200,255,.25);
+  } 
+
 div.border {
     max-width: 600px;
     margin: 20px auto;
@@ -48,11 +91,19 @@ div.border {
 }
 div.info {
     display: flex;
-    align-items:flex-start ;
+    align-items:center ;
     flex-direction: column;
 }
+li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/*Mobile*/ @media only screen and (max-width: 767px) { /*Styles spécifiques pour les écrans jusqu'à 767px de large*/ }
 
+/*Tablettes*/ @media only screen and (min-width: 768px) and (max-width: 1199px) { /*Styles spécifiques pour les écrans entre 768px et et 1199px de large*/ }
 
+/*Desktop*/ @media only screen and (min-width: 1200px) { /*Styles spécifiques pour les écrans de 1200px et plus*/ }
 
 
 
