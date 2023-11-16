@@ -1,5 +1,5 @@
-@import 'footer.css';
-@import 'navbar.css';
+@import "footer.css";
+@import "navbar.css";
 
 :root {
     --primary-color: #233521;
@@ -20,5 +20,9 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
+    min-height: 100vh;
 }
 
+main {
+    min-height: inherit;
+}
