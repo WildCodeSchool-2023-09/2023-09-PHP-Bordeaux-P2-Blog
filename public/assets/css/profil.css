@@ -1,12 +1,12 @@
 body {
+    
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    justify-content: center ;
+    text-align: center;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
+
 
 h1, h2, h3 {
     color: #333;
@@ -39,6 +39,17 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+div.border {
+    max-width: 600px;
+    margin: 20px auto;
+    border: 2px solid #CC9C65;
+    border-radius: 1px;
+}
+div.info {
+    display: flex;
+    align-items:flex-start ;
+    flex-direction: column;
 }
 
 
