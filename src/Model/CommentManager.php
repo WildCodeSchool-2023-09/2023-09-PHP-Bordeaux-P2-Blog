@@ -24,12 +24,11 @@ class CommentManager extends AbstractManager
         return false;
     }
 
-    public function deleteComment(int $commentId, int $userId)
+    public function deleteComment(int $commentId)
     {
-        $query = 'DELETE FROM ' . self::TABLE . ' WHERE id = :id AND blog_user_id = :blog_user_id';
+        $query = 'DELETE FROM ' . self::TABLE . ' WHERE id = :id';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':id', $commentId, PDO::PARAM_INT);
-        $statement->bindValue(':blog_user_id', $userId, PDO::PARAM_INT);
 
         return $statement->execute();
     }
