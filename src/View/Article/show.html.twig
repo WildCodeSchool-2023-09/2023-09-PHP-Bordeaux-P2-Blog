@@ -18,13 +18,8 @@
         {% for comment in comments %}
             <li>
                 <strong>Utilisateur:</strong> {{ comment.user_name }}<br>
-                <p>{{ comment.content }}</p>
+                <p>{{ comment.content | raw }}</p>
                 {% if "user_id" is defined %}
-                    {#<form method="post" action="/comment/delete?acticle_id={{ article.id }}&comment_id={{comment.id}}">
-                        <input type="hidden" name="comment_id" value="{{ comment.id }}">
-                        <input type="hidden" name="article_id" value="{{ article.id }}"> 
-                        <button type="submit">Supprimer le commentaire</button>
-                    </form>#}
                     <a href="/comment/delete?comment_id={{comment.id}}"><button>Supprimer commentaire</button></a>
                 {% endif %}
             </li>
@@ -33,8 +28,7 @@
 {% else %}
     <p>Aucun commentaire pour cet article.</p>
 {% endif %}
-{# Formulaire pour ajouter un commentaire #} {% if
-article.blog_user_id is defined %} {% if userId %}
+{% if article.blog_user_id is defined %} {% if userId %}
 <h3>Laissez un commentaire</h3>
 <form method="post" action="/comment/add">
     <input type="hidden" name="article_id" value="{{ article.id }}" />
