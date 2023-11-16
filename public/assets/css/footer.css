@@ -3,16 +3,17 @@ footer {
     color: var(--second-color);
     text-align: center;
     width: 100%;
+    margin-top: auto;
 }
 
 .footer-content {
     display: flex;
     justify-content: space-around;
-    
 }
 
-.contact-info a, .privacy-policy a {
-    color: #CC9C65;
+.contact-info a,
+.privacy-policy a {
+    color: #cc9c65;
     text-decoration: none;
 }
 
