@@ -228,6 +228,8 @@
     transition: all 0.2s;
     overflow: hidden;
     font-size: 16px;
+    border: 2px solid #cc9c65;
+    width: 8rem;
 }
 
 .deconnexion::after,
@@ -241,12 +243,14 @@
     top: -50px;
     left: -100px;
     z-index: -1;
+    border: 2px solid #cc9c65;
 }
 
 .deconnexion:hover::after,
 .connexion:hover::after,
 .inscrire:hover::after {
     transform: rotate(150deg);
+    border: 2px solid #cc9c65;
 }
 
 .deconnexion:hover,
@@ -255,6 +259,7 @@
     transform: translate(0, -6px);
     box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
         -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+        border: 2px solid #cc9c65;
 }
 
 .menu-icon {
@@ -294,6 +299,37 @@ a {
     text-decoration: none;
 }
 
+.hamburger {
+    width: 0px;
+    height: 20px;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    background: var(--secondary-color);
+    align-items: center;
+    position: relative;
+    margin-left: 20px;
+    padding-left: 0;
+    color: #cc9c65;
+}
+
+.hamburger span {
+display: block;
+width: 100%;
+height: 3px;
+background: var(--text-color);
+position: absolute;
+pointer-events: none; /* pour ne pas cliquer sur les span mais bien sur le boutton */
+transition: opacity 0.3s 0.15s ease-out;
+}
+
+.hamburger span:nth-child(1) {
+transform: translateY(7px);
+}
+.hamburger span:nth-child(3) {
+transform: translateY(-7px);
+}
+
 @media only screen and (max-width: 768px) {
     .button {
         display: none;
@@ -321,8 +357,8 @@ a {
         display: none;
     }
 
-    .mobile-menu {
-        display: flex;
+    .hamburger {
+        display: flex; /* or display: inline-block; */
     }
 
     .desktop-menu button {
