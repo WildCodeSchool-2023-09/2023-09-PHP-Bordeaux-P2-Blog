@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\CommentManager;
+use App\Model\ArticleManager;
 
 class CommentController extends AbstractController
 {
@@ -41,28 +42,38 @@ class CommentController extends AbstractController
         exit();
     }
 
-    public function deleteComment()
+    public function deleteCommentById(int $commentId)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id'])) {
-            $commentId = $_POST['comment_id'];
-            $commentManager = new CommentManager();
-            $comment = $commentManager->selectOneById($commentId);
+        $commentManager = new CommentManager();
+        $comment = $commentManager->selectOneById($commentId);
 
-            if ($_SESSION['user_id'] === $comment['blog_user_id']) {
-                $success = $commentManager->deleteComment($commentId, $_SESSION['user_id']);
+        if (!$comment) {
+            return $this->twig->render('Error/index.html.twig', ['message' =>
+            'Le commentaire n\'existe pas.']);
+        }
+
+        // Récupérer l'article associé au commentaire
+        $articleManager = new ArticleManager();
+        $article = $articleManager->selectOneById($comment['article_id']);
+        // Vérifier si l'utilisateur est connecté et est l'auteur du commentaire ou l'auteur de l'article
+        $userID = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
+        if ($userID && ($userID === $comment['blog_user_id'] || $userID === $article['blog_user_id'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $success = $commentManager->deleteComment($commentId);
                 if ($success) {
                     // Vérifier si 'article_id' est présent dans $_POST
-                    if (isset($_POST['article_id'])) {
-                        $articleId = $_POST['article_id'];
-                        header('Location: /article/show?id=' . $articleId);
+                    if (isset($comment['article_id'])) {
+                        $articleId = $comment['article_id'];
+                        header('Location: /show?id=' . $articleId);
                         exit();
                     }
                 }
             }
+            return $this->twig->render('Comment/delete.html.twig', ['comment' => $comment]);
         } else {
-            // L'utilisateur n'est pas connecté ou la méthode n'est pas POST
-            header('Location: /login');
-            exit();
+            return $this->twig->render('Error/index.html.twig', ['message' =>
+            'Vous n\'êtes pas autorisé à supprimer ce commentaire. 
+            Vous devez être connecté ou être l\'auteur du commentaire ou de l\'article.']);
         }
     }
 }
