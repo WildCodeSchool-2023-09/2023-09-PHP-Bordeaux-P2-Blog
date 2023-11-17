@@ -299,7 +299,7 @@ a {
     text-decoration: none;
 }
 
-.hamburger {
+/* .hamburger {
     width: 0px;
     height: 20px;
     cursor: pointer;
@@ -319,7 +319,7 @@ width: 100%;
 height: 3px;
 background: var(--text-color);
 position: absolute;
-pointer-events: none; /* pour ne pas cliquer sur les span mais bien sur le boutton */
+pointer-events: none; 
 transition: opacity 0.3s 0.15s ease-out;
 }
 
@@ -358,10 +358,10 @@ transform: translateY(-7px);
     }
 
     .hamburger {
-        display: flex; /* or display: inline-block; */
+        display: flex; 
     }
 
     .desktop-menu button {
         align-items: center;
     }
-}
+} */

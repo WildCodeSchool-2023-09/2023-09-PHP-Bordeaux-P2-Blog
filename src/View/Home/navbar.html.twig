@@ -1,19 +1,17 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <header>
-    <nav>
-        <div class="navbar">
-            <div class="white">
-                <div class="mobile-menu">
-                    <button class="hamburger" type="button" aria-label="bouton burger">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </button>
-                </div>
+    <nav class="navbar">
+                <div class="white">
+     <a href="#" id="openBtn">
+                    <span class="burger-icon">
+                    <div class="menu-icon" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 <div class="logo-container">
                     <img src="/assets/images/BUMP.png" alt="Logo" />
                 </div>
-                <label>☰</label>
-                <div class="desktop-menu">
                     <div class="button">
                         <ul class="homepage">
                             <li class="no-disc">
@@ -48,13 +46,13 @@
                     {% if userId %}
                     <li class="no-disc">
                         <button class="deconnexion">
-                            <a href="/logout">SE DECONNECTER</a>
+                            <a href="/logout">DECONNEXION</a>
                         </button>
                     </li>
                     {% else %}
                     <li class="no-disc">
                         <button class="connexion">
-                            <a href="/login">SE CONNECTER</a>
+                            <a href="/login">CONNEXION</a>
                         </button>
                     </li>
                     <li class="no-disc">
@@ -65,7 +63,6 @@
                     {% endif %}
                 </ul>
             </div>
-        </div>
         <div class="notification">
             <span class="notificationTxt">{{ nombreNotifications }}</span>
         </div>
