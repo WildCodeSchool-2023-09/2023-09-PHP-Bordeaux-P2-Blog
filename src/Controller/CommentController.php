@@ -98,8 +98,8 @@ class CommentController extends AbstractController
 
             return $this->twig->render('Comment/edit.html.twig', ['comment' => $comment]);
         } else {
-            return $this->twig->render
-            ('Error/index.html.twig', ['message' => 'Vous n\'êtes pas autorisé à éditer ce commentaire.']);
+            return $this->twig->render('Error/index.html.twig', ['message' =>
+            'Vous n\'êtes pas autorisé à éditer ce commentaire.']);
         }
     }
 }
