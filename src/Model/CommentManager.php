@@ -44,4 +44,13 @@ class CommentManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    public function editComment(int $commentId, array $data)
+    {
+        $query = 'UPDATE ' . self::TABLE . ' SET content = :content WHERE id = :id';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':content', $data['content'], PDO::PARAM_STR);
+        $statement->bindValue(':id', $commentId, PDO::PARAM_INT);
+        return $statement->execute();
+    }
 }

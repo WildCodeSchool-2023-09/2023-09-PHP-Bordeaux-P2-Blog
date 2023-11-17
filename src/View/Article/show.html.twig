@@ -20,6 +20,7 @@
                 <strong>Utilisateur:</strong> {{ comment.user_name }}<br>
                 <p>{{ comment.content | raw }}</p>
                 {% if "user_id" is defined %}
+                    <a href="/comment/edit?comment_id={{ comment.id }}"><button>Éditer commentaire</button></a>
                     <a href="/comment/delete?comment_id={{comment.id}}"><button>Supprimer commentaire</button></a>
                 {% endif %}
             </li>
