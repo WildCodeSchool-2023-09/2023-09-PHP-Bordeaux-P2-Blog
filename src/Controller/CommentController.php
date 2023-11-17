@@ -27,7 +27,9 @@ class CommentController extends AbstractController
 
                 if ($commentId) {
                     // Redirection vers la page de l'article après l'ajout du commentaire
-                    header('Location: /show?id=' . $articleId);
+                    header(
+                        'Location: /show?id=' . $articleId
+                    );
                     exit();
                 }
             } else {
@@ -64,7 +66,9 @@ class CommentController extends AbstractController
                     // Vérifier si 'article_id' est présent dans $_POST
                     if (isset($comment['article_id'])) {
                         $articleId = $comment['article_id'];
-                        header('Location: /show?id=' . $articleId);
+                        header(
+                            'Location: /show?id=' . $articleId
+                        );
                         exit();
                     }
                 }
@@ -92,7 +96,9 @@ class CommentController extends AbstractController
                 $data = ['content' => $content];
 
                 $commentManager->editComment($commentId, $data);
-                header('Location: /show?id=' . $comment['article_id']);
+                header(
+                    'Location: /show?id=' . $comment['article_id']
+                );
                 exit();
             }
 
@@ -100,10 +106,8 @@ class CommentController extends AbstractController
         } else {
             return $this->twig->render(
                 'Error/index.html.twig',
-                [
-                    'message' => 'Vous n\'êtes pas autorisé à éditer ce commentaire.'
-                ]
-            ); 
+                ['message' => 'Vous n\'êtes pas autorisé à éditer ce commentaire.']
+            );
         }
     }
 }
