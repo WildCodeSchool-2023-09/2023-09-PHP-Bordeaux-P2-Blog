@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\ArticleManager;
 use App\Model\CommentManager;
+use App\Model\CategoryManager;
 
 class ArticleController extends AbstractController
 {
@@ -44,6 +45,7 @@ class ArticleController extends AbstractController
             $title = $_POST['title'];
             $content = $_POST['content'];
             $image = $_POST['image'];
+            $category = $_POST['category'];// rajouter par côme
 
             // Vérifie si l'utilisateur est connecté
             if (isset($_SESSION['user_id'])) {
@@ -57,7 +59,10 @@ class ArticleController extends AbstractController
                 ];
 
                 $articleManager = new ArticleManager();
-                $articleManager->addArticle($data);
+                $insertedArticleId = $articleManager->addArticle($data);// rajouter par côme
+
+                $articleManager->addCategory($insertedArticleId, $category);// rajouter par côme
+
                 // Redirige l'utilisateur vers la page de son profil
                 header('Location: /profil');
             } else {
@@ -67,9 +72,16 @@ class ArticleController extends AbstractController
         }
 
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
-        return $this->twig->render('Article/add.html.twig', ['userId' => $userId]);
-    }
+        // rajouter par côme de la
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
 
+        return $this->twig->render('Article/add.html.twig', [
+            'userId' => $userId,
+            'categories' => $categories
+        ]);
+    }
+        // rajouter par côme a la
     public function editArticleById($articleId)
     {
         $articleManager = new ArticleManager();

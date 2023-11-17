@@ -19,6 +19,14 @@
     <li>
         <h3>{{ article.title }}</h3>
         <p>{{ article.content | raw }}</p>
+                {# Boucle sur les catégories pour créer les options de la liste déroulante #}
+                <p><strong>Categories :</strong>
+                    {% for category in article.categories %}
+                        {{ category.name }}
+                        {% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </p>{# je fini a faire ma merde côme #}
+                
         <a href="/article/edit?id={{ article.id }}">Éditer</a>
         <a href="/article/delete?id={{ article.id }}">Supprimer</a>
         <a href="/show?id={{ article.id }}"

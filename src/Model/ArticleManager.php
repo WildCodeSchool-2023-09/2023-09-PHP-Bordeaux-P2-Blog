@@ -20,6 +20,8 @@ class ArticleManager extends AbstractManager
         $statement->bindValue(':image', $data['image']);
         $statement->bindValue(':blog_user_id', $data['blog_user_id'], \PDO::PARAM_INT);
         $statement->execute();
+        // TODO RETURN LAST ARTICLE ID
+        return $this->pdo->lastInsertId();// rajouter par côme
     }
 
     public function editArticle(int $articleId, array $data)
@@ -96,5 +98,29 @@ class ArticleManager extends AbstractManager
         }
 
         return $articles;
+    }
+
+    public function getCategoriesByArticleId($articleId)// rajouter par côme
+    {
+        $query = 'SELECT C.name FROM category C
+                JOIN article_category AC ON C.id = AC.category_id
+                WHERE AC.article_id = :articleId';
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':articleId', $articleId, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function addCategory(int $articleId, int $categoryId)// rajouter par côme
+    {
+        $query = "INSERT INTO article_category (article_id, category_id) VALUES (:articleId, :categoryId)";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':articleId', $articleId, \PDO::PARAM_INT);
+        $statement->bindValue(':categoryId', $categoryId, \PDO::PARAM_INT);
+        $statement->execute();
     }
 }

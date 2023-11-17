@@ -21,7 +21,12 @@ class ProfilController extends AbstractController
             $articleManager = new ArticleManager();
             $articles = $articleManager->getArticlesByUserId($userId);
 
-            echo $this->twig->render(
+            // Récupère les category des articles de l'utilisateur
+            foreach ($articles as &$article) { // rajouter par côme
+                $article['categories'] = $articleManager->getCategoriesByArticleId($article['id']);
+            }
+
+            return $this->twig->render(
                 'Blog_user/profil.html.twig',
                 ['userId' => $getUserId, 'articles' => $articles, 'nombreNotifications' => $nombreNotifications]
             );

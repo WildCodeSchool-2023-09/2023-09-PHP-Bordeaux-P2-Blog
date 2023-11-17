@@ -7,15 +7,28 @@
 
     <label for="content">Contenu :</label>
     <textarea name="content" id="content" required></textarea><br />
+{# je commence a faire ma merde côme #}
 
-    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace("content");
-    </script>
+<label for="category">Catégorie :</label>
+        <select name="category" id="category" required>
+            {# Boucle sur les catégories pour créer les options de la liste déroulante #}
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select><br />
+
+
+{# je fini a faire ma merde côme #}
 
     <label for="image">Image (facultatif) :</label>
     <input type="text" name="image" id="image" /><br />
 
     <button type="submit">Ajouter</button>
 </form>
-{% endblock %} {% block JavaScript %} {% endblock %}
+{% endblock %} 
+{% block javascript %} 
+  <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("content");
+    </script>
+{% endblock %}
