@@ -5,28 +5,38 @@
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/profil.css">{% endblock %}
 
 {% block content %}
-<h1>Profil de l'utilisateur</h1>
-<h2>Informations personnelles</h2>
-<p><strong>Nom :</strong> {{ userId.name }}</p>
-<p><strong>Image :</strong> {{ userId.image | raw }}</p>
+
+<h1 class= "blog">BLOG de {{ userId.name }}</h1>
+{# <div class = 'border'>  #}
+
+<div class = "profil"
+{#<img src=> {{ userId.image | raw }}</p>#}
+<img src= https://photos.app.goo.gl/oQyZa71ePotBXPGb9 
+<p><strong>Pseudo :</strong> {{ userId.name }}</p>
 <p><strong>Titre :</strong> {{ userId.title }}</p>
 <p><strong>Description :</strong> {{ userId.description | raw }}</p>
-<a href="/forgot_password">Réinitialiser le mot de passe</a>
+</div>
+<a href="/forgot_password" class= "submit">Réinitialiser le mot de passe</a>
 
+<div class= "article">
 <h2>Mes articles</h2>
 <ul>
     {% for article in articles %}
     <li>
         <h3>{{ article.title }}</h3>
         <p>{{ article.content | raw }}</p>
-        <a href="/article/edit?id={{ article.id }}">Éditer</a>
-        <a href="/article/delete?id={{ article.id }}">Supprimer</a>
-        <a href="/show?id={{ article.id }}"
-            >Commentaires ({{ article.comment_count }})</a
-        >
+        <div class= "submit-container">
+        <a href="/article/edit?id={{ article.id }}" class= 'submit'>Éditer</a>
+        <a href="/article/delete?id={{ article.id }}" class= 'submit'>Supprimer</a>
+        </div>
+        <div><a href="/show?id={{ article.id }}" 
+            >Commentaires ({{ article.comment_count }})</a>
+        </div>
     </li>
     {% endfor %}
 </ul>
+</div>
 
 <a href="/article/add">Ajouter un article</a>
+</div>
 {% endblock %}
