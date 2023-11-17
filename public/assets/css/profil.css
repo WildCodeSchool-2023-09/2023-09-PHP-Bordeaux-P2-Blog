@@ -14,12 +14,19 @@
 
 .profil {
     
-    /* border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
-    margin-top: 20px; */
+    margin-top: 20px; 
     align-items: flex-start;
     color: #233521;
 }
+
+.profil img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
 .article{
     /* border-bottom: 1px solid #ccc; */
     padding-bottom: 10px;

@@ -9,12 +9,11 @@
 <h1 class= "blog">BLOG de {{ userId.name }}</h1>
 {# <div class = 'border'>  #}
 
-<div class = "profil"
-{#<img src=> {{ userId.image | raw }}</p>#}
-<img src= https://photos.app.goo.gl/oQyZa71ePotBXPGb9>
-<p><strong>Pseudo :</strong> {{ userId.name }}</p>
-<p><strong>Titre :</strong> {{ userId.title }}</p>
-<p><strong>Description :</strong> {{ userId.description | raw }}</p>
+<div class = "profil">
+    <img src="{{ userId.image }}">
+    <span><strong>Pseudo :</strong> {{ userId.name }}</span>
+    <span><strong>Titre :</strong> {{ userId.title }}</span>
+    <p><strong>Description :</strong> {{ userId.description | raw }}</p>
 </div>
 <a href="/forgot_password" class= "submit">Réinitialiser le mot de passe</a>
 
