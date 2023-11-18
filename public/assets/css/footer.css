@@ -9,6 +9,7 @@ footer {
 .footer-content {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .contact-info a,
