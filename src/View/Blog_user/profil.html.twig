@@ -19,6 +19,7 @@ endblock %} {% block stylesheet %}<link
     <li>
         <h3>{{ article.title }}</h3>
         <p>{{ article.content | raw }}</p>
+        <p>Catégorie(s) : {{ article.categories | default('Aucune catégorie') }}</p>
         <a href="/article/edit?id={{ article.id }}">Éditer</a>
         <a href="/article/delete?id={{ article.id }}">Supprimer</a>
         <a href="/show?id={{ article.id }}"

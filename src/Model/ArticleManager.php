@@ -54,18 +54,18 @@ class ArticleManager extends AbstractManager
     }
 
     public function getAllArticles()
-{
-    $query = "SELECT A.*, BU.name AS author_name, COUNT(C.id) AS comment_count, 
-              GROUP_CONCAT(CAT.name SEPARATOR ', ') AS categories
-              FROM article A
-              INNER JOIN blog_user BU ON A.blog_user_id = BU.id
-              LEFT JOIN commentary C ON A.id = C.article_id
-              LEFT JOIN article_category AC ON A.id = AC.article_id
-              LEFT JOIN category CAT ON AC.category_id = CAT.id
-              GROUP BY A.id";
+    {
+        $query = "SELECT A.*, BU.name AS author_name, COUNT(C.id) AS comment_count, 
+                GROUP_CONCAT(CAT.name SEPARATOR ', ') AS categories
+                FROM article A
+                INNER JOIN blog_user BU ON A.blog_user_id = BU.id
+                LEFT JOIN commentary C ON A.id = C.article_id
+                LEFT JOIN article_category AC ON A.id = AC.article_id
+                LEFT JOIN category CAT ON AC.category_id = CAT.id
+                GROUP BY A.id";
 
-    return $this->pdo->query($query)->fetchAll();
-}
+        return $this->pdo->query($query)->fetchAll();
+    }
 
     public function getArticleById(int $articleId)
     {
@@ -102,4 +102,17 @@ class ArticleManager extends AbstractManager
 
         return $articles;
     }
+
+    public function getArticlesWithCategoriesByUserId($userId) {
+        $query = "SELECT A.*, GROUP_CONCAT(CAT.name SEPARATOR ', ') AS categories
+                  FROM article A
+                  LEFT JOIN article_category AC ON A.id = AC.article_id
+                  LEFT JOIN category CAT ON AC.category_id = CAT.id
+                  WHERE A.blog_user_id = :userId
+                  GROUP BY A.id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll();
+    } 
 }
