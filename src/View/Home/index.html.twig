@@ -1,8 +1,13 @@
-{% extends 'layout.html.twig' %} {% block title %}Blog - Accueil{% endblock %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}Blog - Accueil{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/index.css">{% endblock %}
+
 {% block content %}
 
 <h1>Articles récents</h1>
-<ul>
+<ul class = 'flexArticle'>
     {% for article in articles %}
     <li>
         <h2>{{ article.title }}</h2>
@@ -29,7 +34,7 @@
         {% endif %} {% endif %}
     </li>
     {% else %}
-    <li>Aucun article à afficher.</li>
+    <li class = 'SSarticle'>Aucun article à afficher !!!</li>
     {% endfor %}
 </ul>
 {% endblock %}
