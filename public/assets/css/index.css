@@ -16,12 +16,11 @@ main h1 {
 
 .flexArticle {
     display: flex;
-    flex-wrap: wrap; /* Cela permet aux éléments de passer à la ligne suivante s'ils ne rentrent pas */
-    justify-content: space-between; /* Ajustez cette propriété selon vos besoins */
+    flex-wrap: wrap; 
+    justify-content: space-between;
     width: 80%;   
     margin-left: auto;
     margin-right: auto;
-
 }
 
 .flexArticle li {
