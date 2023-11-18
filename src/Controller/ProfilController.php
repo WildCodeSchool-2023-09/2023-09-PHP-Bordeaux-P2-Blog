@@ -67,8 +67,7 @@ class ProfilController extends AbstractController
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Valide les données du formulaire.
-
+            $errors = [];
             $data = [
                 'name' => $_POST['name'],
                 'password' => $_POST['password'],
@@ -77,35 +76,35 @@ class ProfilController extends AbstractController
                 'description' => $_POST['description'],
             ];
 
-            // Traitement de l'image de profil
-            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            if (!isset($_FILES['image']) || $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
+                $errors[] = 'Please upload a valid image.';
+            } else {
                 $fileInfo = pathinfo($_FILES['image']['name']);
                 $extension = strtolower($fileInfo['extension']);
                 $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
 
                 if (in_array($extension, $allowedExtensions)) {
-                    // Définir le chemin où le fichier sera stocké
                     $uploadDir = __DIR__ . '/../../public/assets/images/uploaded/';
 
-                    // Créer le dossier de destination s'il n'existe pas
                     if (!is_dir($uploadDir)) {
                         mkdir($uploadDir, 0777, true);
                     }
 
                     $uploadPath = $uploadDir . uniqid('profile_image_') . '.' . $extension;
 
-                    // Déplacer le fichier téléchargé vers le dossier de destination
                     if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadPath)) {
-                        // Stocker le chemin relatif du fichier dans les données
                         $data['image'] = '/assets/images/uploaded/' . basename($uploadPath);
                     } else {
-                        // Gestion de l'erreur (échec du déplacement du fichier)
-                        die('Une erreur est survenue lors du téléchargement du fichier.');
+                        $errors[] = 'An error occurred while uploading the image.';
                     }
                 } else {
-                    // Gestion de l'erreur (extension non autorisée)
-                    die('L\'extension du fichier n\'est pas autorisée.');
+                    $errors[] = 'Invalid image file format. Please use JPG, JPEG, PNG, or GIF.';
                 }
+            }
+
+            if (!empty($errors)) {
+                echo $this->twig->render('Error/index.html.twig', ['message' => implode('<br>', $errors)]);
+                exit();
             }
 
             $profilManager = new ProfilManager();
