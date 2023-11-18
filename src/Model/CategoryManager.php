@@ -47,4 +47,21 @@ class CategoryManager extends AbstractManager
 
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function updateArticleCategories($articleId, array $selectedCategories) {
+        // Supprimer les anciennes associations
+        $deleteQuery = "DELETE FROM article_category WHERE article_id = :articleId";
+        $deleteStmt = $this->pdo->prepare($deleteQuery);
+        $deleteStmt->bindValue(':articleId', $articleId, PDO::PARAM_INT);
+        $deleteStmt->execute();
+    
+        // Ajouter les nouvelles associations
+        $insertQuery = "INSERT INTO article_category (article_id, category_id) VALUES (:articleId, :categoryId)";
+        $insertStmt = $this->pdo->prepare($insertQuery);
+        foreach ($selectedCategories as $categoryId) {
+            $insertStmt->bindValue(':articleId', $articleId, PDO::PARAM_INT);
+            $insertStmt->bindValue(':categoryId', $categoryId, PDO::PARAM_INT);
+            $insertStmt->execute();
+        }
+    }
 }

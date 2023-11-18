@@ -104,6 +104,10 @@ class ArticleController extends AbstractController
             'L\'article n\'existe pas.']);
         }
 
+        $categoryManager = new CategoryManager();
+        $allCategories = $categoryManager->selectAll();
+        $currentCategories = $categoryManager->getCategoriesByArticleId($articleId);
+
         // Vérifie si l'utilisateur est connecté et est l'auteur de l'article
         if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $article['blog_user_id']) {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -120,6 +124,11 @@ class ArticleController extends AbstractController
 
                 $articleManager->editArticle($articleId, $data);
 
+                // Mettre à jour les catégories
+                if (isset($_POST['categories'])) {
+                $categoryManager->updateArticleCategories($articleId, $_POST['categories']);
+                }
+
                 // Redirige l'utilisateur vers sa page de profil
                 header('Location: /profil');
                 exit();
@@ -127,7 +136,12 @@ class ArticleController extends AbstractController
 
             $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-            echo $this->twig->render('Article/edit.html.twig', ['article' => $article, 'userId' => $userId]);
+            echo $this->twig->render('Article/edit.html.twig', [
+                'article' => $article, 
+                'userId' => $userId,
+                'allCategories' => $allCategories,
+                'currentCategories' => array_column($currentCategories, 'id') // Assurez-vous que c'est un tableau d'ID
+            ]);
         } else {
             echo $this->twig->render('Error/index.html.twig', ['message' =>
             'Vous n\'êtes pas autorisé à éditer cet article. 

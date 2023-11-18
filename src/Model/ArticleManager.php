@@ -103,7 +103,8 @@ class ArticleManager extends AbstractManager
         return $articles;
     }
 
-    public function getArticlesWithCategoriesByUserId($userId) {
+    public function getArticlesWithCategoriesByUserId($userId)
+    {
         $query = "SELECT A.*, GROUP_CONCAT(CAT.name SEPARATOR ', ') AS categories
                   FROM article A
                   LEFT JOIN article_category AC ON A.id = AC.article_id
@@ -114,5 +115,5 @@ class ArticleManager extends AbstractManager
         $statement->bindValue(':userId', $userId, PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchAll();
-    } 
+    }
 }
