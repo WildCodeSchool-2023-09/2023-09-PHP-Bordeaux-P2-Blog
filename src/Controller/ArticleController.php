@@ -37,8 +37,8 @@ class ArticleController extends AbstractController
         $comments = $commentManager->getCommentsByArticleId($articleId);
 
         return $this->twig->render('Article/show.html.twig', [
-            'article' => $article, 
-            'comments' => $comments, 
+            'article' => $article,
+            'comments' => $comments,
             'userId' => $userId,
             'categories' => $categories
         ]);
@@ -74,7 +74,6 @@ class ArticleController extends AbstractController
                     // Associer la nouvelle catégorie à l'article
                     $categoryManager->addCategoryToArticle($articleId, $newCategoryId);
                 }
-    
                 // Gestion des catégories existantes
                 if (isset($_POST['categories'])) {
                     foreach ($_POST['categories'] as $categoryId) {

@@ -4,10 +4,12 @@ namespace App\Model;
 
 use PDO;
 
-class CategoryManager extends AbstractManager {
+class CategoryManager extends AbstractManager
+{
     public const TABLE = 'category';
 
-    public function selectAll(string $orderBy = '', string $direction = 'ASC'): array {
+    public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
+    {
         $query = 'SELECT * FROM ' . self::TABLE;
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
@@ -15,7 +17,7 @@ class CategoryManager extends AbstractManager {
         return $this->pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function addCategoryToArticle(int $articleId, int $categoryId): void 
+    public function addCategoryToArticle(int $articleId, int $categoryId): void
     {
         $query = 'INSERT INTO article_category (article_id, category_id) VALUES (:article_id, :category_id)';
         $statement = $this->pdo->prepare($query);
@@ -34,16 +36,15 @@ class CategoryManager extends AbstractManager {
         return (int) $this->pdo->lastInsertId();
     }
 
-    public function getCategoriesByArticleId(int $articleId): array {
+    public function getCategoriesByArticleId(int $articleId): array
+    {
         $query = "SELECT C.* FROM category C
                   JOIN article_category AC ON C.id = AC.category_id
                   WHERE AC.article_id = :articleId";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':articleId', $articleId, PDO::PARAM_INT);
         $statement->execute();
-    
+
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-    
 }
-
