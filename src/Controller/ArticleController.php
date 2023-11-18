@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\Model\CategoryManager;
 use App\Model\CommentManager;
 
 class ArticleController extends AbstractController
@@ -29,12 +30,18 @@ class ArticleController extends AbstractController
         $article = $articleManager->getArticleById($articleId);
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->getCategoriesByArticleId($articleId);
+
         $commentManager = new CommentManager();
         $comments = $commentManager->getCommentsByArticleId($articleId);
-        return $this->twig->render(
-            'Article/show.html.twig',
-            ['article' => $article, 'comments' => $comments, 'userId' => $userId]
-        );
+
+        return $this->twig->render('Article/show.html.twig', [
+            'article' => $article, 
+            'comments' => $comments, 
+            'userId' => $userId,
+            'categories' => $categories
+        ]);
     }
 
     public function addArticle()
@@ -57,18 +64,36 @@ class ArticleController extends AbstractController
                 ];
 
                 $articleManager = new ArticleManager();
-                $articleManager->addArticle($data);
-                // Redirige l'utilisateur vers la page de son profil
+                $articleId = $articleManager->addArticle($data);
+                $categoryManager = new CategoryManager();
+
+                // Vérifie si une nouvelle catégorie est fournie
+                if (!empty($_POST['new_category'])) {
+                    // Ajouter la nouvelle catégorie
+                    $newCategoryId = $categoryManager->addCategory($_POST['new_category']);
+                    // Associer la nouvelle catégorie à l'article
+                    $categoryManager->addCategoryToArticle($articleId, $newCategoryId);
+                }
+    
+                // Gestion des catégories existantes
+                if (isset($_POST['categories'])) {
+                    foreach ($_POST['categories'] as $categoryId) {
+                        $categoryManager->addCategoryToArticle($articleId, $categoryId);
+                    }
+                }
                 header('Location: /profil');
             } else {
-                // L'utilisateur n'est pas connecté=>vers la page de connexion.
                 header('Location: /login');
             }
         }
 
+        // Affichage du formulaire avec les catégories
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
-        return $this->twig->render('Article/add.html.twig', ['userId' => $userId]);
+        return $this->twig->render('Article/add.html.twig', ['userId' => $userId, 'categories' => $categories]);
     }
+
 
     public function editArticleById($articleId)
     {

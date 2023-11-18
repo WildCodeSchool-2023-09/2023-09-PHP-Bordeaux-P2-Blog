@@ -19,6 +19,18 @@
     <label for="image">Image (facultatif) :</label>
     <input type="text" name="image" id="image" /><br />
 
+    <!-- Champ de sélection des catégories -->
+    <label for="categories">Catégories (optionnel):</label>
+    <select name="categories[]" id="categories" multiple>
+        {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+    </select><br />
+
+     <!-- Champ pour une nouvelle catégorie -->
+    <label for="new_category">Nouvelle Catégorie (optionnel) :</label>
+    <input type="text" name="new_category" id="new_category" /><br />
+
     <button class="submit" type="submit">Ajouter</button>
 </form>
 

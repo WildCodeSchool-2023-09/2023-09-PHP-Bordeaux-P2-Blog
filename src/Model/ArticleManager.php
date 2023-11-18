@@ -20,6 +20,8 @@ class ArticleManager extends AbstractManager
         $statement->bindValue(':image', $data['image']);
         $statement->bindValue(':blog_user_id', $data['blog_user_id'], \PDO::PARAM_INT);
         $statement->execute();
+
+        return (int) $this->pdo->lastInsertId();
     }
 
     public function editArticle(int $articleId, array $data)
