@@ -71,9 +71,10 @@ class ArticleManager extends AbstractManager
     public function getArticleById(int $articleId)
     {
         $query = "SELECT A.*, BU.name AS author_name
-    FROM " . static::TABLE . " AS A 
-    LEFT JOIN blog_user BU ON A.blog_user_id = BU.id 
-    WHERE A.id = :id";
+                  FROM " . static::TABLE . " AS A 
+                  LEFT JOIN blog_user BU ON A.blog_user_id = BU.id 
+                  WHERE A.id = :id";
+                  
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':id', $articleId, \PDO::PARAM_INT);
         $statement->execute();
@@ -112,9 +113,51 @@ class ArticleManager extends AbstractManager
                   LEFT JOIN category CAT ON AC.category_id = CAT.id
                   WHERE A.blog_user_id = :userId
                   GROUP BY A.id";
+
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':userId', $userId, PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchAll();
+    }
+
+    public function getArticlesByCategory($categoryId = null)
+    {
+        $query = "SELECT A.*, BU.name AS author_name
+                  FROM article A
+                  INNER JOIN blog_user BU ON A.blog_user_id = BU.id";
+
+        if ($categoryId) {
+            $query .= " JOIN article_category AC ON A.id = AC.article_id
+                        WHERE AC.category_id = :categoryId";
+        }
+
+        $query .= " GROUP BY A.id, BU.name";
+
+        $statement = $this->pdo->prepare($query);
+
+        if ($categoryId) {
+            $statement->bindValue(':categoryId', $categoryId, PDO::PARAM_INT);
+        }
+
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getArticlesByCategoryName($searchTerm)
+    {
+      $query = "SELECT A.*, BU.name AS author_name
+                FROM article A
+                INNER JOIN blog_user BU ON A.blog_user_id = BU.id
+                INNER JOIN article_category AC ON A.id = AC.article_id
+                INNER JOIN category C ON AC.category_id = C.id
+                WHERE C.name LIKE :searchTerm
+                GROUP BY A.id";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }

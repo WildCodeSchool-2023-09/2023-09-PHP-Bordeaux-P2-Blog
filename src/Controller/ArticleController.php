@@ -203,5 +203,24 @@ class ArticleController extends AbstractController
             Vous devez être connecté et être l\'auteur de l\'article.']);
         }
     }
+
+    public function searchByCategoryName()
+    {
+        $articleManager = new ArticleManager();
+        $searchTerm = $_GET['search_term'] ?? '';
+        $articles = $articleManager->getArticlesByCategoryName($searchTerm);
+
+        if (empty($articles)) {
+
+            return $this->twig->render('Error/index.html.twig', [
+                'message' => 'Catégorie introuvable.'
+            ]);
+        }
+
+        return $this->twig->render('Article/search_results.html.twig', [
+            'articles' => $articles,
+            'searchTerm' => $searchTerm
+        ]);
+    }
 }
 // Add a newline at the end of the file

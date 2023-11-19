@@ -1,6 +1,11 @@
 {% extends 'layout.html.twig' %} {% block title %}Blog - Accueil{% endblock %}
 {% block content %}
 
+<form action="/search" method="get">
+    <input type="text" name="search_term" placeholder="Rechercher un article par catégorie...">
+    <button type="submit">Rechercher</button>
+</form>
+
 <h1>Articles récents</h1>
 <ul>
     {% for article in articles %}
