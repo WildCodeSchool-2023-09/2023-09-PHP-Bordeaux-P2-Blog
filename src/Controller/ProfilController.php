@@ -139,6 +139,7 @@ class ProfilController extends AbstractController
             }
         }
 
-        echo $this->twig->render('Blog_user/forgot_password.html.twig');
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+        echo $this->twig->render('Blog_user/forgot_password.html.twig', ['userId' => $userId]);
     }
 }

@@ -22,9 +22,8 @@ endblock %} {% block stylesheet %}<link
         <p>Catégorie(s) : {{ article.categories | default('Aucune catégorie') }}</p>
         <a href="/article/edit?id={{ article.id }}">Éditer</a>
         <a href="/article/delete?id={{ article.id }}">Supprimer</a>
-        <a href="/show?id={{ article.id }}"
-            >Commentaires ({{ article.comment_count }})</a
-        >
+        <p><a href="/show?id={{ article.id }}"
+            >Commentaires ({{ article.comment_count }})</a></p>
     </li>
     {% endfor %}
 </ul>

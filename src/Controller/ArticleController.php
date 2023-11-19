@@ -67,14 +67,10 @@ class ArticleController extends AbstractController
                 $articleId = $articleManager->addArticle($data);
                 $categoryManager = new CategoryManager();
 
-                // Vérifie si une nouvelle catégorie est fournie
                 if (!empty($_POST['new_category'])) {
-                    // Ajouter la nouvelle catégorie
                     $newCategoryId = $categoryManager->addCategory($_POST['new_category']);
-                    // Associer la nouvelle catégorie à l'article
                     $categoryManager->addCategoryToArticle($articleId, $newCategoryId);
                 }
-                // Gestion des catégories existantes
                 if (isset($_POST['categories'])) {
                     foreach ($_POST['categories'] as $categoryId) {
                         $categoryManager->addCategoryToArticle($articleId, $categoryId);
@@ -94,60 +90,69 @@ class ArticleController extends AbstractController
     }
 
 
-    public function editArticleById($articleId)
-    {
+    public function editArticleById($articleId) {
         $articleManager = new ArticleManager();
         $article = $articleManager->getArticleById($articleId);
-
+    
         if (!$article) {
-            echo $this->twig->render('Error/index.html.twig', ['message' =>
-            'L\'article n\'existe pas.']);
+            echo $this->twig->render('Error/index.html.twig', ['message' => 'L\'article n\'existe pas.']);
+            exit();
         }
-
+    
         $categoryManager = new CategoryManager();
         $allCategories = $categoryManager->selectAll();
-        $currentCategories = $categoryManager->getCategoriesByArticleId($articleId);
-
-        // Vérifie si l'utilisateur est connecté et est l'auteur de l'article
+    
         if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $article['blog_user_id']) {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Valide les données du formulaire
                 $title = $_POST['title'];
                 $content = $_POST['content'];
                 $image = $_POST['image'];
-
+    
                 $data = [
                     'title' => $title,
                     'content' => $content,
                     'image' => $image,
                 ];
-
+    
                 $articleManager->editArticle($articleId, $data);
-
-                // Mettre à jour les catégories
-                if (isset($_POST['categories'])) {
-                $categoryManager->updateArticleCategories($articleId, $_POST['categories']);
+    
+                // Supprime toutes les associations de catégories existantes pour cet article
+                $categoryManager->deleteAllCategoriesFromArticle($articleId);
+    
+                // Traiter et ajouter la nouvelle catégorie
+                if (!empty($_POST['new_category'])) {
+                    $newCategoryName = trim($_POST['new_category']);
+                    if (!$categoryManager->doesCategoryExist($newCategoryName)) {
+                        $newCategoryId = $categoryManager->addCategory($newCategoryName);
+                        $categoryManager->addCategoryToArticle($articleId, $newCategoryId);
+                    }
+                } else if (isset($_POST['categories']) && is_array($_POST['categories'])) {
+                    // Traiter les catégories existantes sélectionnées
+                    foreach ($_POST['categories'] as $categoryId) {
+                        $categoryManager->addCategoryToArticle($articleId, $categoryId);
+                    }
                 }
-
-                // Redirige l'utilisateur vers sa page de profil
+    
                 header('Location: /profil');
                 exit();
             }
-
-            $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
-
-            echo $this->twig->render('Article/edit.html.twig', [
-                'article' => $article, 
+    
+            $userId = $_SESSION['user_id'];
+    
+            // Récupère les catégories actuelles pour l'affichage dans le formulaire
+            $currentCategories = $categoryManager->getCategoriesByArticleId($articleId);
+    
+            return $this->twig->render('Article/edit.html.twig', [
+                'article' => $article,
                 'userId' => $userId,
                 'allCategories' => $allCategories,
-                'currentCategories' => array_column($currentCategories, 'id') // Assurez-vous que c'est un tableau d'ID
+                'currentCategories' => array_column($currentCategories, 'id')
             ]);
         } else {
-            echo $this->twig->render('Error/index.html.twig', ['message' =>
-            'Vous n\'êtes pas autorisé à éditer cet article. 
-            Vous devez être connecté et être l\'auteur de l\'article.']);
+            echo $this->twig->render('Error/index.html.twig', ['message' => 'Vous n\'êtes pas autorisé à éditer cet article. Vous devez être connecté et être l\'auteur de l\'article.']);
         }
     }
+    
 
     public function deleteArticleById($articleId)
     {

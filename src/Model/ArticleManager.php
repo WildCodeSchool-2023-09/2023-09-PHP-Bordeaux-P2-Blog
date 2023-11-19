@@ -62,7 +62,8 @@ class ArticleManager extends AbstractManager
                 LEFT JOIN commentary C ON A.id = C.article_id
                 LEFT JOIN article_category AC ON A.id = AC.article_id
                 LEFT JOIN category CAT ON AC.category_id = CAT.id
-                GROUP BY A.id";
+                GROUP BY A.id, BU.name
+                ORDER BY A.date DESC";
 
         return $this->pdo->query($query)->fetchAll();
     }
