@@ -29,4 +29,11 @@ main h1 {
     padding: 10px;
     border: 2px solid var(--second-color);
     margin-bottom: 30px;
+    overflow: hidden; /* Masque le surplus de contenu */
+}
+
+.flexArticle li p {
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    overflow: hidden; /* Masque le surplus de texte */
+    text-overflow: ellipsis; /* Ajoute des points de suspension (...) pour indiquer qu'il y a plus de texte */
 }

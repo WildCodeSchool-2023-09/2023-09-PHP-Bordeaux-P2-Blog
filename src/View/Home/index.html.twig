@@ -10,15 +10,16 @@
 <ul class = 'flexArticle'>
     {% for article in articles %}
     <li>
-        <h2>{{ article.title }}</h2>
+        <a href="/show?id={{ article.id }}">
+        <h2>{{ article.title }}</h2> </a>
 
         <p>{{ article.content | raw }}</p>
         <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
         <p>Par {{ article.author_name }}</p>
 
         <a href="/show?id={{ article.id }}"
-            >Commentaires ({{ article.comment_count }})</a
-        >
+            >Commentaires ({{ article.comment_count }})</a>
+
         {% if article.blog_user_id is defined %} {% if userId %}
         <form method="post" action="/comment/add">
             <input type="hidden" name="article_id" value="{{ article.id }}" />
