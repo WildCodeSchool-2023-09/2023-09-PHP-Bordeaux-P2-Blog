@@ -14,7 +14,7 @@ footer {
 
 .contact-info a,
 .privacy-policy a {
-    color: #cc9c65;
+    color: var(--second-color);
     text-decoration: none;
 }
 
