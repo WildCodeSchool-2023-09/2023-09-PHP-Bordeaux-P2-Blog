@@ -65,23 +65,26 @@ class CategoryManager extends AbstractManager
         }
     }
 
-    public function doesCategoryExist(string $categoryName): bool {
+    public function doesCategoryExist(string $categoryName): bool
+    {
         $query = 'SELECT COUNT(*) FROM ' . static::TABLE . ' WHERE name = :name';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':name', $categoryName);
         $statement->execute();
-    
+
         return $statement->fetchColumn() > 0;
     }
-    
-    public function deleteAllCategoriesFromArticle($articleId) {
+
+    public function deleteAllCategoriesFromArticle($articleId)
+    {
         $query = "DELETE FROM article_category WHERE article_id = :articleId";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':articleId', $articleId, PDO::PARAM_INT);
         $statement->execute();
     }
 
-    public function getCategoryIdByName(string $categoryName): ?int {
+    public function getCategoryIdByName(string $categoryName): ?int
+    {
         $query = 'SELECT id FROM category WHERE name = :name';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':name', $categoryName, PDO::PARAM_STR);
@@ -90,5 +93,4 @@ class CategoryManager extends AbstractManager
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result ? (int)$result['id'] : null;
     }
-    
 }
