@@ -28,6 +28,15 @@ main h1 {
     text-align: center;
 }
 
+.date {
+    font-style: italic;
+}
+
+.author {
+    font-style: italic;
+    color: #6941C6;
+}
+
 .flexArticle li {
     width: 45%;
     list-style: none;

@@ -14,9 +14,9 @@
         <h2>{{ article.title }}</h2> </a>
 
         <p>{{ article.content | raw }}</p>
-        <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
+        <p class = "date">Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
         <a href="/profil?id={{ userId }}">
-        <p>Par {{ article.author_name }}</p></a>
+        <p class = "author">Par {{ article.author_name }}</p></a>
 
         <a href="/show?id={{ article.id }}">
             Commentaires ({{ article.comment_count }})</a>
