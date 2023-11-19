@@ -23,6 +23,11 @@ main h1 {
     margin-right: auto;
 }
 
+.flexArticle h2 {
+    color: var(--second-color); 
+    text-align: center;
+}
+
 .flexArticle li {
     width: 45%;
     list-style: none;
