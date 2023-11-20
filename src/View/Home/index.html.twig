@@ -15,7 +15,18 @@
         <p>{{ article.content | raw }}</p>
         <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
         <p>Par {{ article.author_name }}</p>
-        <p>Catégorie(s) : {{ article.categories | default('Aucune catégorie') }}</p>
+        <p>Catégorie(s) : {% if article.categories %}
+                {% for category in article.categories %}
+                    <form action="/search" method="get" style="display: inline;">
+                        <input type="hidden" name="search_term" value="{{ category }}">
+                        <button type="submit">{{ category }}</button>
+                    </form>
+                {% endfor %}
+            {% else %}
+                Aucune catégorie
+            {% endif %}
+            </p>
+
 
         <a href="/show?id={{ article.id }}"
             >Commentaires ({{ article.comment_count }})</a

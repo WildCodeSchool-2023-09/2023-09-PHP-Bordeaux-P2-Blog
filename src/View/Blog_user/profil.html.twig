@@ -3,10 +3,7 @@ endblock %} {% block stylesheet %}<link
     rel="stylesheet"
     href="/assets/css/profil.css"
 />{% endblock %} {% block content %}
-<form action="/search" method="get">
-    <input type="text" name="search_term" placeholder="Rechercher un article par catégorie...">
-    <button type="submit">Rechercher</button>
-</form>
+
 <h1>Profil de l'utilisateur</h1>
 <h2>Informations personnelles</h2>
 <p><strong>Nom :</strong> {{ userId.name }}</p>
@@ -23,7 +20,17 @@ endblock %} {% block stylesheet %}<link
     <li>
         <h3>{{ article.title }}</h3>
         <p>{{ article.content | raw }}</p>
-        <p>Catégorie(s) : {{ article.categories | default('Aucune catégorie') }}</p>
+        <p>Catégorie(s) : {% if article.categories %}
+                {% for category in article.categories %}
+                    <form action="/search" method="get" style="display: inline;">
+                        <input type="hidden" name="search_term" value="{{ category }}">
+                        <button type="submit">{{ category }}</button>
+                    </form>
+                {% endfor %}
+            {% else %}
+                Aucune catégorie
+            {% endif %}
+            </p>
         <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
         <a href="/article/edit?id={{ article.id }}">Éditer</a>
         <a href="/article/delete?id={{ article.id }}">Supprimer</a>

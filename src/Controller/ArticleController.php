@@ -13,6 +13,16 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticles();
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
+
+        $articles = array_map(function ($article) {
+            if (isset($article['categories'])) {
+                $article['categories'] = explode(',', $article['categories']);
+            }
+            return $article;
+        }, $articles);
+
+
         return $this->twig->render('Home/index.html.twig', ['articles' => $articles, 'userId' => $userId]);
     }
 
@@ -20,6 +30,7 @@ class ArticleController extends AbstractController
     {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getArticlesByUserId($userId);
+        
 
         return $this->twig->render('profil.html.twig', ['articles' => $articles]);
     }
@@ -204,20 +215,20 @@ class ArticleController extends AbstractController
         }
     }
 
-    public function searchByCategoryName(string $search_term)
+    public function searchByCategoryName(string $searchTerm)
     {
         $articleManager = new ArticleManager();
-        $articles = $articleManager->getArticlesByCategoryName($search_term);
+        $articles = $articleManager->getArticlesByCategoryName($searchTerm);
 
         if (empty($articles)) {
             return $this->twig->render('Error/index.html.twig', [
-                'message' => 'Aucun article trouvé pour la catégorie : ' . $search_term
+                'message' => 'Aucun article trouvé pour la catégorie : ' . $searchTerm
             ]);
         }
-
+       
         return $this->twig->render('Article/search_results.html.twig', [
             'articles' => $articles,
-            'search_term' => $search_term
+            'searchTerm' => $searchTerm
         ]);
     }
 }

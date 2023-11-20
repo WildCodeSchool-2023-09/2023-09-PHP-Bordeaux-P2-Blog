@@ -113,7 +113,7 @@ class ArticleManager extends AbstractManager
                   LEFT JOIN category CAT ON AC.category_id = CAT.id
                   WHERE A.blog_user_id = :userId
                   GROUP BY A.id
-              ORDER BY A.date DESC";
+                  ORDER BY A.date DESC";
 
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':userId', $userId, PDO::PARAM_INT);
@@ -145,7 +145,7 @@ class ArticleManager extends AbstractManager
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getArticlesByCategoryName($search_term)
+    public function getArticlesByCategoryName($searchTerm)
     {
         $query = "SELECT A.*, BU.name AS author_name
                   FROM article A
@@ -156,7 +156,7 @@ class ArticleManager extends AbstractManager
                   GROUP BY A.id
                   ORDER BY A.date DESC";
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':searchTerm', '%' . $search_term . '%', PDO::PARAM_STR);
+        $statement->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
         $statement->execute();
 
         return $statement->fetchAll(PDO::FETCH_ASSOC);
