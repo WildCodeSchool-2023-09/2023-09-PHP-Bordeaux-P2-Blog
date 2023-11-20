@@ -30,7 +30,6 @@ class ArticleController extends AbstractController
     {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getArticlesByUserId($userId);
-
         return $this->twig->render('profil.html.twig', ['articles' => $articles]);
     }
 
@@ -231,4 +230,3 @@ class ArticleController extends AbstractController
         ]);
     }
 }
-// Add a newline at the end of the file
