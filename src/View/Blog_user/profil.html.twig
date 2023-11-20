@@ -1,44 +1,9 @@
-{# {% extends 'layout.html.twig' %} {% block title %}Profil de l'utilisateur{%
-endblock %} {% block stylesheet %}<link
-    rel="stylesheet"
-    href="/assets/css/profil.css"
-/>{% endblock %} {% block content %}
-<h1>Profil de l'utilisateur</h1>
-<h2>Informations personnelles</h2>
-<p><strong>Nom :</strong> {{ userId.name }}</p>
-<p>
-    <strong>Image :</strong> <img src="{{ userId.image }}" alt="User Image" />
-</p>
-<p><strong>Titre :</strong> {{ userId.title }}</p>
-<p><strong>Description :</strong> {{ userId.description | raw }}</p>
-<a href="/forgot_password">Réinitialiser le mot de passe</a>
-
-<h2>Mes articles</h2>
-<ul>
-    {% for article in articles %}
-    <li>
-        <h3>{{ article.title }}</h3>
-        <p>{{ article.content | raw }}</p>
-        <p>
-            Catégorie(s) :
-            {{ article.categories | default('Aucune catégorie') }}
-        </p>
-        <a href="/article/edit?id={{ article.id }}">Éditer</a>
-        <a href="/article/delete?id={{ article.id }}">Supprimer</a>
-        <p>
-            <a href="/show?id={{ article.id }}"
-                >Commentaires ({{ article.comment_count }})</a
-            >
-        </p>
-    </li>
-    {% endfor %}
-</ul>
-
-<a href="/article/add">Ajouter un article</a>
-{% endblock %} #} {% extends 'layout.html.twig' %} {% block title %}Profil de
-l'utilisateur{% endblock %} {% block stylesheet %}
+{% extends 'layout.html.twig' %} 
+{% block title %}Profil de l'utilisateur{% endblock %} 
+{% block stylesheet %}
 <link rel="stylesheet" href="/assets/css/profil.css" />
-{% endblock %} {% block content %}
+{% endblock %} 
+{% block content %}
 <div class="blog">BLOG de {{ userId.name }}</div>
 <div class="container">
     <div class="article">
@@ -48,10 +13,18 @@ l'utilisateur{% endblock %} {% block stylesheet %}
 
             <h3>{{ article.title }}</h3>
             <p class="text">{{ article.content | raw }}</p>
-            <p>
-                Catégorie(s) :
-                {{ article.categories | default('Aucune catégorie') }}
+            <p>Catégorie(s) : {% if article.categories %}
+                {% for category in article.categories %}
+                    <form action="/search" method="get" style="display: inline;">
+                        <input type="hidden" name="search_term" value="{{ category }}">
+                        <button type="submit">{{ category }}</button>
+                    </form>
+                {% endfor %}
+            {% else %}
+                Aucune catégorie
+            {% endif %}
             </p>
+        <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
             <div class="button-container">
                 <a href="/article/edit?id={{ article.id }}" class="button"
                     >Éditer</a

@@ -1,20 +1,44 @@
-{% extends 'layout.html.twig' %} {% block title %}Blog - Accueil{% endblock %}
+{% extends 'layout.html.twig' %}
+
+{% block title %}Blog - Accueil{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/index.css">{% endblock %}
+
 {% block content %}
 
+<form action="/search" method="get">
+    <input type="text" name="search_term" placeholder="Rechercher un article par catégorie...">
+    <button type="submit">Rechercher</button>
+</form>
+
 <h1>Articles récents</h1>
-<ul>
+<ul class = 'flexArticle'>
     {% for article in articles %}
     <li>
-        <h2>{{ article.title }}</h2>
+        <a href="/show?id={{ article.id }}">
+        <h2>{{ article.title }}</h2> </a>
 
         <p>{{ article.content | raw }}</p>
-        <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
-        <p>Par {{ article.author_name }}</p>
-        <p>Catégorie(s) : {{ article.categories | default('Aucune catégorie') }}</p>
+        <p class = "date">Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
+        <a href="/profil?id={{ userId }}">
+        <p class = "author">Par {{ article.author_name }}</p></a>
+        <p>Catégorie(s) : {% if article.categories %}
+                {% for category in article.categories %}
+                    <form action="/search" method="get" style="display: inline;">
+                        <input type="hidden" name="search_term" value="{{ category }}">
+                        <button type="submit">{{ category }}</button>
+                    </form>
+                {% endfor %}
+            {% else %}
+                Aucune catégorie
+            {% endif %}
+            </p>
+            
+        <a href="/show?id={{ article.id }}">
+          Commentaires ({{ article.comment_count }})</a>
 
-        <a href="/show?id={{ article.id }}"
-            >Commentaires ({{ article.comment_count }})</a
-        >
+
+
         {% if article.blog_user_id is defined %} {% if userId %}
         <form method="post" action="/comment/add">
             <input type="hidden" name="article_id" value="{{ article.id }}" />
@@ -23,14 +47,14 @@
                 id="content_{{ article.id }}"
                 required
             ></textarea>
-            <button type="submit">Publier le commentaire</button>
+            <button class="submit" type="submit">Publier le commentaire</button>
         </form>
         {% else %}
         <p>Vous devez être <a href="/login">connecté</a> pour commenter.</p>
         {% endif %} {% endif %}
     </li>
     {% else %}
-    <li>Aucun article à afficher.</li>
+    <li class = 'SSarticle'>Aucun article à afficher !!!</li>
     {% endfor %}
 </ul>
 {% endblock %}
