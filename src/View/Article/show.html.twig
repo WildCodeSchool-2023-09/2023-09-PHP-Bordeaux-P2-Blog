@@ -8,6 +8,18 @@
         <div class="auteur">
     Auteur : {% if article.author_name is defined %}{{ article.author_name }}{%
     else %}Auteur inconnu{% endif %}
+</p>
+
+<!-- Affichage des catégories -->
+<p>Catégorie(s) : 
+    {% if categories is not empty %}
+        {% for category in categories %}
+            <span>{{ category.name }}</span>{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    {% else %}
+        Aucune catégorie
+    {% endif %}
+</p>
 
 <a class="editer"href="/article/edit?id={{ article.id }}">Éditer</a>
 <a class="suppr"href="/article/delete?id={{ article.id }}">Supprimer</a>
