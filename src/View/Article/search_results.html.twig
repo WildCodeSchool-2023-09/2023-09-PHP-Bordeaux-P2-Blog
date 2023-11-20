@@ -9,12 +9,11 @@
     <button type="submit">Rechercher</button>
 </form>
 
-<h1>Résultats de Recherche</h1>
 
-{% if searchTerm %}
-    <p>Résultats de recherche pour la catégorie: "{{ searchTerm }}"</p>
+{% if search_term %}
+    <h1>Résultats de recherche pour la catégorie: "{{ search_term }}"</h1>
 {% else %}
-    <p>Affichage de tous les articles</p>
+    <h1>Affichage de tous les articles</h1>
 {% endif %}
 
 {% if articles is not empty %}

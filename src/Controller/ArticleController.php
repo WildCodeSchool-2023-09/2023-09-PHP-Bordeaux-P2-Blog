@@ -204,21 +204,20 @@ class ArticleController extends AbstractController
         }
     }
 
-    public function searchByCategoryName()
+    public function searchByCategoryName(string $search_term)
     {
         $articleManager = new ArticleManager();
-        $searchTerm = $_GET['search_term'] ?? '';
-        $articles = $articleManager->getArticlesByCategoryName($searchTerm);
+        $articles = $articleManager->getArticlesByCategoryName($search_term);
 
         if (empty($articles)) {
             return $this->twig->render('Error/index.html.twig', [
-                'message' => 'Catégorie introuvable.'
+                'message' => 'Aucun article trouvé pour la catégorie : ' . $search_term
             ]);
         }
 
         return $this->twig->render('Article/search_results.html.twig', [
             'articles' => $articles,
-            'searchTerm' => $searchTerm
+            'search_term' => $search_term
         ]);
     }
 }

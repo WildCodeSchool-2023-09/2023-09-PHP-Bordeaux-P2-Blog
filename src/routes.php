@@ -26,5 +26,5 @@ return [
     'comment/delete' => ['CommentController', 'deleteCommentById', ['comment_id']],
     'forgot_password' => ['ProfilController', 'forgotPassword'],
     'comment/edit' => ['CommentController', 'editCommentById', ['comment_id']],
-    '/search' => ['ArticleController', 'searchByCategoryName'],
+    'search' => ['ArticleController', 'searchByCategoryName', ['search_term']]
 ];
