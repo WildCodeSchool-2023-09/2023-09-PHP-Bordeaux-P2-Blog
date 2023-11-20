@@ -1,3 +1,21 @@
+.contenant {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: auto;
+    padding: auto;
+    width: 80%
+  }
+
+.edit
+body, h1, h2, h3, p, label, button {
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
 
 .container {
     width: 90%;
@@ -29,6 +47,12 @@ textarea {
     padding: 8px;
     margin-bottom: 10px;
     box-sizing: border-box;
+    border-radius: 10px;
+}
+
+
+button:hover {
+    background-color: #45a049;
     border-radius: 0px;
     border: 2px solid #CC9C65;
 }

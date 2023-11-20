@@ -5,6 +5,11 @@ block stylesheet %}
 <div class="titre">
     <h1>S'inscrire</h1>
     <div class="center">
+        {# <form method="post">
+            <label for="name">Pseudo :</label> #}
+        <form method="post" enctype="multipart/form-data">
+            <label for="name">Pseudo :</label>
+            <input type="text" name="name" id="name" required /><br />
         <form method="post" enctype="multipart/form-data" autocomplete="on">
             <label for="name">Pseudo :</label>
             <input

@@ -17,6 +17,9 @@ form {
     align-items: center;
     justify-content: space-between;
     text-align: center;
+    width: 340px; 
+    height: 440px;
+    max-width: none; 
     width: 340px;
     height: 400px;
     max-width: none;

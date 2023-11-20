@@ -1,26 +1,23 @@
 .logo-container {
     margin-right: auto;
-    height: 60px;
+    height: 4em;
 }
 
 .logo-container img {
     height: 100%;
-    width: 135px;
+    width: 10em;
 }
-
 
 .navbar {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; 
+    /* position: relative; */
     height: 100px;
     top: 0;
     left: 0;
     background-color: #233521;
     border: 2px #cc9c65 solid;
-     /* list-style-type: none; */
-   
 }
 
 .white {
@@ -63,10 +60,11 @@
     border-radius: 0px;
     cursor: pointer;
     font-size: 1.5em;
-    /* box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
-        0px 0px 0px 0px #233521(39, 200, 255, 0.5); */
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px #233521(39, 200, 255, 0.5);
+    transition: all 0.2s;
     overflow: hidden;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .accueil-button::after {
@@ -86,8 +84,8 @@
 
 .accueil-button:hover {
     transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
-    -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, 0.25),
+        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
 }
 
 .profil-button {
@@ -101,9 +99,11 @@
     border-radius: 0px;
     cursor: pointer;
     font-size: 1.5em;
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px #233521(39, 200, 255, 0.5);
     transition: all 0.2s;
     overflow: hidden;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .profil-button::after {
@@ -123,8 +123,8 @@
 
 .profil-button:hover {
     transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
-    -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, 0.25),
+        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
 }
 
 .contact-button {
@@ -138,9 +138,11 @@
     border-radius: 0px;
     cursor: pointer;
     font-size: 1.5em;
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px #233521(39, 200, 255, 0.5);
     transition: all 0.2s;
     overflow: hidden;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .contact-button::after {
@@ -160,9 +162,9 @@
 
 .contact-button:hover {
     transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
-    -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
-}   
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, 0.25),
+        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+}
 
 .log {
     position: absolute;
@@ -176,24 +178,25 @@
 .deconnexion,
 .connexion,
 .inscrire {
-    margin-left: 2%;
+    margin-left: auto;
     position: relative;
     box-sizing: border-box;
     border: 0;
     display: flex;
     color: #fff;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding: 3px 14px;
+    padding: 8px 14px;
     margin-bottom: 6px;
     border-radius: 0px;
     cursor: pointer;
+    font-size: 1.5em;
     box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
         0px 0px 0px 0px rgba(39, 200, 255, 0.5);
     transition: all 0.2s;
     overflow: hidden;
-    font-size: 9px;
+    font-size: 12px;
     border: 2px solid #cc9c65;
-    width: 6rem;
+    width: 8rem;
 }
 
 .deconnexion::after,
@@ -226,6 +229,10 @@
         border: 2px solid #cc9c65;
 }
 
+/* .menu-icon {
+    display: none;
+} */
+
 .ul {
     display: flex;
     flex-direction: row;
@@ -254,30 +261,7 @@
     padding: 15px;
 }
 
-.popup:hover {
-    transform: translate(0, -2px);
-    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
-        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
-}
-
 a {
     color: #233521;
     text-decoration: none;
-}
-
-.mobile-menu {
-    display: none;
-    cursor: pointer;
-}
-
-
-@media only screen and (max-width: 600px) {
-
-    .popup {
-        top: 80px; 
-        width: 90%;
-        background-color: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
-        box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
-        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
-    }
 }
