@@ -1,18 +1,58 @@
 .contenant {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: auto;
-    background-color: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
     width: 80%;
     padding: 20px; 
     box-sizing: border-box;
+    border: 2px solid #CC9C65;
+    margin-bottom: 12px;
+
 }
 
-.editer,
-.supprimer,
-.retour,
-.edit,
-.suppr,
-.ajouter {
+.bouton {
+    float: left;
+    margin-left: 0;
+    margin-bottom: 12px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    background: #fff;
+    display: flex;
+    color: #333;
+    padding: 4px 10px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 1.5em;
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px rgba(39, 200, 255, 0.5);
+    transition: all 0.2s;
+    overflow: hidden;
+    font-size: 12px;
+    border: 2px solid #cc9c65;
+    width: 6rem;
+
+}
+
+.bouton::after {
+    content: "";
+    width: 350px;
+    height: 150px;
+    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    z-index: -1;
+}
+
+.bouton:hover::after {
+    transform: rotate(150deg);
+}
+
+.bouton:hover {
+    transform: translate(0, -6px);
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39, 200, 255, .25);
+} 
+
+.btn-comments {
     margin-left: 0;
     float: left;
     margin-left: 0;
@@ -21,7 +61,7 @@
     border: 0;
     background: #fff;
     display: flex;
-    color: #233521;
+    color: #333;
     padding: 4px 10px;
     margin-bottom: 6px;
     border-radius: 0px;
@@ -37,17 +77,27 @@
     margin-right: 10px;
 }
 
-.e,
-.s {
-content: "";
-width: 350px;
-height:150px;
-background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
-position: absolute;
-top: -50px;
-left: -100px;
-z-index: -1;
+.btn-comments::after {
+    content: "";
+    width: 350px;
+    height: 150px;
+    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    z-index: -1;
 }
+
+.btn-comments:hover::after {
+    transform: rotate(150deg);
+}
+
+.btn-comments:hover {
+    transform: translate(0, -6px);
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39, 200, 255, .25);
+} 
+
+
 
 .auteur {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -58,46 +108,24 @@ z-index: -1;
 .comments {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: auto;
-
+    box-sizing: border-box;
 }
 
-/* 
 .utilisateur {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: italic;
-} */
-
-.editer::after,
-.suppr::after,
-.retour::after {
-    content: "";
-    width: 350px;
-    height:150px;
-    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
-    position: absolute;
-    top: -50px;
-    left: -100px;
-    z-index: -1;
+    margin: auto;
+    box-sizing: border-box;
+    color:#333
 }
-  
-.editer:hover::after,
-.suppr:hover::after,
-.retour:hover::after {
-  transform: rotate(150deg);
-}
-  
-.editer:hover,
-.suppr:hover::after,
-.retour:hover::after {
-    transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39,200,255,.25);
-  } 
 
 .li {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #6941C6;
-    
+    width: 80%;
+    padding: 20px;     
 }
+
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -116,6 +144,7 @@ h2 {
     width: 80%;
     color: #233521;
     font-size: 2em;;
+
 }
 
 .commentaire {
@@ -123,8 +152,16 @@ h2 {
     margin: auto;
     padding: auto;
     width: 80%;
-    color:#233521;
+    padding: 20px; 
+    color: #333;
+}
 
+.comments {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: auto;
+    padding: auto;
+    width: 80%;
+    color: #333;
 }
 
 
@@ -147,79 +184,6 @@ textarea {
     margin-bottom: 16px;
     box-sizing: border-box;
 }
-
-.e,
-.s {
-content: "";
-width: 350px;
-height:150px;
-background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
-position: absolute;
-top: -50px;
-left: -100px;
-z-index: -1;
-}
-
-.ajouter::after{
-    content: "";
-    width: 350px;
-    height:150px;
-    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
-    position: absolute;
-    top: -50px;
-    left: -100px;
-    z-index: -1;
-}
-  
-.ajouter:hover::after{
-  transform: rotate(150deg);
-}
-  
-.ajouter:hover{
-    transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39,200,255,.25);
-} 
-
-.edit::after{
-  content: "";
-  width: 350px;
-  height:150px;
-  background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
-  position: absolute;
-  top: -50px;
-  left: -100px;
-  z-index: -1;
-}
-
-.edit:hover::after{
-transform: rotate(150deg);
-}
-
-.edit:hover{
-  transform: translate(0, -6px);
-  box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39,200,255,.25);
-} 
-
-
-.supprimer::after{
-  content: "";
-  width: 350px;
-  height:150px;
-  background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
-  position: absolute;
-  top: -50px;
-  left: -100px;
-  z-index: -1;
-}
-
-.supprimer:hover::after{
-transform: rotate(150deg);
-}
-
-.supprimer:hover{
-  transform: translate(0, -6px);
-  box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39,200,255,.25);
-} 
 
 @media screen and (max-width: 600px) {
     form {
