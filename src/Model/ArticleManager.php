@@ -54,10 +54,11 @@ class ArticleManager extends AbstractManager
     public function getAllArticles()
     {
         $query = "SELECT A.*, BU.name AS author_name, COUNT(C.id) AS comment_count
-                FROM article A
-                INNER JOIN blog_user BU ON A.blog_user_id = BU.id
-                LEFT JOIN commentary C ON A.id = C.article_id
-                GROUP BY A.id, BU.name";
+            FROM article A
+            INNER JOIN blog_user BU ON A.blog_user_id = BU.id
+            LEFT JOIN commentary C ON A.id = C.article_id
+            GROUP BY A.id, BU.name
+            ORDER BY A.date DESC";
 
         return $this->pdo->query($query)->fetchAll();
     }
