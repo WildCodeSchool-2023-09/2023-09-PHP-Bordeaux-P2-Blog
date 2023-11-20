@@ -33,40 +33,48 @@ h1 {
   }
   
 .register {
-    position: relative;
-    border: 0;
-    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
-    color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    position: relative;
-    padding: 6px 12px;
-    border-radius: 0px;
-    cursor: pointer;
-    font-size: 1.5em;
-    box-shadow: 3px -3px 25px 0 rgba(143, 64, 248, 0.25),
-    -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
-    transition: all .2s;
-    overflow: hidden;
-    margin: 0 auto;
-    font-size: 13px;
-  }
+      display: inline-block;
+      margin-left: 0;
+      margin-bottom: 12px;
+      margin-right: 10px;
+      box-sizing: border-box;
+      color: #333;
+      background: transparent;
+      padding: 4px 10px;
+      border-radius: 0px;
+      cursor: pointer;
+      transition: all 0.2s;
+      overflow: hidden;
+      font-size: 12px;
+      border: 2px solid #cc9c65;
+      width: 6rem;
+      gap: 10px; 
+      }
   
-  .register::after{
-    content: "";
-    width: 350px;
-    height:150px;
-    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
-    position: absolute;
-    top: -50px;
-    left: -100px;
-    z-index: -1;
-    }
-    
-  .register:hover::after{
-    transform: rotate(150deg);
-    }
-    
-  .register:hover{
+  
+  .register:hover {
       transform: translate(0, -6px);
-      box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39,200,255,.25);
-    }  
+      box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25), -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+      background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+  }
+    
+
+    .register::after {
+      content: "";
+      width: 350px;
+      height:150px;
+      background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+      position: absolute;
+      top: -50px;
+      left: -100px;
+      z-index: -1;
+      }
+      
+    .register:hover::after {
+      transform: rotate(150deg);
+      }
+
+    .register:hover::after {
+        transform: translate(0, -6px);
+        box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39,200,255,.25);
+      }  
