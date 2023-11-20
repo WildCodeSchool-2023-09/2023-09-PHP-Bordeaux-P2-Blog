@@ -1,11 +1,23 @@
-{% extends 'layout.html.twig' %} {% block title %}Supprimer un article{%
-endblock %} {% block content %}
-<h1>Supprimer l'article</h1>
-<p>Êtes-vous sûr de vouloir supprimer cet article ?</p>
-<p><strong>Titre :</strong> {{ article.title }}</p>
-<p><strong>Contenu :</strong> {{ article.content | raw }}</p>
-<form method="post">
-    <button type="submit">Confirmer la suppression</button>
-</form>
-<a href="/profil">Annuler</a>
+{% extends 'layout.html.twig' %} 
+
+{% block title %}
+    Supprimer un article
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/delete.css">
+{% endblock %} 
+
+{% block content %}
+    <div class="container">
+        <p class="titre">Êtes-vous sûr de vouloir supprimer cet article ?</p>
+        <label><strong>Titre :</strong> {{ article.title }}</label>
+        <label><strong>Contenu :</strong> {{ article.content | raw }}</label>
+        <form method="post">
+            <button class="submit" type="submit">Confirmer la suppression</button>
+            <div class='div-text-center'>
+                <a href="/profil" class="submit">Annuler</a>
+            </div>   
+        </form>
+    </div>
 {% endblock %}
