@@ -35,19 +35,26 @@
         id="image"
         value="{{ article.image }}"
     /><br />
-    <label for="categories">Catégories :</label>
-    <select name="categories[]" id="categories" multiple>
+
+     <label for="categories">Catégories (falcutatif):</label>
+    <div id="categories">
         {% for category in allCategories %}
-            <option value="{{ category.id }}"
-                {% if category.id in currentCategories %} selected {% endif %}>
-                {{ category.name }}
-            </option>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="categories[]" value="{{ category.id }}"
+                           {% if category.id in currentCategories %} checked {% endif %}>
+                    {{ category.name }}
+                </label>
+            </div>
         {% endfor %}
-        </select><br />
+    </div><br />
 
     <label for="new_category">Ajouter une nouvelle catégorie :</label>
     <input type="text" id="new_category" name="new_category" placeholder="Nom de la nouvelle catégorie"><br>
 
-    <button class="submit">Enregistrer</button>
+
+
+    <button type="submit">Enregistrer</button>
+
 </form>
 {% endblock %}

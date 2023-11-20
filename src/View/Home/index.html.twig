@@ -6,6 +6,11 @@
 
 {% block content %}
 
+<form action="/search" method="get">
+    <input type="text" name="search_term" placeholder="Rechercher un article par catégorie...">
+    <button type="submit">Rechercher</button>
+</form>
+
 <h1>Articles récents</h1>
 <ul class = 'flexArticle'>
     {% for article in articles %}
@@ -15,12 +20,24 @@
 
         <p>{{ article.content | raw }}</p>
         <p class = "date">Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
-
         <a href="/profil?id={{ userId }}">
         <p class = "author">Par {{ article.author_name }}</p></a>
-
+        <p>Catégorie(s) : {% if article.categories %}
+                {% for category in article.categories %}
+                    <form action="/search" method="get" style="display: inline;">
+                        <input type="hidden" name="search_term" value="{{ category }}">
+                        <button type="submit">{{ category }}</button>
+                    </form>
+                {% endfor %}
+            {% else %}
+                Aucune catégorie
+            {% endif %}
+            </p>
+            
         <a href="/show?id={{ article.id }}">
-            Commentaires ({{ article.comment_count }})</a>
+          Commentaires ({{ article.comment_count }})</a>
+
+
 
         {% if article.blog_user_id is defined %} {% if userId %}
         <form method="post" action="/comment/add">

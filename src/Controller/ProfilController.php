@@ -19,7 +19,14 @@ class ProfilController extends AbstractController
 
             // Récupère les articles de l'utilisateur
             $articleManager = new ArticleManager();
-            $articles = $articleManager->getArticlesWithCategoriesByUserId($userId);
+            $articles = $articleManager->getAllArticles();
+
+            $articles = array_map(function ($article) {
+                if (isset($article['categories'])) {
+                    $article['categories'] = explode(',', $article['categories']);
+                }
+                return $article;
+            }, $articles);
 
             echo $this->twig->render(
                 'Blog_user/profil.html.twig',

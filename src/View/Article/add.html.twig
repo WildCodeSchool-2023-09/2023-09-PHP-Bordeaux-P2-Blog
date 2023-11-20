@@ -19,13 +19,17 @@
     <label for="image">Image (facultatif) :</label>
     <input type="text" name="image" id="image" /><br />
 
-    <!-- Champ de sélection des catégories -->
-    <label for="categories">Catégories (optionnel):</label>
-    <select name="categories[]" id="categories" multiple>
+    <label for="categories">Catégories (facultatifl):</label>
+    <div id="categories">
         {% for category in categories %}
-            <option value="{{ category.id }}">{{ category.name }}</option>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="categories[]" value="{{ category.id }}">
+                    {{ category.name }}
+                </label>
+            </div>
         {% endfor %}
-    </select><br />
+    </div><br />
 
      <!-- Champ pour une nouvelle catégorie -->
     <label for="new_category">Ajouter une catégorie (optionnel) :</label>

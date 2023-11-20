@@ -13,6 +13,16 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticles();
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
+
+        $articles = array_map(function ($article) {
+            if (isset($article['categories'])) {
+                $article['categories'] = explode(',', $article['categories']);
+            }
+            return $article;
+        }, $articles);
+
+
         return $this->twig->render('Home/index.html.twig', ['articles' => $articles, 'userId' => $userId]);
     }
 
@@ -20,7 +30,6 @@ class ArticleController extends AbstractController
     {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getArticlesByUserId($userId);
-
         return $this->twig->render('profil.html.twig', ['articles' => $articles]);
     }
 
@@ -182,8 +191,9 @@ class ArticleController extends AbstractController
         $article = $articleManager->getArticleById($articleId);
 
         if (!$article) {
-            return $this->twig->render('Error/index.html.twig', ['message' =>
-            'L\'article n\'existe pas.']);
+            return $this->twig->render('Error/index.html.twig', [
+                'message' => 'L\'article n\'existe pas.'
+            ]);
         }
 
         // Vérifie si l'utilisateur est connecté et est l'auteur de l'article
@@ -196,12 +206,32 @@ class ArticleController extends AbstractController
             }
             $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-            return $this->twig->render('Article/delete.html.twig', ['article' => $article, 'userId' => $userId]);
+            return $this->twig->render('Article/delete.html.twig', [
+                'article' => $article,
+                'userId' => $userId
+            ]);
         } else {
-            return $this->twig->render('Error/index.html.twig', ['message' =>
-            'Vous n\'êtes pas autorisé à supprimer cet article.
-            Vous devez être connecté et être l\'auteur de l\'article.']);
+            return $this->twig->render('Error/index.html.twig', [
+                'message' => 'Vous n\'êtes pas autorisé à supprimer cet article.
+                Vous devez être connecté et être l\'auteur de l\'article.'
+            ]);
         }
     }
+
+    public function searchByCategoryName(string $searchTerm)
+    {
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->getArticlesByCategoryName($searchTerm);
+
+        if (empty($articles)) {
+            return $this->twig->render('Error/index.html.twig', [
+                'message' => 'Aucun article trouvé pour la catégorie : ' . $searchTerm
+            ]);
+        }
+        return $this->twig->render('Article/search_results.html.twig', [
+            'articles' => $articles,
+            'searchTerm' => $searchTerm
+        ]);
+    }
 }
-// Add a newline at the end of the file
+// A newline has been added here at the end of the file
