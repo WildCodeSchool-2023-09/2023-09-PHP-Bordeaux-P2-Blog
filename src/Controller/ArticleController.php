@@ -30,7 +30,6 @@ class ArticleController extends AbstractController
     {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getArticlesByUserId($userId);
-        
 
         return $this->twig->render('profil.html.twig', ['articles' => $articles]);
     }
@@ -225,7 +224,7 @@ class ArticleController extends AbstractController
                 'message' => 'Aucun article trouvé pour la catégorie : ' . $searchTerm
             ]);
         }
-       
+
         return $this->twig->render('Article/search_results.html.twig', [
             'articles' => $articles,
             'searchTerm' => $searchTerm
