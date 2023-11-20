@@ -1,5 +1,4 @@
-{#
-{% extends 'layout.html.twig' %} {% block title %}Profil de l'utilisateur{%
+{# {% extends 'layout.html.twig' %} {% block title %}Profil de l'utilisateur{%
 endblock %} {% block stylesheet %}<link
     rel="stylesheet"
     href="/assets/css/profil.css"
@@ -20,56 +19,66 @@ endblock %} {% block stylesheet %}<link
     <li>
         <h3>{{ article.title }}</h3>
         <p>{{ article.content | raw }}</p>
-        <p>Catégorie(s) : {{ article.categories | default('Aucune catégorie') }}</p>
+        <p>
+            Catégorie(s) :
+            {{ article.categories | default('Aucune catégorie') }}
+        </p>
         <a href="/article/edit?id={{ article.id }}">Éditer</a>
         <a href="/article/delete?id={{ article.id }}">Supprimer</a>
-        <p><a href="/show?id={{ article.id }}"
-            >Commentaires ({{ article.comment_count }})</a></p>
+        <p>
+            <a href="/show?id={{ article.id }}"
+                >Commentaires ({{ article.comment_count }})</a
+            >
+        </p>
     </li>
     {% endfor %}
 </ul>
 
 <a href="/article/add">Ajouter un article</a>
-{% endblock %}
-#}
-{% extends 'layout.html.twig' %}
+{% endblock %} #} {% extends 'layout.html.twig' %} {% block title %}Profil de
+l'utilisateur{% endblock %} {% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/profil.css" />
+{% endblock %} {% block content %}
+<div class="blog">BLOG de {{ userId.name }}</div>
+<div class="container">
+    <div class="article">
+        <ul>
+            <h1>Mes articles</h1>
+            {% for article in articles %}
 
-{% block title %}Profil de l'utilisateur{% endblock %}
+            <h3>{{ article.title }}</h3>
+            <p class="text">{{ article.content | raw }}</p>
+            <p>
+                Catégorie(s) :
+                {{ article.categories | default('Aucune catégorie') }}
+            </p>
+            <div class="button-container">
+                <a href="/article/edit?id={{ article.id }}" class="button"
+                    >Éditer</a
+                >
+                <a href="/article/delete?id={{ article.id }}" class="button"
+                    >Supprimer</a
+                >
+                <a href="/show?id={{ article.id }}" class="button"
+                    >Commentaires ({{ article.comment_count }})</a
+                >
+            </div>
 
-{% block stylesheet %}
-    <link rel="stylesheet" href="/assets/css/profil.css">
-{% endblock %}
-
-{% block content %}
-    <div class="blog">BLOG de {{ userId.name }}</div>
-    <div class="container">
-        <div class="article">
-            <ul>
-             <h1>     Mes articles      </h1>
-                {% for article in articles %}
-                    
-                        <h3>{{ article.title }}</h3>
-                        <p class="text">{{ article.content | raw }}</p>
-                        <div class="button-container">
-                        <a href="/article/edit?id={{ article.id }}" class="button">Éditer</a>
-                        <a href="/article/delete?id={{ article.id }}" class="button">Supprimer</a>
-                        <a  href="/show?id={{ article.id }}" class="button">Commentaires ({{ article.comment_count }})</a>
-                        </div>
-                    
-                {% endfor %}
-                <a href="/article/add"class="button2">Ajouter un article</a>
-            </ul>
-            
-        </div>
-        <div class="info">
-          
-            <p><img src="{{ userId.image }}" alt="User Image" class="imageronde"></p>
-          
-            <t class="title">{{ userId.name }}</t>
-            <p class="titleblog"><strong>Mon blog</strong> {{ userId.title }}</p>
-            <p class="text">{{ userId.description | raw }}</p>
-            <a href="/forgot_password" class="button">Réinitialiser le mot de passe </a>
-        </div>
+            {% endfor %}
+            <a href="/article/add" class="button2">Ajouter un article</a>
+        </ul>
     </div>
-{% endblock %}
+    <div class="info">
+        <p>
+            <img src="{{ userId.image }}" alt="User Image" class="imageronde" />
+        </p>
 
+        <t class="title">{{ userId.name }}</t>
+        <p class="titleblog"><strong>Mon blog</strong> {{ userId.title }}</p>
+        <p class="text">{{ userId.description | raw }}</p>
+        <a href="/forgot_password" class="button"
+            >Réinitialiser le mot de passe
+        </a>
+    </div>
+</div>
+{% endblock %}
