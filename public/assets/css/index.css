@@ -21,11 +21,17 @@ main h1 {
     width: 80%;   
     margin-left: auto;
     margin-right: auto;
+    padding: 0;
 }
 
 .flexArticle h2 {
     color: var(--second-color); 
     text-align: center;
+}
+
+.flexArticle li h2 + img {
+    display: block;
+    margin-top: 10px;
 }
 
 .date {
@@ -51,3 +57,36 @@ main h1 {
     overflow: hidden; /* Masque le surplus de texte */
     text-overflow: ellipsis; /* Ajoute des points de suspension (...) pour indiquer qu'il y a plus de texte */
 }
+
+@media only screen and (max-width: 834px) {
+    .flexArticle {
+        width: 95%;
+        padding: 0;
+    }
+
+    .flexArticle li h2 {
+        font-size: 24px; /* Rétablir la taille du texte */
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+    .flexArticle {
+        width: 95%; /* Occuper la largeur complète de l'écran */
+        padding: 0;
+    }
+    
+    .flexArticle li {
+        width: 100%; /* Occuper la largeur complète de l'écran */
+    }
+    
+    .flexArticle li h2 {
+        font-size: 18px; /* Ajuster la taille du texte pour les écrans plus petits */
+    }
+
+    main h1 {
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+}
+

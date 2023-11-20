@@ -15,6 +15,7 @@
 
         <p>{{ article.content | raw }}</p>
         <p class = "date">Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
+
         <a href="/profil?id={{ userId }}">
         <p class = "author">Par {{ article.author_name }}</p></a>
 
