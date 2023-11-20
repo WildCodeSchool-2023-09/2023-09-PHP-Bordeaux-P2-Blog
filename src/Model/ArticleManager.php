@@ -74,7 +74,7 @@ class ArticleManager extends AbstractManager
                   FROM " . static::TABLE . " AS A 
                   LEFT JOIN blog_user BU ON A.blog_user_id = BU.id 
                   WHERE A.id = :id";
-                  
+
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':id', $articleId, \PDO::PARAM_INT);
         $statement->execute();
@@ -146,13 +146,13 @@ class ArticleManager extends AbstractManager
 
     public function getArticlesByCategoryName($searchTerm)
     {
-      $query = "SELECT A.*, BU.name AS author_name
-                FROM article A
-                INNER JOIN blog_user BU ON A.blog_user_id = BU.id
-                INNER JOIN article_category AC ON A.id = AC.article_id
-                INNER JOIN category C ON AC.category_id = C.id
-                WHERE C.name LIKE :searchTerm
-                GROUP BY A.id";
+        $query = "SELECT A.*, BU.name AS author_name
+                  FROM article A
+                  INNER JOIN blog_user BU ON A.blog_user_id = BU.id
+                  INNER JOIN article_category AC ON A.id = AC.article_id
+                  INNER JOIN category C ON AC.category_id = C.id
+                  WHERE C.name LIKE :searchTerm
+                  GROUP BY A.id";
 
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);

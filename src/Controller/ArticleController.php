@@ -211,7 +211,6 @@ class ArticleController extends AbstractController
         $articles = $articleManager->getArticlesByCategoryName($searchTerm);
 
         if (empty($articles)) {
-
             return $this->twig->render('Error/index.html.twig', [
                 'message' => 'Catégorie introuvable.'
             ]);
