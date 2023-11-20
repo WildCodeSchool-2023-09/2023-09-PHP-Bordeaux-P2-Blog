@@ -8,16 +8,19 @@
     width: 135px;
 }
 
+
 .navbar {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* position: relative; */
+    position: relative; 
     height: 100px;
     top: 0;
     left: 0;
     background-color: #233521;
     border: 2px #cc9c65 solid;
+     /* list-style-type: none; */
+   
 }
 
 .white {
@@ -31,42 +34,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-}
-
-.inscrire {
-    margin-left: auto;
-    padding: 8px 14px;
-    box-sizing: border-box;
-    border: 2px solid #cc9c65;
-    background-color: #fff;
-    color: #fff;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    display: flex;
-    width: 8rem;
-}
-
-.connexion {
-    margin-left: auto;
-    padding: 8px 14px;
-    box-sizing: border-box;
-    border: 2px solid #cc9c65;
-    background-color: #fff;
-    color: #fff;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    display: flex;
-    width: 8rem;
-}
-
-.deconnexion {
-    margin-left: auto;
-    padding: 8px 14px;
-    box-sizing: border-box;
-    border: 2px solid #cc9c65;
-    background-color: #fff;
-    color: #fff;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    display: flex;
-    width: 10rem;
 }
 
 .homepage {
@@ -90,17 +57,16 @@
     border: 0;
     background: transparent;
     color: #fff;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: relative;
     padding: 6px 12px;
     border-radius: 0px;
     cursor: pointer;
     font-size: 1.5em;
-    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
-        0px 0px 0px 0px #233521(39, 200, 255, 0.5);
-    transition: all 0.2s;
+    /* box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px #233521(39, 200, 255, 0.5); */
     overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .accueil-button::after {
@@ -120,8 +86,8 @@
 
 .accueil-button:hover {
     transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, 0.25),
-        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
+    -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
 }
 
 .profil-button {
@@ -129,17 +95,15 @@
     border: 0;
     background: transparent;
     color: #233521;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: relative;
     padding: 6px 12px;
     border-radius: 0px;
     cursor: pointer;
     font-size: 1.5em;
-    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
-        0px 0px 0px 0px #233521(39, 200, 255, 0.5);
     transition: all 0.2s;
     overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .profil-button::after {
@@ -159,8 +123,8 @@
 
 .profil-button:hover {
     transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, 0.25),
-        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
+    -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
 }
 
 .contact-button {
@@ -168,17 +132,15 @@
     border: 0;
     background: transparent;
     color: #233521;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: relative;
     padding: 6px 12px;
     border-radius: 0px;
     cursor: pointer;
     font-size: 1.5em;
-    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
-        0px 0px 0px 0px #233521(39, 200, 255, 0.5);
     transition: all 0.2s;
     overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .contact-button::after {
@@ -198,9 +160,9 @@
 
 .contact-button:hover {
     transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, 0.25),
-        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
-}
+    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
+    -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+}   
 
 .log {
     position: absolute;
@@ -214,20 +176,24 @@
 .deconnexion,
 .connexion,
 .inscrire {
+    margin-left: 2%;
     position: relative;
+    box-sizing: border-box;
     border: 0;
+    display: flex;
     color: #fff;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    padding: 6px 12px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 3px 14px;
     margin-bottom: 6px;
     border-radius: 0px;
     cursor: pointer;
-    font-size: 1.5em;
     box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
         0px 0px 0px 0px rgba(39, 200, 255, 0.5);
     transition: all 0.2s;
     overflow: hidden;
-    font-size: 16px;
+    font-size: 9px;
+    border: 2px solid #cc9c65;
+    width: 6rem;
 }
 
 .deconnexion::after,
@@ -241,12 +207,14 @@
     top: -50px;
     left: -100px;
     z-index: -1;
+    border: 2px solid #cc9c65;
 }
 
 .deconnexion:hover::after,
 .connexion:hover::after,
 .inscrire:hover::after {
     transform: rotate(150deg);
+    border: 2px solid #cc9c65;
 }
 
 .deconnexion:hover,
@@ -255,10 +223,7 @@
     transform: translate(0, -6px);
     box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
         -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
-}
-
-.menu-icon {
-    display: none;
+        border: 2px solid #cc9c65;
 }
 
 .ul {
@@ -277,7 +242,7 @@
     width: 250px;
     background-color: rgba(0, 0, 0, 0.5);
     color: #333;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: oblique;
     font-size: larger;
     text-align: center;
@@ -289,43 +254,30 @@
     padding: 15px;
 }
 
+.popup:hover {
+    transform: translate(0, -2px);
+    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
+        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+}
+
 a {
     color: #233521;
     text-decoration: none;
 }
 
-@media only screen and (max-width: 768px) {
-    .button {
-        display: none;
-    }
-}
-
 .mobile-menu {
-    display: flex;
-    align-items: center;
+    display: none;
     cursor: pointer;
 }
 
-.menu-icon {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-}
 
-.desktop-menu {
-    display: flex;
-}
+@media only screen and (max-width: 600px) {
 
-@media only screen and (max-width: 768px) {
-    .desktop-menu {
-        display: none;
-    }
-
-    .mobile-menu {
-        display: flex;
-    }
-
-    .desktop-menu button {
-        align-items: center;
+    .popup {
+        top: 80px; 
+        width: 90%;
+        background-color: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
+        box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
+        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
     }
 }

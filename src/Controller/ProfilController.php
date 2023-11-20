@@ -19,7 +19,7 @@ class ProfilController extends AbstractController
 
             // Récupère les articles de l'utilisateur
             $articleManager = new ArticleManager();
-            $articles = $articleManager->getArticlesByUserId($userId);
+            $articles = $articleManager->getArticlesWithCategoriesByUserId($userId);
 
             echo $this->twig->render(
                 'Blog_user/profil.html.twig',
@@ -138,7 +138,7 @@ class ProfilController extends AbstractController
                 exit();
             }
         }
-
-        echo $this->twig->render('Blog_user/forgot_password.html.twig');
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+        echo $this->twig->render('Blog_user/forgot_password.html.twig', ['userId' => $userId]);
     }
 }

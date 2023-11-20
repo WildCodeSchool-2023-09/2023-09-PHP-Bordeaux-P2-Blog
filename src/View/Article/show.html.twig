@@ -8,6 +8,17 @@
     else %}Auteur inconnu{% endif %}
 </p>
 
+<!-- Affichage des catégories -->
+<p>Catégorie(s) : 
+    {% if categories is not empty %}
+        {% for category in categories %}
+            <span>{{ category.name }}</span>{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    {% else %}
+        Aucune catégorie
+    {% endif %}
+</p>
+
 <a href="/article/edit?id={{ article.id }}">Éditer</a>
 <a href="/article/delete?id={{ article.id }}">Supprimer</a>
 <a href="/">Back</a>
