@@ -1,27 +1,29 @@
 {% extends 'layout.html.twig' %} {% block content %}
 
-<h1>Article : {{ article.title }}</h1>
-<p>{{ article.content | raw }}</p>
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/show.css">{% endblock %}
+<div class="contenant"show article>
 
-<p>
+<h1>Article : {{ article.title }}</h1>
+   <p>{{ article.content | raw }}</p>
+        <div class="auteur">
     Auteur : {% if article.author_name is defined %}{{ article.author_name }}{%
     else %}Auteur inconnu{% endif %}
-</p>
 
-<a href="/article/edit?id={{ article.id }}">Éditer</a>
-<a href="/article/delete?id={{ article.id }}">Supprimer</a>
-<a href="/">Back</a>
+<a class="editer"href="/article/edit?id={{ article.id }}">Éditer</a>
+<a class="suppr"href="/article/delete?id={{ article.id }}">Supprimer</a>
+<a class="retour"href="/">Retour</a>
+</div>
 
-<h2>Commentaires</h2>
+<div class="comments">Commentaires de l'article :
 {% if comments is not empty %}
     <ul>
         {% for comment in comments %}
             <li>
-                <strong>Utilisateur:</strong> {{ comment.user_name }}<br>
+                <strong class="utilisateur">Utilisateur:</strong> {{ comment.user_name }}<br>
                 <p>{{ comment.content | raw }}</p>
                 {% if "user_id" is defined %}
-                    <a href="/comment/edit?comment_id={{ comment.id }}"><button>Éditer commentaire</button></a>
-                    <a href="/comment/delete?comment_id={{comment.id}}"><button>Supprimer commentaire</button></a>
+                    <a href="/comment/edit?comment_id={{ comment.id }}"><button class="e">Éditer commentaire</button></a>
+                    <a href="/comment/delete?comment_id={{comment.id}}"><button class="s">Supprimer commentaire</button></a>
                 {% endif %}
             </li>
         {% endfor %}
@@ -30,7 +32,7 @@
     <p>Aucun commentaire pour cet article.</p>
 {% endif %}
 {% if article.blog_user_id is defined %} {% if userId %}
-<h3>Laissez un commentaire</h3>
+<div class="commentaire">Laissez un commentaire :</div>
 <form method="post" action="/comment/add">
     <input type="hidden" name="article_id" value="{{ article.id }}" />
     <textarea
@@ -38,8 +40,11 @@
         id="content_{{ article.id }}"
         required
     ></textarea>
-    <button type="submit">Ajouter un commentaire</button>
+    <button class="ajouter">Ajouter un commentaire</button>  
 </form>
+ </div>
+       </div>
+</div>
 {% else %}
 <p>Vous devez être <a href="/login">connecté</a> pour commenter.</p>
 {% endif %} {% endif %} {% endblock %}

@@ -183,7 +183,7 @@
     box-sizing: border-box;
     border: 0;
     display: flex;
-    color: #fff;
+    color: #233521;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 8px 14px;
     margin-bottom: 6px;
@@ -229,6 +229,13 @@
         border: 2px solid #cc9c65;
 }
 
+.deconnexion:hover.default-size,
+.connexion:hover.default-size,
+.inscrire:hover.default-size {
+    padding: 8px 16px; /* Taille par défaut pour la classe de bouton */
+    font-size: 1.2em;
+}
+
 /* .menu-icon {
     display: none;
 } */
@@ -264,4 +271,11 @@
 a {
     color: #233521;
     text-decoration: none;
+}
+
+
+@media screen and (max-width: 600px) {
+    .navbar {
+        padding: 10px;
+    }
 }
