@@ -20,6 +20,8 @@ class ArticleManager extends AbstractManager
         $statement->bindValue(':image', $data['image']);
         $statement->bindValue(':blog_user_id', $data['blog_user_id'], \PDO::PARAM_INT);
         $statement->execute();
+
+        return (int) $this->pdo->lastInsertId();
     }
 
     public function editArticle(int $articleId, array $data)
@@ -53,12 +55,15 @@ class ArticleManager extends AbstractManager
 
     public function getAllArticles()
     {
-        $query = "SELECT A.*, BU.name AS author_name, COUNT(C.id) AS comment_count
-            FROM article A
-            INNER JOIN blog_user BU ON A.blog_user_id = BU.id
-            LEFT JOIN commentary C ON A.id = C.article_id
-            GROUP BY A.id, BU.name
-            ORDER BY A.date DESC";
+        $query = "SELECT A.*, BU.name AS author_name, COUNT(C.id) AS comment_count, 
+                GROUP_CONCAT(CAT.name SEPARATOR ', ') AS categories
+                FROM article A
+                INNER JOIN blog_user BU ON A.blog_user_id = BU.id
+                LEFT JOIN commentary C ON A.id = C.article_id
+                LEFT JOIN article_category AC ON A.id = AC.article_id
+                LEFT JOIN category CAT ON AC.category_id = CAT.id
+                GROUP BY A.id, BU.name
+                ORDER BY A.date DESC";
 
         return $this->pdo->query($query)->fetchAll();
     }
@@ -97,5 +102,19 @@ class ArticleManager extends AbstractManager
         }
 
         return $articles;
+    }
+
+    public function getArticlesWithCategoriesByUserId($userId)
+    {
+        $query = "SELECT A.*, GROUP_CONCAT(CAT.name SEPARATOR ', ') AS categories
+                  FROM article A
+                  LEFT JOIN article_category AC ON A.id = AC.article_id
+                  LEFT JOIN category CAT ON AC.category_id = CAT.id
+                  WHERE A.blog_user_id = :userId
+                  GROUP BY A.id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll();
     }
 }

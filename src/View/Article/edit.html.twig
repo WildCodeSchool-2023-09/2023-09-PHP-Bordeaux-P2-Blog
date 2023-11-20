@@ -34,6 +34,18 @@
         id="image"
         value="{{ article.image }}"
     /><br />
+    <label for="categories">Catégories :</label>
+    <select name="categories[]" id="categories" multiple>
+        {% for category in allCategories %}
+            <option value="{{ category.id }}"
+                {% if category.id in currentCategories %} selected {% endif %}>
+                {{ category.name }}
+            </option>
+        {% endfor %}
+        </select><br />
+
+    <label for="new_category">Ajouter une nouvelle catégorie :</label>
+    <input type="text" id="new_category" name="new_category" placeholder="Nom de la nouvelle catégorie"><br>
 
     <button type="submit">Enregistrer</button>
 </form>
