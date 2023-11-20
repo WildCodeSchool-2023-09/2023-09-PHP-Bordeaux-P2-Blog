@@ -1,26 +1,19 @@
-{% extends 'layout.html.twig' %} {% block title %}Profil de l'utilisateur{%
-endblock %} {% block stylesheet %}<link
-    rel="stylesheet"
-    href="/assets/css/profil.css"
-/>{% endblock %} {% block content %}
+{% extends 'layout.html.twig' %} 
+{% block title %}Profil de l'utilisateur{% endblock %} 
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/profil.css" />
+{% endblock %} 
+{% block content %}
+<div class="blog">BLOG de {{ userId.name }}</div>
+<div class="container">
+    <div class="article">
+        <ul>
+            <h1>Mes articles</h1>
+            {% for article in articles %}
 
-<h1>Profil de l'utilisateur</h1>
-<h2>Informations personnelles</h2>
-<p><strong>Nom :</strong> {{ userId.name }}</p>
-<p>
-    <strong>Image :</strong> <img src="{{ userId.image }}" alt="User Image" />
-</p>
-<p><strong>Titre :</strong> {{ userId.title }}</p>
-<p><strong>Description :</strong> {{ userId.description | raw }}</p>
-<a href="/forgot_password">Réinitialiser le mot de passe</a>
-
-<h2>Mes articles</h2>
-<ul>
-    {% for article in articles %}
-    <li>
-        <h3>{{ article.title }}</h3>
-        <p>{{ article.content | raw }}</p>
-        <p>Catégorie(s) : {% if article.categories %}
+            <h3>{{ article.title }}</h3>
+            <p class="text">{{ article.content | raw }}</p>
+            <p>Catégorie(s) : {% if article.categories %}
                 {% for category in article.categories %}
                     <form action="/search" method="get" style="display: inline;">
                         <input type="hidden" name="search_term" value="{{ category }}">
@@ -32,13 +25,33 @@ endblock %} {% block stylesheet %}<link
             {% endif %}
             </p>
         <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
-        <a href="/article/edit?id={{ article.id }}">Éditer</a>
-        <a href="/article/delete?id={{ article.id }}">Supprimer</a>
-        <p><a href="/show?id={{ article.id }}"
-            >Commentaires ({{ article.comment_count }})</a></p>
-    </li>
-    {% endfor %}
-</ul>
+            <div class="button-container">
+                <a href="/article/edit?id={{ article.id }}" class="button"
+                    >Éditer</a
+                >
+                <a href="/article/delete?id={{ article.id }}" class="button"
+                    >Supprimer</a
+                >
+                <a href="/show?id={{ article.id }}" class="button"
+                    >Commentaires ({{ article.comment_count }})</a
+                >
+            </div>
 
-<a href="/article/add">Ajouter un article</a>
+            {% endfor %}
+            <a href="/article/add" class="button2">Ajouter un article</a>
+        </ul>
+    </div>
+    <div class="info">
+        <p>
+            <img src="{{ userId.image }}" alt="User Image" class="imageronde" />
+        </p>
+
+        <t class="title">{{ userId.name }}</t>
+        <p class="titleblog"><strong>Mon blog</strong> {{ userId.title }}</p>
+        <p class="text">{{ userId.description | raw }}</p>
+        <a href="/forgot_password" class="button"
+            >Réinitialiser le mot de passe
+        </a>
+    </div>
+</div>
 {% endblock %}

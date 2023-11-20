@@ -1,73 +1,73 @@
-.contenant {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin: auto;
-    padding: auto;
-    width: 80%
-  }
+.titre {
+    justify-content: center;
+    text-align: center;
+    color: var(--primary-color);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 36px;
+}  
 
-.edit
-body, h1, h2, h3, p, label, button {
-    margin: 0;
-    padding: 0;
-    
-}
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+   line-height: 1.6;
 }
-
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .container {
-    width: 90%;
+    width: 60%;
     margin: 0 auto;
-    border-radius: 10px;
+    
+}
+form {
+   
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+
 }
 
-form {
-    max-width: 80%;
-    margin: 20px auto;
-    border: 2px solid #CC9C65;
-    border-radius: 1px;
+strong {
+
+    font-size: 24px;
+    text-align: left;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
-    justify-content:center;
-    text-align: left;
-    font-weight: bold;
+    justify-content:flex-start;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    border: 2px solid white;
 }
 
-input,
+/*input,
 textarea {
    
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
     box-sizing: border-box;
-    border-radius: 10px;
-}
+    
+}*/
 
 
-button:hover {
-    background-color: #45a049;
-    border-radius: 0px;
-    border: 2px solid #CC9C65;
-}
-
-h1 {
-    font-size: 32px;
+ p {
+    color: var(--primary-color);
+    font-size: 16px;
     margin-bottom: 20px;
-    text-align: center; 
+    text-align: justify; 
     margin-top: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
  } 
-
  .submit {
     display: flex;
-    position: relative;
+    position: center ;
     border: 0;
     background: transparent;
     color: white;
@@ -92,7 +92,7 @@ h1 {
     background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
     position: absolute;
     top: -50px;
-    left: -100px;
+    /* left: -100px; */
     z-index: -1;
   }
   
@@ -103,23 +103,17 @@ h1 {
 .submit:hover{
     transform: translate(0, -6px);
     box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39,200,255,.25);
-  } 
-
+  }  
 /* Style spécifique pour CKEditor */
 .cke {
-    margin-top: 10px;
+    margin-top: 5px;
 }
-
-@media only screen and (max-width: 767px) {
-
-    max-width: 95%;
-    
+.div-text-center{
+  text-align: center;
+  margin-top: 8px;
 }
+/*Mobile*/ @media only screen and (max-width: 767px) { /*Styles spécifiques pour les écrans jusqu'à 767px de large*/ }
 
-/*Tablettes*/ @media only screen and (min-width: 768px) and (max-width: 1199px) {
-     /*Styles spécifiques pour les écrans entre 768px et et 1199px de large*/
-     }
+/*Tablettes*/ @media only screen and (min-width: 768px) and (max-width: 1199px) { /*Styles spécifiques pour les écrans entre 768px et et 1199px de large*/ }
 
-/*Desktop*/ @media only screen and (min-width: 1200px) {
-     /*Styles spécifiques pour les écrans de 1200px et plus*/
-     }
+/*Desktop*/ @media only screen and (min-width: 1200px) { /*Styles spécifiques pour les écrans de 1200px et plus*/ }
