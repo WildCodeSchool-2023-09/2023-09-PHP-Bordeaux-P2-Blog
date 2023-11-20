@@ -1,5 +1,6 @@
 footer {
     background-color: var(--primary-color);
+    border: 2px var(--second-color) solid;
     color: var(--second-color);
     text-align: center;
     width: 100%;
@@ -9,19 +10,28 @@ footer {
 .footer-content {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .contact-info a,
 .privacy-policy a {
-    color: #cc9c65;
+    color: var(--second-color);
     text-decoration: none;
 }
 
 .logo img {
-    max-width: 200px;
+    max-width: 150px;
     align-items: center;
 }
 
 .copyright p {
+    margin: 0;
+}
+
+footer h1 {
+    margin: 0;
+}
+
+.footer-content p {
     margin: 0;
 }

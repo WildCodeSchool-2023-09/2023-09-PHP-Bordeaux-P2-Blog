@@ -1,11 +1,11 @@
 .logo-container {
     margin-right: auto;
-    height: 60px;
+    height: 4em;
 }
 
 .logo-container img {
     height: 100%;
-    width: 135px;
+    width: 10em;
 }
 
 .navbar {
@@ -33,42 +33,6 @@
     justify-content: space-between;
 }
 
-.inscrire {
-    margin-left: auto;
-    padding: 8px 14px;
-    box-sizing: border-box;
-    border: 2px solid #cc9c65;
-    background-color: #fff;
-    color: #fff;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    display: flex;
-    width: 8rem;
-}
-
-.connexion {
-    margin-left: auto;
-    padding: 8px 14px;
-    box-sizing: border-box;
-    border: 2px solid #cc9c65;
-    background-color: #fff;
-    color: #fff;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    display: flex;
-    width: 8rem;
-}
-
-.deconnexion {
-    margin-left: auto;
-    padding: 8px 14px;
-    box-sizing: border-box;
-    border: 2px solid #cc9c65;
-    background-color: #fff;
-    color: #fff;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    display: flex;
-    width: 10rem;
-}
-
 .homepage {
     display: flex;
     list-style-type: none;
@@ -90,7 +54,7 @@
     border: 0;
     background: transparent;
     color: #fff;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: relative;
     padding: 6px 12px;
     border-radius: 0px;
@@ -129,7 +93,7 @@
     border: 0;
     background: transparent;
     color: #233521;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: relative;
     padding: 6px 12px;
     border-radius: 0px;
@@ -168,7 +132,7 @@
     border: 0;
     background: transparent;
     color: #233521;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: relative;
     padding: 6px 12px;
     border-radius: 0px;
@@ -214,11 +178,14 @@
 .deconnexion,
 .connexion,
 .inscrire {
+    margin-left: auto;
     position: relative;
+    box-sizing: border-box;
     border: 0;
+    display: flex;
     color: #fff;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    padding: 6px 12px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 8px 14px;
     margin-bottom: 6px;
     border-radius: 0px;
     cursor: pointer;
@@ -227,7 +194,9 @@
         0px 0px 0px 0px rgba(39, 200, 255, 0.5);
     transition: all 0.2s;
     overflow: hidden;
-    font-size: 16px;
+    font-size: 12px;
+    border: 2px solid #cc9c65;
+    width: 8rem;
 }
 
 .deconnexion::after,
@@ -241,12 +210,14 @@
     top: -50px;
     left: -100px;
     z-index: -1;
+    border: 2px solid #cc9c65;
 }
 
 .deconnexion:hover::after,
 .connexion:hover::after,
 .inscrire:hover::after {
     transform: rotate(150deg);
+    border: 2px solid #cc9c65;
 }
 
 .deconnexion:hover,
@@ -255,11 +226,12 @@
     transform: translate(0, -6px);
     box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
         -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+        border: 2px solid #cc9c65;
 }
 
-.menu-icon {
+/* .menu-icon {
     display: none;
-}
+} */
 
 .ul {
     display: flex;
@@ -277,7 +249,7 @@
     width: 250px;
     background-color: rgba(0, 0, 0, 0.5);
     color: #333;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: oblique;
     font-size: larger;
     text-align: center;
@@ -292,40 +264,4 @@
 a {
     color: #233521;
     text-decoration: none;
-}
-
-@media only screen and (max-width: 768px) {
-    .button {
-        display: none;
-    }
-}
-
-.mobile-menu {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.menu-icon {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.desktop-menu {
-    display: flex;
-}
-
-@media only screen and (max-width: 768px) {
-    .desktop-menu {
-        display: none;
-    }
-
-    .mobile-menu {
-        display: flex;
-    }
-
-    .desktop-menu button {
-        align-items: center;
-    }
 }

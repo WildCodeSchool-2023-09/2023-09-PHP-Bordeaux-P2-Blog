@@ -5,9 +5,10 @@
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/edit.css">{% endblock %}
 
 {% block content %}
+<div class="contenant"editer un article>
 <h1>Éditer l'article</h1>
 <form method="post">
-    <label for="title">Titre :</label>
+    <label for="title">Titre </label>
     <input
         type="text"
         name="title"
@@ -16,7 +17,7 @@
         required
     /><br />
 
-    <label for="content">Contenu :</label>
+    <label for="content">Contenu </label>
     <textarea name="content" id="content" required>{{
         article.content
     }}</textarea
@@ -52,6 +53,8 @@
     <input type="text" id="new_category" name="new_category" placeholder="Nom de la nouvelle catégorie"><br>
 
 
+
     <button type="submit">Enregistrer</button>
+
 </form>
 {% endblock %}

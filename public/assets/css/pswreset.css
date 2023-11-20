@@ -1,0 +1,31 @@
+.container{
+    width: 60%;
+    margin: 0 auto;
+}
+.tilte {
+    justify-content: center;
+    text-align: center;
+    color: var(--primary-color);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 36px;
+    align-items: center;
+}
+
+p{
+    color: var(--primary-color);
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.form {
+    margin-top: 30px;
+    align-items: center;
+    text-align: center;
+    /*width: 300px; */
+    max-width: none; 
+    padding: 8px;
+    border: 2px solid #CC9C65;
+    border-radius: 1px;
+    box-shadow: 0 0 6px #CC9C65(0, 0, 0, 0.1);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

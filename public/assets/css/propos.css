@@ -33,3 +33,17 @@ address {
 .propos img {
     max-width: 200px;
 }
+
+.contentflex {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#groupe {
+    width: 70%;
+    height: auto;
+}
