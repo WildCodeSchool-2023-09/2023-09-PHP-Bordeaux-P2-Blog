@@ -1,35 +1,20 @@
-{% extends 'layout.html.twig' %}
-
-{% block title %}Résultats de Recherche{% endblock %}
-
-{% block content %}
-
-<form action="/search" method="get">
-    <input type="text" name="search_term" placeholder="Rechercher un article par catégorie...">
-    <button type="submit">Rechercher</button>
-</form>
-
-
-{% if search_term %}
-    <h1>Résultats de recherche pour la catégorie: "{{ search_term }}"</h1>
+{% extends 'layout.html.twig' %} {% block title %}Résultats de Recherche{%
+endblock %} {% block content %} {% if search_term %}
+<h1>Résultats de recherche pour la catégorie: "{{ search_term }}"</h1>
 {% else %}
-    <h1>Affichage de tous les articles</h1>
-{% endif %}
-
-{% if articles is not empty %}
-    <ul>
-        {% for article in articles %}
-            <li>
-                <h2>{{ article.title }}</h2>
-                <p>{{ article.content | raw }}</p>
-                <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
-                <p>Par {{ article.author_name }}</p>
-                <a href="/show?id={{ article.id }}">Voir les commentaires</a>
-            </li>
-        {% endfor %}
-    </ul>
+<h1>Affichage de tous les articles</h1>
+{% endif %} {% if articles is not empty %}
+<ul>
+    {% for article in articles %}
+    <li>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.content | raw }}</p>
+        <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
+        <p>Par {{ article.author_name }}</p>
+        <a href="/show?id={{ article.id }}">Voir les commentaires</a>
+    </li>
+    {% endfor %}
+</ul>
 {% else %}
-    <p>Aucun article trouvé pour "{{ searchTerm }}".</p>
-{% endif %}
-
-{% endblock %}
+<p>Aucun article trouvé pour "{{ searchTerm }}".</p>
+{% endif %} {% endblock %}

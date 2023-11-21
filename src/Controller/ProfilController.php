@@ -84,7 +84,7 @@ class ProfilController extends AbstractController
             ];
 
             if (!isset($_FILES['image']) || $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
-                $errors[] = 'Please upload a valid image.';
+                $errors[] = 'Inscrivez vous avec une image valide s\'il vous plait.';
             } else {
                 $fileInfo = pathinfo($_FILES['image']['name']);
                 $extension = strtolower($fileInfo['extension']);

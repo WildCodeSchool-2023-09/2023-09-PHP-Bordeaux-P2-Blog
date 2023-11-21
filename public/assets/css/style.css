@@ -32,3 +32,50 @@ main {
 li {
     list-style-type: none;
 }
+
+#hiddenImg {
+    display: none;
+}
+#imageInput {
+    display: none;
+}
+
+#searchForm {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+#searchInput {
+    width: 200px;
+    border: 1px solid #000;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url("https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png");
+    background-position: 10px 7px;
+    background-repeat: no-repeat;
+    padding: 8px 20px 8px 40px;
+    -webkit-transition: width 0.8s ease-in-out;
+    transition: width 0.8s ease-in-out;
+    outline: none;
+    opacity: 0.9;
+}
+
+#submitsearch {
+    border: 1px solid rgb(138, 134, 134);
+    margin-left: -7rem;
+    padding: 5px;
+    border-radius: 19px;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 8px;
+    padding-top: 4px;
+    display: none;
+    box-shadow: 0 0 1px black;
+    margin-right: 110px;
+}
+
+#searchInput:focus {
+    outline-offset: -2px;
+}

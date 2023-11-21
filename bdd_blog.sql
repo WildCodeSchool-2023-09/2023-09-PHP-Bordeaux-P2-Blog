@@ -47,6 +47,6 @@ CREATE TABLE article_category (
     article_id INT,
     category_id INT,
     PRIMARY KEY (id),
-    FOREIGN KEY (article_id) REFERENCES article(id),
-    FOREIGN KEY (category_id) REFERENCES category(id)
+    FOREIGN KEY (article_id) REFERENCES article(id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE
 );
