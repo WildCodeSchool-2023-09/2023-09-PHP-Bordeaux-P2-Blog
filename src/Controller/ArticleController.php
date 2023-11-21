@@ -110,7 +110,7 @@ class ArticleController extends AbstractController
 
         if (!$this->isUserAuthorized($_SESSION['user_id'], $article['blog_user_id'])) {
             return $this->renderError('Vous n\'êtes pas autorisé à éditer cet article. ' .
-                                    'Vous devez être connecté et être l\'auteur de l\'article.');
+                'Vous devez être connecté et être l\'auteur de l\'article.');
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -228,9 +228,11 @@ class ArticleController extends AbstractController
                 'message' => 'Aucun article trouvé pour la catégorie : ' . $searchTerm
             ]);
         }
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         return $this->twig->render('Article/search_results.html.twig', [
             'articles' => $articles,
-            'searchTerm' => $searchTerm
+            'searchTerm' => $searchTerm,
+            'userId' => $userId
         ]);
     }
 }
