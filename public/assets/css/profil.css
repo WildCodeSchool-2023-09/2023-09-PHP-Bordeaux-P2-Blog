@@ -75,7 +75,6 @@ ul li {
     list-style: none;
 }
 
-
 @media only screen and (max-width: 767px) {
     .container {
         flex-direction: column-reverse; /* Met en place une disposition en colonne */
@@ -87,8 +86,6 @@ ul li {
         }
     }
 }
-
-
 
 a.button {
     display: flex;
@@ -161,11 +158,10 @@ a.button2::after {
 a.button2:hover {
     transform: translate(0, -6px);
 
-    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, .5), 0px 0px 0px 0px #233521, (39, 200, 255, .5);
-
-  }*/
-
-  a.button {
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px #233521, (39, 200, 255, 0.5);
+}
+*/ a.button {
     margin-left: 0;
     float: left;
     margin-left: 0;
@@ -185,7 +181,7 @@ a.button2:hover {
     transition: all 0.2s;
     overflow: hidden;
     font-size: 12px;
-    border: 2px solid #CC9C65;
+    border: 2px solid #cc9c65;
     width: 6rem;
     margin-right: 10px;
 }
@@ -193,7 +189,7 @@ a.button::after {
     content: "";
     width: 350px;
     height: 150px;
-    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+    background: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
     position: absolute;
     top: -50px;
     left: -100px;
@@ -204,14 +200,14 @@ a.button:hover::after {
 }
 a.button:hover {
     transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39, 200, 255, .25);
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, 0.25),
+        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
 }
 a.button2 {
     margin-left: 0;
     float: left;
     margin-left: 0;
     position: relative;
-    box-sizing: border-box;
     border: 0;
     background: #fff;
     display: flex;
@@ -226,7 +222,7 @@ a.button2 {
     transition: all 0.2s;
     overflow: hidden;
     font-size: 12px;
-    border: 2px solid #CC9C65;
+    border: 2px solid #cc9c65;
     width: 6rem;
     margin-right: 10px;
 }
@@ -234,7 +230,7 @@ a.button2::after {
     content: "";
     width: 350px;
     height: 150px;
-    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+    background: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
     position: absolute;
     top: -50px;
     left: -100px;
@@ -245,5 +241,6 @@ a.button2:hover::after {
 }
 a.button2:hover {
     transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39, 200, 255, .25);
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, 0.25),
+        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
 }
