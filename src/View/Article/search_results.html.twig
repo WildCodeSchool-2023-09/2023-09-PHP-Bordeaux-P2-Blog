@@ -4,12 +4,6 @@
 
 {% block content %}
 
-<form action="/search" method="get">
-    <input type="text" name="search_term" placeholder="Rechercher un article par catégorie...">
-    <button type="submit">Rechercher</button>
-</form>
-
-
 {% if search_term %}
     <h1>Résultats de recherche pour la catégorie: "{{ search_term }}"</h1>
 {% else %}

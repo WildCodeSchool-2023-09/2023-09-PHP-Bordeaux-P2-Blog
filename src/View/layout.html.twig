@@ -15,7 +15,15 @@
 			{% block navbar %}
 				{% include "Home/navbar.html.twig" %}
 			{% endblock %}
+			
 			<main>
+				{% block searchbar %}
+				<form action="/search" method="get">
+    				<input type="text" name="search_term" placeholder="Rechercher un article par catégorie...">
+    				<button type="submit">Rechercher</button>
+				</form>
+				{% endblock %}
+			
 				{% block content %}{% endblock %}
 
 			</main>
