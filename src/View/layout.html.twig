@@ -14,7 +14,6 @@
     <body>
         {% block navbar %} {% include "Home/navbar.html.twig" %} {% endblock %}
         <main>
-            {% block searchBar %}
             <form id="searchForm" action="/search" method="get">
                 <input
                     type="text"
@@ -26,7 +25,7 @@
                     <span>Rechercher</span>
                 </button>
             </form>
-            {% endblock %}{% block content %}{% endblock %}
+            {% block content %}{% endblock %}
         </main>
         {% block footer %} {% include "Home/footer.html.twig" %} {% endblock %}
         {% block javascript %}
