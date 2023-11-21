@@ -32,3 +32,10 @@ main {
 li {
     list-style-type: none;
 }
+
+#hiddenImg {
+    display: none;
+}
+#imageInput {
+    display: none;
+}
