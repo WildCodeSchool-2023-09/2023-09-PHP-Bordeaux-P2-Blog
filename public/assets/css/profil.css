@@ -21,7 +21,7 @@
 }
 
 .info {
-    width: 50%;
+    width: 40%;
 }
 
 .info img {
@@ -45,24 +45,15 @@
 }
 
 .article {
-    width: 50%;
+    width: 60%;
     margin-top: 5px;
-    margin-right: 80px;
+    margin-right: 100px;
     margin-bottom: 5px;
     text-align: justify;
 }
-.border {
-    border: 2px solid var(--second-color);
-    box-shadow: 10px 5px 5px lightgrey;
-    margin-top: 10px;
-    padding: 10px;
-
-}
-
 .text {
     text-align: justify;
     margin-bottom: 10px;
-   
 }
 
 /* Chemin pour sélectionner la photo de Ckeditor */
@@ -84,7 +75,6 @@ ul li {
     list-style: none;
 }
 
-
 @media only screen and (max-width: 767px) {
     .container {
         flex-direction: column-reverse; /* Met en place une disposition en colonne */
@@ -95,25 +85,83 @@ ul li {
             margin-right: 0;
         }
     }
-    .article {
-        width: 90%;
-    }
-
-    .container{
-        width: 100%;
-    }
-    .info{
-        width: 100%;
-    }
-}
-
-.button-container {
-    height: 100px;
-
-
 }
 
 a.button {
+    display: flex;
+    display: inline-block;
+    position: relative;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    padding: 6px 12px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 1.5em;
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px #233521(39, 200, 255, 0.5);
+    transition: all 0.2s;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+a.button::after {
+    content: "";
+    width: 420px;
+    height: 150px;
+    background: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    z-index: -1;
+}
+
+a.button:hover {
+    transform: translate(0, -6px);
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px #233521, (39, 200, 255, 0.5);
+}
+
+a.button2 {
+    display: flex;
+    display: inline-block;
+    position: relative;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    padding: 6px 12px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 1.5em;
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px #233521(39, 200, 255, 0.5);
+    transition: all 0.2s;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+a.button2::after {
+    content: "";
+    width: 720px;
+    height: 150px;
+    background: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    z-index: -1;
+}
+
+a.button2:hover {
+    transform: translate(0, -6px);
+
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px #233521, (39, 200, 255, 0.5);
+}
+*/ a.button {
     margin-left: 0;
     float: left;
     margin-left: 0;
@@ -133,7 +181,7 @@ a.button {
     transition: all 0.2s;
     overflow: hidden;
     font-size: 12px;
-    border: 2px solid #CC9C65;
+    border: 2px solid #cc9c65;
     width: 6rem;
     margin-right: 10px;
 }
@@ -141,7 +189,7 @@ a.button::after {
     content: "";
     width: 350px;
     height: 150px;
-    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+    background: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
     position: absolute;
     top: -50px;
     left: -100px;
@@ -152,14 +200,14 @@ a.button:hover::after {
 }
 a.button:hover {
     transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39, 200, 255, .25);
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, 0.25),
+        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
 }
 a.button2 {
     margin-left: 0;
     float: left;
     margin-left: 0;
     position: relative;
-    box-sizing: border-box;
     border: 0;
     background: #fff;
     display: flex;
@@ -174,26 +222,25 @@ a.button2 {
     transition: all 0.2s;
     overflow: hidden;
     font-size: 12px;
-    border: 2px solid #CC9C65;
-    width: 10rem;
+    border: 2px solid #cc9c65;
+    width: 6rem;
     margin-right: 10px;
-    margin-top: 3%;
 }
 a.button2::after {
     content: "";
     width: 350px;
     height: 150px;
-    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+    background: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
     position: absolute;
     top: -50px;
     left: -100px;
     z-index: -1;
-    margin-top: 3%;
 }
 a.button2:hover::after {
     transform: rotate(150deg);
 }
 a.button2:hover {
     transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39, 200, 255, .25);
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, 0.25),
+        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
 }

@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="utf-8"/>
-		<meta http-equiv="x-ua-compatible" content="ie=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link rel="icon" href="/assets/images/favicon.png"/>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/assets/images/favicon.png" />
 
         <title>{% block title %} Bump {% endblock %}</title>
         <link rel="stylesheet" href="/assets/css/style.css" />
         {% block stylesheet %}{% endblock %}
     </head>
 
-		<body>
-			{% block navbar %}
-				{% include "Home/navbar.html.twig" %}
-			{% endblock %}
-			<main>
-				{% block content %}{% endblock %}
-
-			</main>
-			{% block footer %}
-			  {% include "Home/footer.html.twig" %}
-			{% endblock %}
-
-
-			{% block javascript %}
-				<script src="/assets/JavaScript/navbar.js"></script>
-			{% endblock %}
-		
-</body>
-	</html>
+    <body>
+        {% block navbar %} {% include "Home/navbar.html.twig" %} {% endblock %}
+        <main>
+            <form id="searchForm" action="/search" method="get">
+                <input
+                    type="text"
+                    id="searchInput"
+                    name="search_term"
+                    placeholder="Rechercher par catégorie..."
+                />
+                <button type="submit" id="submitsearch">
+                    <span>Rechercher</span>
+                </button>
+            </form>
+            {% block content %}{% endblock %}
+        </main>
+        {% block footer %} {% include "Home/footer.html.twig" %} {% endblock %}
+        {% block javascript %}
+        <script src="/assets/JavaScript/script.js"></script>
+        <script src="/assets/JavaScript/navbar.js"></script>
+        {% endblock %}
+    </body>
+</html>

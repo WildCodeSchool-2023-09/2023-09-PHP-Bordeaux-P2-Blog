@@ -7,19 +7,18 @@
 }
 
 main {
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-form {
+#formRegister {
     align-items: center;
     justify-content: space-between;
     text-align: center;
-    width: 340px; 
+    width: 340px;
     height: 500px;
-    max-width: none; 
+    max-width: none;
     width: 340px;
     height: 400px;
     max-width: none;
@@ -34,7 +33,6 @@ form {
     flex-direction: column;
 }
 
-  
 .submit {
     display: inline-block;
     margin-left: 0;
@@ -51,36 +49,36 @@ form {
     font-size: 12px;
     border: 2px solid #cc9c65;
     width: 6rem;
-    gap: 10px; 
-    }
-
+    gap: 10px;
+}
 
 .submit:hover {
     transform: translate(0, -6px);
-    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25), -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
-    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25),
+        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+    background: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
 }
-  
 
-  .submit::after {
+.submit::after {
     content: "";
     width: 350px;
-    height:150px;
-    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+    height: 150px;
+    background: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
     position: absolute;
     top: -50px;
     left: -100px;
     z-index: -1;
-    }
-    
-  .submit:hover::after {
-    transform: rotate(150deg);
-    }
+}
 
-  .submit:hover::after {
-      transform: translate(0, -6px);
-      box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39,200,255,.25);
-    }  
+.submit:hover::after {
+    transform: rotate(150deg);
+}
+
+.submit:hover::after {
+    transform: translate(0, -6px);
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, 0.25),
+        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+}
 
 #description {
     min-height: 40px;

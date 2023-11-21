@@ -110,7 +110,7 @@ class ArticleController extends AbstractController
 
         if (!$this->isUserAuthorized($_SESSION['user_id'], $article['blog_user_id'])) {
             return $this->renderError('Vous n\'êtes pas autorisé à éditer cet article. ' .
-                                    'Vous devez être connecté et être l\'auteur de l\'article.');
+                'Vous devez être connecté et être l\'auteur de l\'article.');
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -140,12 +140,17 @@ class ArticleController extends AbstractController
         $data = [
             'title' => $postData['title'],
             'content' => $postData['content'],
-            'image' => $postData['image'],
         ];
+
+        // Vérifie si la clé 'image' existe dans $postData avant de l'ajouter à $data
+        if (isset($postData['image'])) {
+            $data['image'] = $postData['image'];
+        }
 
         $articleManager->editArticle($articleId, $data);
         $this->updateArticleCategories($articleId, $postData, $categoryManager);
     }
+
 
     private function updateArticleCategories($articleId, $postData, $categoryManager)
     {
@@ -224,13 +229,17 @@ class ArticleController extends AbstractController
         $articles = $articleManager->getArticlesByCategoryName($searchTerm);
 
         if (empty($articles)) {
+            $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
             return $this->twig->render('Error/index.html.twig', [
-                'message' => 'Aucun article trouvé pour la catégorie : ' . $searchTerm
+                'message' => 'Aucun article trouvé pour la catégorie : ' . $searchTerm,
+                'userId' => $userId
             ]);
         }
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         return $this->twig->render('Article/search_results.html.twig', [
             'articles' => $articles,
-            'searchTerm' => $searchTerm
+            'searchTerm' => $searchTerm,
+            'userId' => $userId
         ]);
     }
 }

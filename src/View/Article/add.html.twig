@@ -16,26 +16,26 @@
         CKEDITOR.replace("content");
     </script>
 
-    <label for="image">Image (facultatif) :</label>
-    <input type="text" name="image" id="image" /><br />
+    <label for="image" id="hiddenImg">Image (facultatif) :</label>
+    <input type="text" name="image" id="imageInput" /><br />
 
-    <label for="categories">Catégories (facultatifl):</label>
-    <div id="categories">
-        {% for category in categories %}
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="categories[]" value="{{ category.id }}">
-                    {{ category.name }}
-                </label>
-            </div>
-        {% endfor %}
-    </div><br />
-
+    <div for="categories">Catégories (facultatif):</div>
+        <div id="categories">
+            {% for category in categories %}
+                <div class="checkbox">
+                    <div id = "batman">
+                        <input type="checkbox" name="categories[]" value="{{ category.id }}">
+                        {{ category.name }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div><br />
      <!-- Champ pour une nouvelle catégorie -->
-    <label for="new_category">Ajouter une catégorie (optionnel) :</label>
+    <label for="new_category">Ajouter une catégorie (facultatif) :</label>
     <input type="text" name="new_category" id="new_category" /><br />
 
     <button class="submit" type="submit">Ajouter</button>
+    </div>
 </div>    
 </form>
 

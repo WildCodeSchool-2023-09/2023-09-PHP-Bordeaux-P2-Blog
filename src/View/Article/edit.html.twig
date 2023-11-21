@@ -1,60 +1,65 @@
-{% extends 'layout.html.twig' %} 
+{% extends 'layout.html.twig' %} {% block title %}Éditer un article{% endblock
+%} {% block stylesheet %}<link rel="stylesheet" href="/assets/css/edit.css" />{%
+endblock %} {% block content %}
+<div class="contenant">
+    <h1>Éditer l'article</h1>
+    <form method="post">
+        <label for="title">Titre </label>
+        <input
+            type="text"
+            name="title"
+            id="title"
+            value="{{ article.title }}"
+            required
+        /><br />
 
-{% block title %}Éditer un article{% endblock %} 
+        <label for="content">Contenu </label>
+        <textarea name="content" id="content" required>{{
+            article.content
+        }}</textarea
+        ><br />
 
-{% block stylesheet %}<link rel="stylesheet" href="/assets/css/edit.css">{% endblock %}
+        <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+        <script>
+            CKEDITOR.replace("content");
+        </script>
 
-{% block content %}
-<div class="contenant"editer un article>
-<h1>Éditer l'article</h1>
-<form method="post">
-    <label for="title">Titre </label>
-    <input
-        type="text"
-        name="title"
-        id="title"
-        value="{{ article.title }}"
-        required
-    /><br />
-
-    <label for="content">Contenu </label>
-    <textarea name="content" id="content" required>{{
-        article.content
-    }}</textarea
-    ><br />
-
-    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace("content");
-    </script>
-
-    <label for="image">Image (facultatif) :</label>
-    <input
-        type="text"
-        name="image"
-        id="image"
-        value="{{ article.image }}"
-    /><br />
-
-     <label for="categories">Catégories (falcutatif):</label>
-    <div id="categories">
-        {% for category in allCategories %}
+        <div for="categories">Catégories (facultatif):</div>
+        <div id="categories">
+            {% for category in allCategories %}
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="categories[]" value="{{ category.id }}"
-                           {% if category.id in currentCategories %} checked {% endif %}>
+                    <input
+                        type="checkbox"
+                        name="categories[]"
+                        value="{{ category.id }}"
+                        {%
+                        if
+                        category.id
+                        in
+                        currentCategories
+                        %}
+                        checked
+                        {%
+                        endif
+                        %}
+                    />
                     {{ category.name }}
                 </label>
             </div>
-        {% endfor %}
-    </div><br />
+            {% endfor %}
+        </div>
+        <br />
 
-    <label for="new_category">Ajouter une nouvelle catégorie :</label>
-    <input type="text" id="new_category" name="new_category" placeholder="Nom de la nouvelle catégorie"><br>
+        <label for="new_category">Ajouter une nouvelle catégorie (facultatif):</label>
+        <input
+            type="text"
+            id="new_category"
+            name="new_category"
+            placeholder="Nom de la nouvelle catégorie"
+        /><br />
 
-
-
-    <button type="submit">Enregistrer</button>
-
-</form>
+        <button type="submit">Enregistrer</button>
+    </form>
+</div>
 {% endblock %}
