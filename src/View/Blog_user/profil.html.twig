@@ -7,11 +7,11 @@
 <div class="blog">BLOG de {{ userId.name }}</div>
 <div class="container">
     <div class="article">
-        <ul>
             <h1>Mes articles</h1>
             {% for article in articles %}
+        <li>
 
-            <h3>{{ article.title }}</h3>
+            <h2>{{ article.title }}</h2>
             <p class="text">{{ article.content | raw }}</p>
             <p>Catégorie(s) : {% if article.categories %}
                 {% for category in article.categories %}
@@ -24,19 +24,19 @@
                 Aucune catégorie
             {% endif %}
             </p>
-        <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
+            <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
             <div class="button-container">
                 <a href="/article/edit?id={{ article.id }}" class="button"
                     >Éditer</a
-                >
+                    >
                 <a href="/article/delete?id={{ article.id }}" class="button"
-                    >Supprimer</a
-                >
-                <a href="/show?id={{ article.id }}" class="button"
-                    >Commentaires ({{ article.comment_count }})</a
-                >
-            </div>
+                    >Supprimer</a>
 
+                <a href="/show?id={{ article.id }}" class="button"
+                    >Commentaires ({{ article.comment_count }})</a>
+
+            </div>
+        </li>
             {% endfor %}
             <a href="/article/add" class="button2">Ajouter un article</a>
         </ul>
@@ -49,7 +49,7 @@
         <t class="title">{{ userId.name }}</t>
         <p class="titleblog"><strong>Mon blog</strong> {{ userId.title }}</p>
         <p class="text">{{ userId.description | raw }}</p>
-        <a href="/forgot_password" class="button"
+        <a href="/forgot_password" class="button2"
             >Réinitialiser le mot de passe
         </a>
     </div>
