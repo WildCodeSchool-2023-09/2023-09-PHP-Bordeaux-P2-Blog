@@ -87,6 +87,14 @@ textarea {
   font-size: 1.2em;
 }
 
+#batman{
+  display: inline-flex;
+}
+
+#categories {
+  margin-top: 2rem;
+}
+
 @media screen and (max-width: 600px) {
   form {
       padding: 10px;

@@ -109,6 +109,14 @@ h1 {
         -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
 }
 
+.checkbox {
+    display: flex;
+}
+
+label {
+    display: flex;
+    flex-direction: row-reverse;
+}
 /* Style spécifique pour CKEditor */
 .cke {
     margin-top: 10px;
