@@ -224,8 +224,10 @@ class ArticleController extends AbstractController
         $articles = $articleManager->getArticlesByCategoryName($searchTerm);
 
         if (empty($articles)) {
+            $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
             return $this->twig->render('Error/index.html.twig', [
-                'message' => 'Aucun article trouvé pour la catégorie : ' . $searchTerm
+                'message' => 'Aucun article trouvé pour la catégorie : ' . $searchTerm,
+                'userId' => $userId
             ]);
         }
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
