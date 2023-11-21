@@ -59,13 +59,23 @@ class ArticleManager extends AbstractManager
 
     public function getArticlesByUserId(int $userId)
     {
-        $query = 'SELECT * FROM ' . static::TABLE . ' WHERE blog_user_id = :user_id';
+        $query = "SELECT A.*, BU.name AS author_name, C.id AS comment_id, C.content AS comment_content,
+              CAT.name AS category_name
+              FROM article A
+              INNER JOIN blog_user BU ON A.blog_user_id = BU.id
+              LEFT JOIN commentary C ON A.id = C.article_id
+              LEFT JOIN article_category AC ON A.id = AC.article_id
+              LEFT JOIN category CAT ON AC.category_id = CAT.id
+              WHERE A.blog_user_id = :user_id
+              ORDER BY A.date DESC";
+
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':user_id', $userId, \PDO::PARAM_INT);
+        $statement->bindValue(':user_id', $userId, PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetchAll();
     }
+
 
     public function getAllArticles()
     {

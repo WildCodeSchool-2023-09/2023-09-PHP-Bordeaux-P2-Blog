@@ -19,7 +19,7 @@ class ProfilController extends AbstractController
 
             // Récupère les articles de l'utilisateur
             $articleManager = new ArticleManager();
-            $articles = $articleManager->getAllArticles();
+            $articles = $articleManager->getArticlesByUserId($userId);
 
             $articles = array_map(function ($article) {
                 if (isset($article['categories'])) {
@@ -37,6 +37,8 @@ class ProfilController extends AbstractController
             header('Location: /login');
         }
     }
+
+
 
     public function login()
     {
