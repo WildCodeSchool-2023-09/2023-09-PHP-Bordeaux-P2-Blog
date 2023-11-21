@@ -261,6 +261,10 @@
     padding: 15px;
 }
 
+.popup:hover {
+    transform: translate(0, -6px);
+    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25), -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+}
 a {
     color: #233521;
     text-decoration: none;
