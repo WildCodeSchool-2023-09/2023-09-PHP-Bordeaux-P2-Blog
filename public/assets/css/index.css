@@ -1,0 +1,117 @@
+main h1 {
+    background-color: var(--primary-color);
+    color: var(--second-color);
+    text-align: center;
+    padding: 30px;
+    margin: 0px;
+    margin-bottom: 50px;
+}
+
+.SSarticle {
+    text-align: center;
+    color: red;
+    font-size: 24px;
+    list-style: none;
+}
+
+.flexArticle {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    width: 80%;   
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+.flexArticle h2 {
+    color: var(--second-color); 
+    text-align: center;
+}
+
+.flexArticle li h2 + img {
+    display: block;
+    margin-top: 10px;
+}
+
+.date {
+    font-style: italic;
+}
+
+.author {
+    font-style: italic;
+    color: #6941C6;
+}
+
+.flexArticle li {
+    width: 45%;
+    list-style: none;
+    padding: 10px;
+    border: 2px solid var(--second-color);
+    margin-bottom: 30px;
+    overflow: hidden; /* Masque le surplus de contenu */
+    box-shadow: 10px 5px 5px lightgrey;
+}
+
+.flexArticle li p {
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    overflow: hidden; /* Masque le surplus de texte */
+    text-overflow: ellipsis; /* Ajoute des points de suspension (...) pour indiquer qu'il y a plus de texte */
+}
+
+.submit {
+    display: inline-block;
+    margin-left: 0;
+    margin-bottom: 12px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    color: #333;
+    background: transparent;
+    padding: 4px 10px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: all 0.2s;
+    overflow: hidden;
+    font-size: 12px;
+    border: 2px solid #CC9C65;
+    width: 6rem;
+}
+.submit:hover {
+    transform: translate(0, -6px);
+    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25), -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+    background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+}
+
+@media only screen and (max-width: 834px) {
+    .flexArticle {
+        width: 95%;
+        padding: 0;
+    }
+
+    .flexArticle li h2 {
+        font-size: 24px; /* Rétablir la taille du texte */
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+    .flexArticle {
+        width: 95%; /* Occuper la largeur complète de l'écran */
+        padding: 0;
+    }
+    
+    .flexArticle li {
+        width: 100%; /* Occuper la largeur complète de l'écran */
+    }
+    
+    .flexArticle li h2 {
+        font-size: 18px; /* Ajuster la taille du texte pour les écrans plus petits */
+    }
+
+    main h1 {
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+}
+

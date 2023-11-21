@@ -1,6 +1,55 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}Blog - Accueil{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/index.css">{% endblock %}
+
 {% block content %}
-    <h1>Hello Wilder !</h1>
-    <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
+
+<h1>Articles récents</h1>
+<ul class = 'flexArticle'>
+    {% for article in articles %}
+    <li>
+        <a href="/show?id={{ article.id }}">
+        <h2>{{ article.title }}</h2> </a>
+
+        <p>{{ article.content | raw }}</p>
+        <p class = "date">Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
+        <a href="/profil?id={{ userId }}">
+        <p class = "author">Par {{ article.author_name }}</p></a>
+        <p>Catégorie(s) : {% if article.categories %}
+                {% for category in article.categories %}
+                    <form action="/search" method="get" style="display: inline;">
+                        <input type="hidden" name="search_term" value="{{ category }}">
+                        <button type="submit">{{ category }}</button>
+                    </form>
+                {% endfor %}
+            {% else %}
+                Aucune catégorie
+            {% endif %}
+            </p>
+            
+        <a href="/show?id={{ article.id }}">
+          Commentaires ({{ article.comment_count }})</a>
+
+
+
+        {% if article.blog_user_id is defined %} {% if userId %}
+        <form method="post" action="/comment/add">
+            <input type="hidden" name="article_id" value="{{ article.id }}" />
+            <textarea
+                name="content_{{ article.id }}"
+                id="content_{{ article.id }}"
+                required
+            ></textarea>
+            <button class="submit" type="submit">Publier le commentaire</button>
+        </form>
+        {% else %}
+        <p>Vous devez être <a href="/login">connecté</a> pour commenter.</p>
+        {% endif %} {% endif %}
+    </li>
+    {% else %}
+    <li class = 'SSarticle'>Aucun article à afficher !!!</li>
+    {% endfor %}
+</ul>
 {% endblock %}

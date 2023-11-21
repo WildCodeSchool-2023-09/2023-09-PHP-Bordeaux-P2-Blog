@@ -1,0 +1,246 @@
+.blog {
+    background-color: var(--primary-color);
+    height: 100px;
+    color: var(--second-color);
+    text-align: center;
+    width: 100%;
+    margin-top: 3%;
+    margin-bottom: 7%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: var(--h1-font-size);
+    font-family: var(--h1-font-family);
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    margin: 0 auto 10%; /* Utilisation de 'auto' pour centrer horizontalement */
+    padding: 20px;
+}
+
+.info {
+    width: 40%;
+}
+
+.info img {
+    border-radius: 50%;
+    width: 300px;
+    height: auto;
+}
+.title {
+    font-size: 24px;
+    font-family: var(--h2-font-size);
+}
+.titleblog {
+    font-size: 36px;
+    font-family: var(--h2-font-size);
+}
+
+.info.imageronde {
+    width: 100%; /* La largeur de l'image est définie à 100% du conteneur */
+    height: auto; /* La hauteur est automatiquement ajustée pour maintenir les proportions */
+    display: block; /* Supprime l'espace sous l'image causé par la mise en page inline */
+}
+
+.article {
+    width: 60%;
+    margin-top: 5px;
+    margin-right: 100px;
+    margin-bottom: 5px;
+    text-align: justify;
+}
+.text {
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+/* Chemin pour sélectionner la photo de Ckeditor */
+.article > ul > p > img {
+    width: 300px;
+}
+
+.ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    list-style: none; /* Supprime les puces pour les éléments de liste non ordonnée */
+}
+
+.li {
+    margin-bottom: 20px;
+    list-style: none;
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        flex-direction: column-reverse; /* Met en place une disposition en colonne */
+
+        .column2,
+        .column1 {
+            width: 100%; /* Les colonnes occupent maintenant 100% de la largeur */
+            margin-right: 0;
+        }
+    }
+}
+
+a.button {
+    display: flex;
+    display: inline-block;
+    position: relative;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    padding: 6px 12px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 1.5em;
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px #233521(39, 200, 255, 0.5);
+    transition: all 0.2s;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+a.button::after {
+    content: "";
+    width: 420px;
+    height: 150px;
+    background: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    z-index: -1;
+}
+
+a.button:hover {
+    transform: translate(0, -6px);
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px #233521, (39, 200, 255, 0.5);
+}
+
+a.button2 {
+    display: flex;
+    display: inline-block;
+    position: relative;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    padding: 6px 12px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 1.5em;
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px #233521(39, 200, 255, 0.5);
+    transition: all 0.2s;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+a.button2::after {
+    content: "";
+    width: 720px;
+    height: 150px;
+    background: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    z-index: -1;
+}
+
+a.button2:hover {
+    transform: translate(0, -6px);
+
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px #233521, (39, 200, 255, 0.5);
+}
+*/ a.button {
+    margin-left: 0;
+    float: left;
+    margin-left: 0;
+    position: relative;
+    box-sizing: border-box;
+    border: 0;
+    background: #fff;
+    display: flex;
+    color: #333;
+    padding: 4px 10px;
+    margin-bottom: 6px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 1.5em;
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px rgba(39, 200, 255, 0.5);
+    transition: all 0.2s;
+    overflow: hidden;
+    font-size: 12px;
+    border: 2px solid #cc9c65;
+    width: 6rem;
+    margin-right: 10px;
+}
+a.button::after {
+    content: "";
+    width: 350px;
+    height: 150px;
+    background: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    z-index: -1;
+}
+a.button:hover::after {
+    transform: rotate(150deg);
+}
+a.button:hover {
+    transform: translate(0, -6px);
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, 0.25),
+        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+}
+a.button2 {
+    margin-left: 0;
+    float: left;
+    margin-left: 0;
+    position: relative;
+    border: 0;
+    background: #fff;
+    display: flex;
+    color: #333;
+    padding: 4px 10px;
+    margin-bottom: 6px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 1.5em;
+    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, 0.5),
+        0px 0px 0px 0px rgba(39, 200, 255, 0.5);
+    transition: all 0.2s;
+    overflow: hidden;
+    font-size: 12px;
+    border: 2px solid #cc9c65;
+    width: 6rem;
+    margin-right: 10px;
+}
+a.button2::after {
+    content: "";
+    width: 350px;
+    height: 150px;
+    background: linear-gradient(200deg, #cc9c65 0%, #fff 90%, #cc9c65 100%);
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    z-index: -1;
+}
+a.button2:hover::after {
+    transform: rotate(150deg);
+}
+a.button2:hover {
+    transform: translate(0, -6px);
+    box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, 0.25),
+        -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+}

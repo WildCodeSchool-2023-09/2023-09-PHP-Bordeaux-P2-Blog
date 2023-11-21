@@ -1,3 +1,81 @@
+@import "footer.css";
+@import "navbar.css";
+
+:root {
+    --primary-color: #233521;
+    --second-color: #cc9c65;
+    --third-color: black;
+    --fourth-color: white;
+    --h1-font-size: 32px;
+    --h1-font-family: exo2;
+    --h2-font-size: 24px;
+    --h2-font-family: rubik;
+    --h3-font-size: 20px;
+    --h3-font-family: rubik;
+    --text-font-size: 14px;
+    --text-font-family: hind madurai;
+}
+
 body {
-    color: #f76c6c;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+}
+
+main {
+    min-height: inherit;
+}
+
+li {
+    list-style-type: none;
+}
+
+#hiddenImg {
+    display: none;
+}
+#imageInput {
+    display: none;
+}
+
+#searchForm {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+#searchInput {
+    width: 200px;
+    border: 1px solid #000;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url("https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png");
+    background-position: 10px 7px;
+    background-repeat: no-repeat;
+    padding: 8px 20px 8px 40px;
+    -webkit-transition: width 0.8s ease-in-out;
+    transition: width 0.8s ease-in-out;
+    outline: none;
+    opacity: 0.9;
+}
+
+#submitsearch {
+    border: 1px solid rgb(138, 134, 134);
+    margin-left: -7rem;
+    padding: 5px;
+    border-radius: 19px;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 8px;
+    padding-top: 4px;
+    display: none;
+    box-shadow: 0 0 1px black;
+    margin-right: 110px;
+}
+
+#searchInput:focus {
+    outline-offset: -2px;
 }

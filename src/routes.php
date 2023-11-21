@@ -6,11 +6,25 @@
 //          2. method name
 //          3. (optional) array of query string keys to send as parameter to the method
 // e.g route '/item/edit?id=1' will execute $itemController->edit(1)
+
+//mettre dans le navigateur: http://localhost:8000/profil?authorId=1
+
 return [
-    '' => ['HomeController', 'index',],
-    'items' => ['ItemController', 'index',],
-    'items/edit' => ['ItemController', 'edit', ['id']],
-    'items/show' => ['ItemController', 'show', ['id']],
-    'items/add' => ['ItemController', 'add',],
-    'items/delete' => ['ItemController', 'delete',],
+    '' => ['ArticleController', 'showAllArticles'],
+    'profil' => ['ProfilController', 'profil'],
+    'article' => ['ArticleController', 'index'],
+    'article/edit' => ['ArticleController', 'editArticleById', ['id']],
+    'show' => ['ArticleController', 'showArticleById', ['id']],
+    'article/add' => ['ArticleController', 'addArticle'],
+    'article/delete' => ['ArticleController', 'deleteArticleById', ['id']],
+    'login' => ['ProfilController', 'login'],
+    'logout' => ['ProfilController', 'logout'],
+    'register' => ['ProfilController', 'register'],
+    'confidentialite' => ['PageController', 'confidentialite'],
+    'propos' => ['PageController', 'propos'],
+    'comment/add' => ['CommentController', 'addComment'],
+    'comment/delete' => ['CommentController', 'deleteCommentById', ['comment_id']],
+    'forgot_password' => ['ProfilController', 'forgotPassword'],
+    'comment/edit' => ['CommentController', 'editCommentById', ['comment_id']],
+    'search' => ['ArticleController', 'searchByCategoryName', ['search_term']]
 ];

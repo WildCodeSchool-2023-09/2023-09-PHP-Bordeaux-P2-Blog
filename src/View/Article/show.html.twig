@@ -1,0 +1,66 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    {% block stylesheet %}<link rel="stylesheet" href="/assets/css/show.css">{% endblock %}
+    
+        <h1>Article : {{ article.title }}</h1>
+    <div class="contenant">
+        <p>{{ article.content | raw }}</p>
+
+        
+        <div class="auteur">
+            Auteur : {% if article.author_name is defined %}{{ article.author_name }}{% else %}Auteur inconnu{% endif %}
+        </div>
+
+        <!-- Affichage des catégories -->
+        <p>Catégorie(s) : 
+            {% if categories is not empty %}
+                {% for category in categories %}
+                    <span>{{ category.name }}</span>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            {% else %}
+                Aucune catégorie
+            {% endif %}
+        </p>
+
+        <a class="bouton" href="/article/edit?id={{ article.id }}">Éditer</a>
+        <a class="bouton" href="/article/delete?id={{ article.id }}">Supprimer</a>
+        <a class="bouton" href="/">Retour</a>
+    </div>
+
+    <div class="comments">
+        Commentaires de l'article : 
+        {% if comments is not empty %}
+            <ul>
+                {% for comment in comments %}
+                    <div class="utilisateur">
+                         <li>
+                            {{ comment.user_name }}<br>
+                        <p>{{ comment.content | raw }}</p>
+                        {% if "user_id" is defined %}
+                            <a href="/comment/edit?comment_id={{ comment.id }}"><button class="btn-comments">Modifier</button></a>
+                            <a href="/comment/delete?comment_id={{ comment.id }}"><button class="btn-comments">Supprimer</button></a>
+                        {% endif %}
+                         </li>
+                    </div>     
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucun commentaire pour cet article.</p>
+        {% endif %}
+
+        {% if article.blog_user_id is defined %}
+            {% if userId %}
+                <div class="commentaire">Laissez un commentaire :
+                    <form method="post" action="/comment/add">
+                         <input type="hidden" name="article_id" value="{{ article.id }}" />
+                             <textarea name="content_{{ article.id }}" id="content_{{ article.id }}" required></textarea>
+                         <button class="ajouter">Ajouter un commentaire</button>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <p>Vous devez être <a href="/login">connecté</a> pour commenter.</p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

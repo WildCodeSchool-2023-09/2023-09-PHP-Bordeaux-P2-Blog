@@ -1,0 +1,71 @@
+{% extends 'layout.html.twig' %} {% block title %}S'inscrire{% endblock %} {%
+block stylesheet %}
+<link rel="stylesheet" href="/assets/css/register.css" />
+{% endblock %} {% block content %}
+<div class="titre">
+    <h1>S'inscrire</h1>
+    <div class="center">
+        <form id ="formRegister"method="post" enctype="multipart/form-data" autocomplete="on">
+            <label for="name">Pseudo :</label>
+            <input
+                type="text"
+                name="name"
+                id="name"
+                autocomplete="name"
+                required
+            /><br />
+
+            <label for="password">Mot de passe :</label>
+            <input
+                type="password"
+                name="password"
+                id="password"
+                autocomplete="new-password"
+                required
+            /><br />
+
+            <label for="email">Adresse e-mail :</label>
+            <input
+                type="email"
+                name="email"
+                id="email"
+                autocomplete="email"
+                required
+            /><br />
+
+            <label for="image">Image (facultatif) :</label>
+            <input
+                type="file"
+                name="image"
+                id="image"
+                accept="image/jpeg, image/png, image/gif, image/webp"
+            /><br />
+
+            <!-- Afficher l'image si elle existe -->
+            {% if data.image is defined and data.image %}
+            <img src="{{ data.image }}" alt="Profile Image" /><br />
+            {% endif %}
+
+            <label for="title">Titre :</label>
+            <input
+                type="text"
+                name="title"
+                id="title"
+                autocomplete="on"
+                required
+            /><br />
+
+            <label for="description">Description :</label>
+            <textarea
+                name="description"
+                id="description"
+                autocomplete="off"
+                required
+            ></textarea
+            ><br />
+
+            <button class="submit" type="submit">S'inscrire</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

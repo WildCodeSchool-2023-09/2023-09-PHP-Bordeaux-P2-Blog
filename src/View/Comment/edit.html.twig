@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %} 
+
+{% block title %}Éditer un commentaire{% endblock %} 
+    {% block stylesheet %}<link rel="stylesheet" href="/assets/css/editcomment.css">{% endblock %}
+
+{% block content %}
+<h1>Éditer le commentaire</h1>
+<form id="formComment"method="post">
+    <label for="content">Contenu :</label>
+    <textarea name="content" id="content" required>{{ comment.content }}</textarea><br />
+    <button class="register" type="submit">Enregistrer</button>
+    <button class="annuler" href="/show?id={{ comment.article_id }}">Annuler</button>
+</form>
+{% endblock %}

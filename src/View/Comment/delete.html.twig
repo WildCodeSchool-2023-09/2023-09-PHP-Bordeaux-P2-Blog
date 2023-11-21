@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Supprimer un commentaire{% endblock %}
+    {% block stylesheet %}<link rel="stylesheet" href="/assets/css/deletecomment.css">{% endblock %}
+{% block content %}
+<h1>Supprimer le commentaire</h1>
+<div class="content">
+<p>Êtes-vous sûr de vouloir supprimer ce commentaire ?</p>
+<p><strong>Contenu :</strong> {{ comment.content | raw }}</p>
+<form method="post">
+    <button class="delete" type="submit">Confirmer la suppression</button>
+<button class="annuler" href="/show?id={{ comment.article_id }}">Annuler</button>
+</form>
+</div>
+{% endblock %}
