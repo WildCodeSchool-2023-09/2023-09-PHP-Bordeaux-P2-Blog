@@ -96,7 +96,7 @@ class ProfilController extends AbstractController
                 $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
 
                 if (in_array($extension, $allowedExtensions)) {
-                    $uploadDir = __DIR__ . '/../../public/assets/images/uploaded/';
+                    $uploadDir = __DIR__ . '/assets/images/uploaded/';
 
                     if (!is_dir($uploadDir)) {
                         mkdir($uploadDir, 0777, true);
