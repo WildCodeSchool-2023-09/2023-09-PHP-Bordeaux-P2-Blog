@@ -29,7 +29,59 @@ textarea {
     height: 100px;
     resize: none;
     margin-bottom: 8px;
-}
+  }
+  
+.register,
+.annuler {
+      display: inline-block;
+      margin-left: 0;
+      margin-bottom: 12px;
+      margin-right: 10px;
+      box-sizing: border-box;
+      color: #333;
+      background: transparent;
+      padding: 4px 10px;
+      border-radius: 0px;
+      cursor: pointer;
+      transition: all 0.2s;
+      overflow: hidden;
+      font-size: 12px;
+      border: 2px solid #cc9c65;
+      width: 6rem;
+      gap: 10px; 
+      }
+  
+  
+  .register:hover,
+  .annuler:hover {
+      transform: translate(0, -6px);
+      box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25), -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
+      background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+  }
+    
+
+    .register::after,
+    .annuler::after {
+      content: "";
+      width: 350px;
+      height:150px;
+      background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
+      position: absolute;
+      top: -50px;
+      left: -100px;
+      z-index: -1;
+      }
+      
+    .register:hover::after,
+    .annuler:hover::after {
+      transform: rotate(150deg);
+      }
+
+    .register:hover::after,
+    .annuler:hover::after {
+        transform: translate(0, -6px);
+        box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39,200,255,.25);
+      }  
 
 .register {
     display: inline-block;

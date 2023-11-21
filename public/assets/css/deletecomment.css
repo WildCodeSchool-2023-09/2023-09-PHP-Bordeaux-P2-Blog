@@ -49,9 +49,8 @@ h1 {
 .delete,
 .annuler {
     display: inline-block;
-    margin-left: 0;
+    /* margin-left: 0; */
     margin-bottom: 12px;
-    margin-right: 10px;
     box-sizing: border-box;
     color: #333;
     background: transparent;

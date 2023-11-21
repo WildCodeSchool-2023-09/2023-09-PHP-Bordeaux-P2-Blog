@@ -2,10 +2,10 @@
     <nav>
         <div class="navbar">
             <div class="white">
-                <div class="mobile-menu">
-                        <div></div>
-                        <div></div>
-                        <div></div>
+           <div class="mobile-menu" onclick="toggleMobileMenu()">
+                <div></div>
+                <div></div>
+                <div></div> 
                 </div>
                 <div class="logo-container">
                     <img src="/assets/images/BUMP.png" alt="Logo" />
@@ -40,28 +40,31 @@
                     </div>
                 </div>
             </div>
-            <div class="log">
-                <ul>
-                    {% if userId %}
-                    <li class="no-disc">
-                        <button class="deconnexion">
-                            <a href="/logout">SE DECONNECTER</a>
-                        </button>
-                    </li>
+                <div class="log">
+                    <ul>
+                        {% if userId %}
+                  <li class="no-disc">
+                            <button class="deconnexion">
+                                <a href="/logout">SE DECONNECTER</a>
+                            </button>
+                        </li>
                     {% else %}
-                    <li class="no-disc">
-                        <button class="connexion">
-                            <a href="/login">SE CONNECTER</a>
-                        </button>
-                    </li>
-                    <li class="no-disc">
-                        <button class="inscrire">
-                            <a href="/register">INSCRIPTION</a>
-                        </button>
-                    </li>
+                        <li class="no-disc">
+                            <button class="connexion">
+                                <a href="/login">SE CONNECTER</a>
+                            </button>
+                        </li>
+                        <li class="no-disc">
+                            <button class="inscrire">
+                                <a href="/register">INSCRIPTION</a>
+                            </button>
+                        </li>
                     {% endif %}
                 </ul>
             </div>
+            {# <div class="mobile-menu">
+                <button class="menu-button" onclick="toggleMobileMenu()">MENU</button>
+            </div> #}
         </div>
         <div class="notification">
             <span class="notificationTxt">{{ nombreNotifications }}</span>
