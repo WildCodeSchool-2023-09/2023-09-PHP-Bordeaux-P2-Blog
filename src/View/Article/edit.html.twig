@@ -24,7 +24,7 @@ endblock %} {% block content %}
             CKEDITOR.replace("content");
         </script>
 
-        <label for="categories">Catégories (facultatif):</label>
+        <div for="categories">Catégories (facultatif):</div>
         <div id="categories">
             {% for category in allCategories %}
             <div class="checkbox">
