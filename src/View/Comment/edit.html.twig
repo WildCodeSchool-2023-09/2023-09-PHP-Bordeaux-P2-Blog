@@ -9,5 +9,6 @@
     <label for="content">Contenu :</label>
     <textarea name="content" id="content" required>{{ comment.content }}</textarea><br />
     <button class="register" type="submit">Enregistrer</button>
+    <button class="annuler" href="/show?id={{ comment.article_id }}">Annuler</button>
 </form>
 {% endblock %}

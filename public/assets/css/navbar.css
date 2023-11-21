@@ -269,3 +269,40 @@ a {
     color: #233521;
     text-decoration: none;
 }
+
+/* .mobile-menu {
+    display: none;
+}
+
+.menu-button {
+    cursor: pointer;
+}
+
+.homepage {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+.homepage li {
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .homepage {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .homepage li {
+        margin: 10px 0;
+    }
+} */

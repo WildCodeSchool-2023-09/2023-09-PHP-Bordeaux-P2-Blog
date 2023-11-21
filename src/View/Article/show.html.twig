@@ -3,9 +3,10 @@
 {% block content %}
     {% block stylesheet %}<link rel="stylesheet" href="/assets/css/show.css">{% endblock %}
     
-    <div class="contenant">
         <h1>Article : {{ article.title }}</h1>
+    <div class="contenant">
         <p>{{ article.content | raw }}</p>
+
         
         <div class="auteur">
             Auteur : {% if article.author_name is defined %}{{ article.author_name }}{% else %}Auteur inconnu{% endif %}
@@ -50,13 +51,13 @@
 
         {% if article.blog_user_id is defined %}
             {% if userId %}
-                <div class="commentaire">Laissez un commentaire :</div>
+                <div class="commentaire">Laissez un commentaire :
                     <form method="post" action="/comment/add">
                          <input type="hidden" name="article_id" value="{{ article.id }}" />
                              <textarea name="content_{{ article.id }}" id="content_{{ article.id }}" required></textarea>
                          <button class="ajouter">Ajouter un commentaire</button>
                     </form>
-
+                </div>
             </div>
         {% else %}
             <p>Vous devez être <a href="/login">connecté</a> pour commenter.</p>

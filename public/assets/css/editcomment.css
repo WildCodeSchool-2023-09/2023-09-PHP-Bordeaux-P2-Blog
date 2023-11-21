@@ -32,7 +32,8 @@ h1 {
     margin-bottom: 8px;
   }
   
-.register {
+.register,
+.annuler {
       display: inline-block;
       margin-left: 0;
       margin-bottom: 12px;
@@ -52,14 +53,16 @@ h1 {
       }
   
   
-  .register:hover {
+  .register:hover,
+  .annuler:hover {
       transform: translate(0, -6px);
       box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.25), -10px 10px 25px 0px rgba(39, 200, 255, 0.25);
       background: linear-gradient(200deg, #CC9C65 0%, #fff 90%, #CC9C65 100%);
   }
     
 
-    .register::after {
+    .register::after,
+    .annuler::after {
       content: "";
       width: 350px;
       height:150px;
@@ -70,11 +73,13 @@ h1 {
       z-index: -1;
       }
       
-    .register:hover::after {
+    .register:hover::after,
+    .annuler:hover::after {
       transform: rotate(150deg);
       }
 
-    .register:hover::after {
+    .register:hover::after,
+    .annuler:hover::after {
         transform: translate(0, -6px);
         box-shadow: 10px -10px 25px 0 #233521(143, 64, 248, .25), -10px 10px 25px 0px rgba(39,200,255,.25);
       }  
