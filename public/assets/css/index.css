@@ -5,7 +5,6 @@ main h1 {
     padding: 30px;
     margin: 0px;
     margin-bottom: 50px;
-    margin-top: 20px;
 }
 
 .SSarticle {
@@ -51,6 +50,7 @@ main h1 {
     border: 2px solid var(--second-color);
     margin-bottom: 30px;
     overflow: hidden; /* Masque le surplus de contenu */
+    box-shadow: 10px 5px 5px lightgrey;
 }
 
 .flexArticle li p {
