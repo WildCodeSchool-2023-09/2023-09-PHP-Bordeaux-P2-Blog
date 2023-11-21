@@ -122,4 +122,14 @@ form {
     form {
         padding: 10px;
     }
+    .contenant {
+        width: 95%;
+        padding: 0;
+    }
+    .contenant h1 {
+        font-size: 1.5rem;
+    }
+    .contenant p {
+        text-align: justify;
+    }
 }
