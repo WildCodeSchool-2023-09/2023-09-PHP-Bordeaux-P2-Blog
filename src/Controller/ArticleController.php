@@ -140,12 +140,17 @@ class ArticleController extends AbstractController
         $data = [
             'title' => $postData['title'],
             'content' => $postData['content'],
-            'image' => $postData['image'],
         ];
+
+        // Vérifie si la clé 'image' existe dans $postData avant de l'ajouter à $data
+        if (isset($postData['image'])) {
+            $data['image'] = $postData['image'];
+        }
 
         $articleManager->editArticle($articleId, $data);
         $this->updateArticleCategories($articleId, $postData, $categoryManager);
     }
+
 
     private function updateArticleCategories($articleId, $postData, $categoryManager)
     {

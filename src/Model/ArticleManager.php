@@ -26,14 +26,28 @@ class ArticleManager extends AbstractManager
 
     public function editArticle(int $articleId, array $data)
     {
-        $query = 'UPDATE ' . static::TABLE . ' SET title = :title, content = :content, image = :image WHERE id = :id';
+        $query = 'UPDATE ' . static::TABLE . ' SET title = :title, content = :content';
+
+        // Vérifie si la clé 'image' existe avant de l'ajouter à la requête
+        if (isset($data['image'])) {
+            $query .= ', image = :image';
+        }
+
+        $query .= ' WHERE id = :id';
+
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':title', $data['title']);
         $statement->bindValue(':content', $data['content']);
-        $statement->bindValue(':image', $data['image']);
+
+        // Vérifie à nouveau avant de lier la valeur de 'image'
+        if (isset($data['image'])) {
+            $statement->bindValue(':image', $data['image']);
+        }
+
         $statement->bindValue(':id', $articleId, \PDO::PARAM_INT);
         $statement->execute();
     }
+
 
     public function deleteArticle(int $articleId)
     {
