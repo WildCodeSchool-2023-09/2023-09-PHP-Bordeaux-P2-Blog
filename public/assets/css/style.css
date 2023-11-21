@@ -41,14 +41,14 @@ li {
 }
 
 #searchForm {
-    margin-left: 8rem;
+    margin-left: 30%;
     margin-top: 3rem;
     transform: translate(-50%, -50%);
     text-align: center;
 }
 
 #searchInput {
-    width: 30%;
+    width: 200px;
     border: 1px solid #000;
     border-radius: 30px;
     font-size: 16px;
@@ -61,14 +61,6 @@ li {
     transition: width 0.8s ease-in-out;
     outline: none;
     opacity: 0.9;
-}
-@media screen and (width > 760px) {
-    #searchForm {
-        margin-left: 40rem;
-    }
-    searchInput {
-        width: 20%;
-    }
 }
 
 #submitsearch {
