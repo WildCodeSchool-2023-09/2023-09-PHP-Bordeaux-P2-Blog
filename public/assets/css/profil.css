@@ -51,12 +51,12 @@
     margin-bottom: 5px;
     text-align: justify;
 }
-
-.article li {
+.border {
     border: 2px solid var(--second-color);
     box-shadow: 10px 5px 5px lightgrey;
     margin-top: 10px;
     padding: 10px;
+
 }
 
 .text {

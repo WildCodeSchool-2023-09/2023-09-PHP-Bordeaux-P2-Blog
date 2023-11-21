@@ -9,7 +9,7 @@
     <div class="article">
             <h1>Mes articles</h1>
             {% for article in articles %}
-        <li>
+        <div class="border">
 
             <h2>{{ article.title }}</h2>
             <p class="text">{{ article.content | raw }}</p>
@@ -36,7 +36,7 @@
                     >Commentaires ({{ article.comment_count }})</a>
 
             </div>
-        </li>
+        </div>
             {% endfor %}
             <a href="/article/add" class="button2">Ajouter un article</a>
         </ul>
