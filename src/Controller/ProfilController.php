@@ -57,12 +57,11 @@ class ProfilController extends AbstractController
             } else {
                 // L'authentification a échoué => page d'erreur à faire
                 $errors[] = "La connexion s'est mal déroulée TOO BAD FOR YOU !";
-                echo $this->twig->render('Error/index.html.twig', ['message' => implode('<br>', $errors)]);
-                exit();
+                return $this->twig->render('Error/index.html.twig', ['message' => implode('<br>', $errors)]);
             }
         }
 
-        echo $this->twig->render('Blog_user/login.html.twig');
+        return $this->twig->render('Blog_user/login.html.twig');
     }
 
     public function logout()
