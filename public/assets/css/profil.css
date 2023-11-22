@@ -13,6 +13,14 @@
     font-family: var(--h1-font-family);
 }
 
+h1 {
+    color: var(--second-color);
+}
+
+h2 {
+    color: var(--second-color);   
+}
+
 .container {
     display: flex;
     width: 80%;

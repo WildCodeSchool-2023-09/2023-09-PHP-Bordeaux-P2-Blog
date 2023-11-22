@@ -9,7 +9,8 @@
 
         
         <div class="auteur">
-            Auteur : {% if article.author_name is defined %}{{ article.author_name }}{% else %}Auteur inconnu{% endif %}
+           <a href="/profil?id={{ userId }}">
+        <p class = "author">Par {{ article.author_name }}</p></a>
         </div>
 
         <!-- Affichage des catégories -->
