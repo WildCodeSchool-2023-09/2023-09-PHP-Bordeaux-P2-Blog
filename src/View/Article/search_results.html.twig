@@ -1,20 +1,27 @@
-{% extends 'layout.html.twig' %} {% block title %}Résultats de Recherche{%
-endblock %} {% block content %} {% if search_term %}
+{% extends 'layout.html.twig' %} 
+{% block title %}Résultats de Recherche{% endblock %} 
+{% block stylesheet %} <link rel="stylesheet" href="/assets/css/search.css" /> {% endblock %}
+{% block content %} 
+{% if search_term %}
 <h1>Résultats de recherche pour la catégorie: "{{ search_term }}"</h1>
 {% else %}
-<h1>Affichage de tous les articles</h1>
+<h1>Résultats de recherche</h1>
 {% endif %} {% if articles is not empty %}
-<ul>
+<ul class="flexArticle">
     {% for article in articles %}
     <li>
-        <h2>{{ article.title }}</h2>
+        <a href="/show?id={{ article.id }}">
+        <h2>{{ article.title }}</h2> </a>
+
         <p>{{ article.content | raw }}</p>
-        <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
-        <p>Par {{ article.author_name }}</p>
+        <p class = "date">Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
+        <a href="/profil?id={{ userId }}">
+        <p class = "author">Par {{ article.author_name }}</p></a>
         <a href="/show?id={{ article.id }}">Voir les commentaires</a>
     </li>
     {% endfor %}
 </ul>
 {% else %}
 <p>Aucun article trouvé pour "{{ searchTerm }}".</p>
-{% endif %} {% endblock %}
+{% endif %} 
+{% endblock %}

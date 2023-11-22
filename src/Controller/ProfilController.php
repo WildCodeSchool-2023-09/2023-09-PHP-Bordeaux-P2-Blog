@@ -27,8 +27,7 @@ class ProfilController extends AbstractController
                 }
                 return $article;
             }, $articles);
-
-            echo $this->twig->render(
+            return $this->twig->render(
                 'Blog_user/profil.html.twig',
                 ['userId' => $getUserId, 'articles' => $articles, 'nombreNotifications' => $nombreNotifications]
             );
@@ -37,8 +36,6 @@ class ProfilController extends AbstractController
             header('Location: /login');
         }
     }
-
-
 
     public function login()
     {
