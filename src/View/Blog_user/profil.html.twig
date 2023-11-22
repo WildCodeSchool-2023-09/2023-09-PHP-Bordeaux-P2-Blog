@@ -26,21 +26,20 @@
             </p>
             <p>Posté le {{ article.date | date('d/m/Y à H:i') }}</p>
             <div class="button-container">
-                <a href="/article/edit?id={{ article.id }}" class="button"
+                <a href="/article/edit?id={{ article.id }}" class="button2"
                     >Éditer</a
                     >
-                <a href="/article/delete?id={{ article.id }}" class="button"
+                <a href="/article/delete?id={{ article.id }}" class="button2"
                     >Supprimer</a>
 
-                <a href="/show?id={{ article.id }}" class="button"
+                <a href="/show?id={{ article.id }}" class="button2"
                     >Commentaires ({{ article.comment_count }})</a>
 
             </div>
         </div>
             {% endfor %}
-            <a href="/article/add" class="button2">Ajouter un article</a>
-        </ul>
     </div>
+            <a href="/article/add" class="button2">Ajouter un article</a>
     <div class="info">
         <p>
             <img src="{{ userId.image }}" alt="User Image" class="imageronde" />
