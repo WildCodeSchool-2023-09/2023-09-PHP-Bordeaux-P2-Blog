@@ -54,7 +54,7 @@
                 <div class="commentaire">Laissez un commentaire :
                     <form method="post" action="/comment/add">
                          <input type="hidden" name="article_id" value="{{ article.id }}" />
-                             <textarea name="content_{{ article.id }}" id="content_{{ article.id }}" required></textarea>
+                             <textarea class ="textc" name="content_{{ article.id }}" id="content_{{ article.id }}" required></textarea>
                          <button class="ajouter">Ajouter un commentaire</button>
                     </form>
                 </div>

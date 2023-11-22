@@ -81,7 +81,7 @@ h1 {
 
 textarea {
     height: 10em; 
-    width: 119%;
+    width: 90%;
 }
 
 .commentaire {
@@ -110,13 +110,6 @@ h2 {
     width: 6rem;
 }
 
-form {
-    height: 10em; 
-    display: flex;
-    flex-direction:column;
-    width: 80%;
-    padding: 20px;
-}
 
 @media screen and (max-width: 600px) {
     form {
