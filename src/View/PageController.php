@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\View;
 
-use App\Model\ArticleManager;
+use App\Controller\AbstractController;
 
 class PageController extends AbstractController
 {
